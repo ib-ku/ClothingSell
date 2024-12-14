@@ -13,6 +13,8 @@ func handleRequests() {
 
 	http.HandleFunc("/setProduct", controller.SetProduct)
 	http.HandleFunc("/setUser", controller.SetUser)
+
+	http.HandleFunc("/postProduct", controller.HandleProductPostRequest)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
