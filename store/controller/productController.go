@@ -22,39 +22,21 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Homepage Endpoint Hit")
 }
 
-func SetProduct(w http.ResponseWriter, r *http.Request) {
-	var newProduct model.Product
-
-	err := json.NewDecoder(r.Body).Decode(&newProduct)
-
-	if err != nil {
-		http.Error(w, "Invalid Product data", http.StatusBadRequest)
-		return
-	}
-
-	products = append(products, newProduct)
-
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(newProduct)
-
-}
-
-func HandleProductPostRequest(w http.ResponseWriter, r *http.Request){
-	if r.Method != http.MethodPost{
+func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
 		http.Error(w, "Only POST methods are allowed!", http.StatusMethodNotAllowed)
 	}
 
-	var requestProduct struct{
+	var requestProduct struct {
 		ID    *int     `json:"id"`
-		Name  string  `json:"name"`
+		Name  string   `json:"name"`
 		Price *float64 `json:"price"`
 	}
 
 	err := json.NewDecoder(r.Body).Decode(&requestProduct)
-	if err != nil{
+	if err != nil {
 		response := map[string]string{
-			"status" : "fail",
+			"status":  "fail",
 			"message": "Invalid JSON format",
 		}
 		w.Header().Set("Content-Type", "application/json")
@@ -63,35 +45,35 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request){
 		return
 	}
 
-	if requestProduct.ID == nil || requestProduct.Name == "" || requestProduct.Price == nil{
+	if requestProduct.ID == nil || requestProduct.Name == "" || requestProduct.Price == nil {
 		response := map[string]string{
-            "status":  "fail",
-            "message": "Invalid JSON message",
-        }
+			"status":  "fail",
+			"message": "Invalid product data: Id, Name, and Price are required",
+		}
 		w.Header().Set("Content-Type", "applocation/json")
 		w.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(w).Encode(response)
-		return 
+		return
 	}
 
 	newProduct := model.Product{
-        ID:    *requestProduct.ID,
-        Name:  requestProduct.Name,
-        Price: *requestProduct.Price,
-    }
+		ID:    *requestProduct.ID,
+		Name:  requestProduct.Name,
+		Price: *requestProduct.Price,
+	}
 	SetProductAfterHandling(newProduct)
 
 	fmt.Println("Received information:", "ID: \n", requestProduct.ID, "Name: \n", requestProduct.Name, "Price: \n", requestProduct.Price)
 
 	response := map[string]string{
-        "status":  "success",
-        "message": "Data successfully received",
-    }
+		"status":  "success",
+		"message": "Product data successfully received",
+	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(response)
 }
 
-func SetProductAfterHandling(product model.Product){
+func SetProductAfterHandling(product model.Product) {
 	products = append(products, product)
 }
