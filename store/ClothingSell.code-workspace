@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "ClothingSell",
+			"path": "../Advanced/ClothingSell"
+		},
+		{
+			"name": "store",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
