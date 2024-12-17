@@ -42,8 +42,16 @@ func handleRequests() {
 	controller.InitializeUser(client)
 	http.HandleFunc("/allProducts", controller.AllProducts)
 	http.HandleFunc("/allUsers", controller.AllUsers)
+
 	http.HandleFunc("/postUser", controller.HandleUserPostRequest)
 	http.HandleFunc("/postProduct", controller.HandleProductPostRequest)
+
+	http.HandleFunc("/deleteProductById", controller.DeleteProductByID)
+	http.HandleFunc("/deleteUserByEmail", controller.DeleteUserByEmail)
+
+	http.HandleFunc("/updateProductById", controller.UpdateProductByID)
+	http.HandleFunc("/updateUserByEmail", controller.UpdateUserByEmail)
+
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 

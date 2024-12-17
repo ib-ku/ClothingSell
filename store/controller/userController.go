@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"store/model"
 	"store/view"
+	"strings"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -90,6 +91,156 @@ func HandleUserPostRequest(w http.ResponseWriter, r *http.Request) {
 	response := map[string]string{
 		"status":  "success",
 		"message": "User data successfully received",
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(response)
+}
+
+func DeleteUserByEmail(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodDelete {
+		http.Error(w, "Only DELETE methods are allowed!", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var request struct {
+		Email string `json:"email"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "Invalid JSON format",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	if request.Email == "" {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "Email is required",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	request.Email = strings.TrimSpace(request.Email)
+	fmt.Printf("Deleting user with email: %s\n", request.Email)
+
+	filter := bson.M{"email": bson.M{"$regex": request.Email, "$options": "i"}}
+
+	deleteResult, err := userCollection.DeleteOne(context.TODO(), filter)
+	if err != nil {
+		http.Error(w, "Failed to delete user from the database", http.StatusInternalServerError)
+		return
+	}
+
+	if deleteResult.DeletedCount == 0 {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "No user found with the provided Email",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	response := map[string]string{
+		"status":  "success",
+		"message": fmt.Sprintf("User with email %s successfully deleted", request.Email),
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(response)
+}
+
+
+
+func UpdateUserByEmail(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPut {
+		http.Error(w, "Only PUT methods are allowed!", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var request struct {
+		Email    string  `json:"email"`
+		Username *string `json:"username,omitempty"`
+		Password *string `json:"password,omitempty"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "Invalid JSON format",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	if request.Email == "" {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "Email is required to update a user",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	updateFields := bson.M{}
+	if request.Username != nil {
+		updateFields["username"] = *request.Username
+	}
+	if request.Password != nil {
+		updateFields["password"] = *request.Password
+	}
+
+	if len(updateFields) == 0 {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "No fields to update",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	filter := bson.M{"email": request.Email}
+	update := bson.M{"$set": updateFields}
+
+	updateResult, err := userCollection.UpdateOne(context.TODO(), filter, update)
+	if err != nil {
+		http.Error(w, "Failed to update user in the database", http.StatusInternalServerError)
+		return
+	}
+
+	if updateResult.MatchedCount == 0 {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "No user found with the provided Email",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	response := map[string]interface{}{
+		"status":  "success",
+		"message": "User updated successfully",
+		"updated": updateFields,
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
