@@ -44,6 +44,8 @@ func handleRequests() {
 	http.HandleFunc("/allUsers", controller.AllUsers)
 	http.HandleFunc("/postUser", controller.HandleUserPostRequest)
 	http.HandleFunc("/postProduct", controller.HandleProductPostRequest)
+	http.HandleFunc("/getUserEmail", controller.GetUserByEmail)
+	http.HandleFunc("/getUsername", controller.GetUserByUsername)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
