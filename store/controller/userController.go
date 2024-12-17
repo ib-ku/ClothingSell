@@ -1,22 +1,41 @@
 package controller
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"store/model"
 	"store/view"
+
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
-var users = model.Users{
-	model.User{Email: "ermek@gmail.com", Password: "Qwerty123!", Username: "surf"},
+var userCollection *mongo.Collection
+
+func InitializeUser(mongoClient *mongo.Client) {
+	userCollection = client.Database("storeDB").Collection("users")
+	fmt.Println("User collection initialized")
 }
 
 func AllUsers(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Endpoint Hit: All Users Hit")
 
-	fmt.Println("Endpoint Hit:All Users Hit")
+	cursor, err := userCollection.Find(context.TODO(), bson.M{})
+	if err != nil {
+		http.Error(w, "Failed to fetch users from MongoDB", http.StatusInternalServerError)
+		return
+	}
+	defer cursor.Close(context.TODO())
+
+	var users model.Users
+	if err := cursor.All(context.TODO(), &users); err != nil {
+		http.Error(w, "Error decoding user data", http.StatusInternalServerError)
+		return
+	}
+
 	view.RenderUsers(w, users)
-
 }
 
 func HandleUserPostRequest(w http.ResponseWriter, r *http.Request) {
@@ -59,7 +78,12 @@ func HandleUserPostRequest(w http.ResponseWriter, r *http.Request) {
 		Password: requestUser.Password,
 		Username: requestUser.Username,
 	}
-	SetUserAfterHandling(newUser)
+
+	_, err = userCollection.InsertOne(context.TODO(), newUser)
+	if err != nil {
+		http.Error(w, "Failed to insert user into MongoDB", http.StatusInternalServerError)
+		return
+	}
 
 	fmt.Println("Received User Information:", "Email:", requestUser.Email, "Password:", requestUser.Password, "Username:", requestUser.Username)
 
@@ -70,8 +94,4 @@ func HandleUserPostRequest(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(response)
-}
-
-func SetUserAfterHandling(user model.User) {
-	users = append(users, user)
 }

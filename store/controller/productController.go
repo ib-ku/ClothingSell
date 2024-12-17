@@ -1,30 +1,49 @@
 package controller
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"store/model"
 	"store/view"
+
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
-var products = model.Products{
-	model.Product{ID: 1, Name: "T-Shirt", Price: 52.52},
+var client *mongo.Client
+var productCollection *mongo.Collection
+
+func InitializeProduct(mongoClient *mongo.Client) {
+	client = mongoClient
+	productCollection = client.Database("storeDB").Collection("products")
+	fmt.Println("Product collection initialized")
 }
 
 func AllProducts(w http.ResponseWriter, r *http.Request) {
-
 	fmt.Println("Endpoint Hit: All Products Endpoint")
-	view.RenderProducts(w, products)
-}
 
-func HomePage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Homepage Endpoint Hit")
+	cursor, err := productCollection.Find(context.TODO(), bson.M{})
+	if err != nil {
+		http.Error(w, "Error fetching products from database", http.StatusInternalServerError)
+		return
+	}
+	defer cursor.Close(context.TODO())
+
+	var products model.Products
+	if err = cursor.All(context.TODO(), &products); err != nil {
+		http.Error(w, "Error decoding product data", http.StatusInternalServerError)
+		return
+	}
+
+	view.RenderProducts(w, products)
 }
 
 func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Only POST methods are allowed!", http.StatusMethodNotAllowed)
+		return
 	}
 
 	var requestProduct struct {
@@ -48,9 +67,9 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 	if requestProduct.ID == nil || requestProduct.Name == "" || requestProduct.Price == nil {
 		response := map[string]string{
 			"status":  "fail",
-			"message": "Invalid product data: Id, Name, and Price are required",
+			"message": "Invalid product data: ID, Name, and Price are required",
 		}
-		w.Header().Set("Content-Type", "applocation/json")
+		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(w).Encode(response)
 		return
@@ -61,9 +80,14 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 		Name:  requestProduct.Name,
 		Price: *requestProduct.Price,
 	}
-	SetProductAfterHandling(newProduct)
 
-	fmt.Println("Received information:", "ID: \n", requestProduct.ID, "Name: \n", requestProduct.Name, "Price: \n", requestProduct.Price)
+	_, err = productCollection.InsertOne(context.TODO(), newProduct)
+	if err != nil {
+		http.Error(w, "Error inserting product into database", http.StatusInternalServerError)
+		return
+	}
+
+	fmt.Println("Received information:", "ID:", *requestProduct.ID, "Name:", requestProduct.Name, "Price:", *requestProduct.Price)
 
 	response := map[string]string{
 		"status":  "success",
@@ -72,8 +96,4 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(response)
-}
-
-func SetProductAfterHandling(product model.Product) {
-	products = append(products, product)
 }
