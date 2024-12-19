@@ -15,7 +15,7 @@ import (
 var userCollection *mongo.Collection
 
 func InitializeUser(mongoClient *mongo.Client) {
-	userCollection = client.Database("storeDB").Collection("users")
+	userCollection = mongoClient.Database("storeDB").Collection("users")
 	fmt.Println("User collection initialized")
 }
 

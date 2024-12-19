@@ -12,27 +12,25 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-var client *mongo.Client
 var productCollection *mongo.Collection
 
 func InitializeProduct(mongoClient *mongo.Client) {
-	client = mongoClient
-	productCollection = client.Database("storeDB").Collection("products")
+	productCollection = mongoClient.Database("storeDB").Collection("products")
 	fmt.Println("Product collection initialized")
 }
 
 func AllProducts(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Endpoint Hit: All Products Endpoint")
+	fmt.Println("Endpoint Hit: All Products Hit")
 
 	cursor, err := productCollection.Find(context.TODO(), bson.M{})
 	if err != nil {
-		http.Error(w, "Error fetching products from database", http.StatusInternalServerError)
+		http.Error(w, "Failed to fetch products from MongoDB", http.StatusInternalServerError)
 		return
 	}
 	defer cursor.Close(context.TODO())
 
 	var products model.Products
-	if err = cursor.All(context.TODO(), &products); err != nil {
+	if err := cursor.All(context.TODO(), &products); err != nil {
 		http.Error(w, "Error decoding product data", http.StatusInternalServerError)
 		return
 	}
@@ -83,11 +81,11 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 
 	_, err = productCollection.InsertOne(context.TODO(), newProduct)
 	if err != nil {
-		http.Error(w, "Error inserting product into database", http.StatusInternalServerError)
+		http.Error(w, "Failed to insert product into MongoDB", http.StatusInternalServerError)
 		return
 	}
 
-	fmt.Println("Received information:", "ID:", *requestProduct.ID, "Name:", requestProduct.Name, "Price:", *requestProduct.Price)
+	fmt.Println("Received Product Information:", "ID:", *requestProduct.ID, "Name:", requestProduct.Name, "Price:", *requestProduct.Price)
 
 	response := map[string]string{
 		"status":  "success",
@@ -96,4 +94,55 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(response)
+}
+
+func GetProductByID(w http.ResponseWriter, r *http.Request) {
+	var request struct {
+		ID int `json:"id"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil || request.ID == 0 {
+		http.Error(w, "Invalid JSON format or missing product ID", http.StatusBadRequest)
+		return
+	}
+
+	var product model.Product
+	err = productCollection.FindOne(context.TODO(), bson.M{"id": request.ID}).Decode(&product)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			http.Error(w, "Product not found", http.StatusNotFound)
+		} else {
+			http.Error(w, "Error fetching product from MongoDB", http.StatusInternalServerError)
+		}
+		return
+	}
+
+	view.RenderProducts(w, product)
+}
+
+func GetProductByName(w http.ResponseWriter, r *http.Request) {
+	var request struct {
+		Name string `json:"name"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil || request.Name == "" {
+		http.Error(w, "Invalid JSON format or missing product name", http.StatusBadRequest)
+		return
+	}
+
+	var product model.Product
+
+	err = productCollection.FindOne(context.TODO(), bson.M{"name": request.Name}).Decode(&product)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			http.Error(w, "Product not found", http.StatusNotFound)
+		} else {
+			http.Error(w, "Error fetching product from MongoDB", http.StatusInternalServerError)
+		}
+		return
+	}
+
+	view.RenderProducts(w, product)
 }
