@@ -12,25 +12,27 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
+var client *mongo.Client
 var productCollection *mongo.Collection
 
 func InitializeProduct(mongoClient *mongo.Client) {
-	productCollection = mongoClient.Database("storeDB").Collection("products")
+	client = mongoClient
+	productCollection = client.Database("storeDB").Collection("products")
 	fmt.Println("Product collection initialized")
 }
 
 func AllProducts(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Endpoint Hit: All Products Hit")
+	fmt.Println("Endpoint Hit: All Products Endpoint")
 
 	cursor, err := productCollection.Find(context.TODO(), bson.M{})
 	if err != nil {
-		http.Error(w, "Failed to fetch products from MongoDB", http.StatusInternalServerError)
+		http.Error(w, "Error fetching products from database", http.StatusInternalServerError)
 		return
 	}
 	defer cursor.Close(context.TODO())
 
 	var products model.Products
-	if err := cursor.All(context.TODO(), &products); err != nil {
+	if err = cursor.All(context.TODO(), &products); err != nil {
 		http.Error(w, "Error decoding product data", http.StatusInternalServerError)
 		return
 	}
@@ -81,15 +83,158 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 
 	_, err = productCollection.InsertOne(context.TODO(), newProduct)
 	if err != nil {
-		http.Error(w, "Failed to insert product into MongoDB", http.StatusInternalServerError)
+		http.Error(w, "Error inserting product into database", http.StatusInternalServerError)
 		return
 	}
 
-	fmt.Println("Received Product Information:", "ID:", *requestProduct.ID, "Name:", requestProduct.Name, "Price:", *requestProduct.Price)
+	fmt.Println("Received information:", "ID:", *requestProduct.ID, "Name:", requestProduct.Name, "Price:", *requestProduct.Price)
 
 	response := map[string]string{
 		"status":  "success",
 		"message": "Product data successfully received",
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(response)
+}
+
+func DeleteProductByID(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodDelete {
+		http.Error(w, "Only DELETE methods are allowed!", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var request struct {
+		ID int `json:"id"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "Invalid JSON format",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	if request.ID == 0 {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "Invalid product ID",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	filter := bson.M{"id": request.ID}
+	deleteResult, err := productCollection.DeleteOne(context.TODO(), filter)
+	if err != nil {
+		http.Error(w, "Failed to delete product from the database", http.StatusInternalServerError)
+		return
+	}
+
+	if deleteResult.DeletedCount == 0 {
+		response := map[string]string{
+			"status":  "fail",
+			"message": fmt.Sprintf("No product found with ID %d", request.ID),
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	response := map[string]string{
+		"status":  "success",
+		"message": fmt.Sprintf("Product with ID %d successfully deleted", request.ID),
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(response)
+}
+
+func UpdateProductByID(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPut {
+		http.Error(w, "Only PUT methods are allowed!", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var request struct {
+		ID    int      `json:"id"`
+		Name  *string  `json:"name,omitempty"`
+		Price *float64 `json:"price,omitempty"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "Invalid JSON format",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	if request.ID == 0 {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "ID is required to update a product",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	updateFields := bson.M{}
+	if request.Name != nil {
+		updateFields["name"] = *request.Name
+	}
+	if request.Price != nil {
+		updateFields["price"] = *request.Price
+	}
+
+	if len(updateFields) == 0 {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "No fields to update",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	filter := bson.M{"id": request.ID}
+	update := bson.M{"$set": updateFields}
+	updateResult, err := productCollection.UpdateOne(context.TODO(), filter, update)
+	if err != nil {
+		http.Error(w, "Failed to update product in the database", http.StatusInternalServerError)
+		return
+	}
+
+	if updateResult.MatchedCount == 0 {
+		response := map[string]string{
+			"status":  "fail",
+			"message": fmt.Sprintf("No product found with ID %d", request.ID),
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	response := map[string]interface{}{
+		"status":  "success",
+		"message": "Product updated successfully",
+		"updated": updateFields,
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -108,12 +253,14 @@ func GetProductByID(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var product model.Product
+	fmt.Println("Received Product ID:", request.ID)
+
 	err = productCollection.FindOne(context.TODO(), bson.M{"id": request.ID}).Decode(&product)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			http.Error(w, "Product not found", http.StatusNotFound)
 		} else {
-			http.Error(w, "Error fetching product from MongoDB", http.StatusInternalServerError)
+			http.Error(w, "Error fetching product from DB", http.StatusInternalServerError)
 		}
 		return
 	}
@@ -133,13 +280,14 @@ func GetProductByName(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var product model.Product
+	fmt.Println("Received Product Name:", request.Name)
 
 	err = productCollection.FindOne(context.TODO(), bson.M{"name": request.Name}).Decode(&product)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			http.Error(w, "Product not found", http.StatusNotFound)
 		} else {
-			http.Error(w, "Error fetching product from MongoDB", http.StatusInternalServerError)
+			http.Error(w, "Error fetching product from DB", http.StatusInternalServerError)
 		}
 		return
 	}

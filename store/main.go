@@ -12,24 +12,20 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var productClient *mongo.Client
+var client *mongo.Client
 
 func connectMongoDB() *mongo.Client {
 	mongoURI := "mongodb://storeUser:securePassword@localhost:27017/storeDB"
 	clientOptions := options.Client().ApplyURI(mongoURI)
-
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
 		log.Fatalf("Error connecting to MongoDB: %v", err)
 	}
-
 	err = client.Ping(context.TODO(), nil)
 	if err != nil {
 		log.Fatalf("Failed to ping MongoDB: %v", err)
 	}
-
 	fmt.Println("Successfully connected to MongoDB!")
-
 	testCollection := client.Database("storeDB").Collection("test")
 	_, err = testCollection.InsertOne(context.TODO(), map[string]string{"test": "connection"})
 	if err != nil {
@@ -37,38 +33,42 @@ func connectMongoDB() *mongo.Client {
 	} else {
 		fmt.Println("Test document inserted successfully")
 	}
-
 	return client
 }
 
 func handleRequests() {
 	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir("./static"))))
-
-	controller.InitializeProduct(productClient)
-	controller.InitializeUser(productClient)
-
+	controller.InitializeProduct(client)
+	controller.InitializeUser(client)
 	http.HandleFunc("/allProducts", controller.AllProducts)
 	http.HandleFunc("/allUsers", controller.AllUsers)
+
 	http.HandleFunc("/postUser", controller.HandleUserPostRequest)
 	http.HandleFunc("/postProduct", controller.HandleProductPostRequest)
+
+	http.HandleFunc("/deleteProductById", controller.DeleteProductByID)
+	http.HandleFunc("/deleteUserByEmail", controller.DeleteUserByEmail)
+
+	http.HandleFunc("/updateProductById", controller.UpdateProductByID)
+	http.HandleFunc("/updateUserByEmail", controller.UpdateUserByEmail)
+
 	http.HandleFunc("/getUserEmail", controller.GetUserByEmail)
 	http.HandleFunc("/getUsername", controller.GetUserByUsername)
-	http.HandleFunc("/getProductId", controller.GetProductByID)
-	http.HandleFunc("/getProductName", controller.GetProductByName)
+
+	http.HandleFunc("/getProductById", controller.GetProductByID)
+	http.HandleFunc("/getProductByName", controller.GetProductByName)
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func main() {
-	productClient = connectMongoDB()
-
+	client = connectMongoDB()
 	defer func() {
-		if err := productClient.Disconnect(context.TODO()); err != nil {
+		if err := client.Disconnect(context.TODO()); err != nil {
 			log.Fatalf("Error disconnecting from MongoDB: %v", err)
 		}
 		fmt.Println("Disconnected from MongoDB")
 	}()
-
-	fmt.Println("Server is running at http://localhost:8080")
+	fmt.Println("http://localhost:8080")
 	handleRequests()
 }

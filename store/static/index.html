@@ -8,16 +8,24 @@
 <body>
     <h1>Products and Users</h1>
 
-    <button onclick="fetchProductData()">Get Products</button>
-    <button onclick="fetchUserData()">Get Users</button>
+    <button onclick="fetchProductData()">Get All Products</button>
+    <button onclick="fetchUserData()">Get All Users</button>
+
+    <h3>Get Product by ID</h3>
+    <input type="number" id="productIdInput" placeholder="Enter product ID">
+    <button id="fetchProductByIdButton">Get Product by ID</button>
+
+    <h3>Get Product by Name</h3>
+    <input type="text" id="productNameInput" placeholder="Enter product name">
+    <button id="fetchProductByNameButton">Get Product by Name</button>
 
     <h3>Get User by Email</h3>
     <input type="email" id="emailInput" placeholder="Enter email">
-    <button onclick="fetchUserByEmail()">Get User by Email</button>
+    <button id="fetchUserByEmailButton">Get User by Email</button>
 
     <h3>Get User by Username</h3>
     <input type="text" id="usernameInput" placeholder="Enter username">
-    <button onclick="fetchUserByUsername()">Get User by Username</button>
+    <button id="fetchUserByUsernameButton">Get User by Username</button>
 
     <h3>Products</h3>
     <table id="productTable" border="1">
@@ -46,6 +54,11 @@
     </table>
 
     <script>
+        document.getElementById("fetchProductByIdButton").addEventListener("click", fetchProductByID);
+        document.getElementById("fetchProductByNameButton").addEventListener("click", fetchProductByName);
+        document.getElementById("fetchUserByEmailButton").addEventListener("click", fetchUserByEmail);
+        document.getElementById("fetchUserByUsernameButton").addEventListener("click", fetchUserByUsername);
+
         function fetchProductData() {
             fetch('/allProducts')
                 .then(response => response.json())
@@ -61,6 +74,68 @@
                 })
                 .catch(error => {
                     console.error("Error fetching products:", error);
+                });
+        }
+
+        function fetchProductByID() {
+            const id = document.getElementById("productIdInput").value;
+            if (!id) {
+                alert("Please enter a valid product ID.");
+                return;
+            }
+            fetch('/getProductByID', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: parseInt(id) })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const productTable = document.getElementById("productTable").getElementsByTagName('tbody')[0];
+                    productTable.innerHTML = "";
+                    if (data) {
+                        const row = productTable.insertRow();
+                        row.insertCell(0).textContent = data.id;
+                        row.insertCell(1).textContent = data.name;
+                        row.insertCell(2).textContent = data.price;
+                    } else {
+                        alert("Product not found!");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching product by ID:", error);
+                });
+        }
+
+        function fetchProductByName() {
+            const name = document.getElementById("productNameInput").value;
+            if (!name) {
+                alert("Please enter a valid product name.");
+                return;
+            }
+            fetch('/getProductByName', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: name })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const productTable = document.getElementById("productTable").getElementsByTagName('tbody')[0];
+                    productTable.innerHTML = "";
+                    if (data) {
+                        const row = productTable.insertRow();
+                        row.insertCell(0).textContent = data.id;
+                        row.insertCell(1).textContent = data.name;
+                        row.insertCell(2).textContent = data.price;
+                    } else {
+                        alert("Product not found!");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching product by name:", error);
                 });
         }
 
@@ -84,6 +159,10 @@
 
         function fetchUserByEmail() {
             const email = document.getElementById("emailInput").value;
+            if (!email) {
+                alert("Please enter a valid email address.");
+                return;
+            }
             fetch('/getUserEmail', {
                 method: 'POST',
                 headers: {
@@ -100,6 +179,8 @@
                         row.insertCell(0).textContent = data.username;
                         row.insertCell(1).textContent = data.password;
                         row.insertCell(2).textContent = data.email;
+                    } else {
+                        alert("User not found!");
                     }
                 })
                 .catch(error => {
@@ -109,6 +190,10 @@
 
         function fetchUserByUsername() {
             const username = document.getElementById("usernameInput").value;
+            if (!username) {
+                alert("Please enter a valid username.");
+                return;
+            }
             fetch('/getUsername', {
                 method: 'POST',
                 headers: {
@@ -125,6 +210,8 @@
                         row.insertCell(0).textContent = data.username;
                         row.insertCell(1).textContent = data.password;
                         row.insertCell(2).textContent = data.email;
+                    } else {
+                        alert("User not found!");
                     }
                 })
                 .catch(error => {
