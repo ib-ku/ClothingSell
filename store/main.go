@@ -52,6 +52,12 @@ func handleRequests() {
 	http.HandleFunc("/updateProductById", controller.UpdateProductByID)
 	http.HandleFunc("/updateUserByEmail", controller.UpdateUserByEmail)
 
+	http.HandleFunc("/getUserEmail", controller.GetUserByEmail)
+	http.HandleFunc("/getUsername", controller.GetUserByUsername)
+
+	http.HandleFunc("/getProductById", controller.GetProductByID)
+	http.HandleFunc("/getProductByName", controller.GetProductByName)
+
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 

@@ -141,7 +141,7 @@ func DeleteProductByID(w http.ResponseWriter, r *http.Request) {
 	if deleteResult.DeletedCount == 0 {
 		response := map[string]string{
 			"status":  "fail",
-			"message": "No product found with the provided ID",
+			"message": fmt.Sprintf("No product found with ID %d", request.ID),
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusNotFound)
@@ -214,7 +214,6 @@ func UpdateProductByID(w http.ResponseWriter, r *http.Request) {
 
 	filter := bson.M{"id": request.ID}
 	update := bson.M{"$set": updateFields}
-
 	updateResult, err := productCollection.UpdateOne(context.TODO(), filter, update)
 	if err != nil {
 		http.Error(w, "Failed to update product in the database", http.StatusInternalServerError)
@@ -224,7 +223,7 @@ func UpdateProductByID(w http.ResponseWriter, r *http.Request) {
 	if updateResult.MatchedCount == 0 {
 		response := map[string]string{
 			"status":  "fail",
-			"message": "No product found with the provided ID",
+			"message": fmt.Sprintf("No product found with ID %d", request.ID),
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusNotFound)
@@ -240,4 +239,58 @@ func UpdateProductByID(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(response)
+}
+
+func GetProductByID(w http.ResponseWriter, r *http.Request) {
+	var request struct {
+		ID int `json:"id"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil || request.ID == 0 {
+		http.Error(w, "Invalid JSON format or missing product ID", http.StatusBadRequest)
+		return
+	}
+
+	var product model.Product
+	fmt.Println("Received Product ID:", request.ID)
+
+	err = productCollection.FindOne(context.TODO(), bson.M{"id": request.ID}).Decode(&product)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			http.Error(w, "Product not found", http.StatusNotFound)
+		} else {
+			http.Error(w, "Error fetching product from DB", http.StatusInternalServerError)
+		}
+		return
+	}
+
+	view.RenderProducts(w, product)
+}
+
+func GetProductByName(w http.ResponseWriter, r *http.Request) {
+	var request struct {
+		Name string `json:"name"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil || request.Name == "" {
+		http.Error(w, "Invalid JSON format or missing product name", http.StatusBadRequest)
+		return
+	}
+
+	var product model.Product
+	fmt.Println("Received Product Name:", request.Name)
+
+	err = productCollection.FindOne(context.TODO(), bson.M{"name": request.Name}).Decode(&product)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			http.Error(w, "Product not found", http.StatusNotFound)
+		} else {
+			http.Error(w, "Error fetching product from DB", http.StatusInternalServerError)
+		}
+		return
+	}
+
+	view.RenderProducts(w, product)
 }

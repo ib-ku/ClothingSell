@@ -246,3 +246,54 @@ func UpdateUserByEmail(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(response)
 }
+
+func GetUserByEmail(w http.ResponseWriter, r *http.Request) {
+	var request struct {
+		Email string `json:"email"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil || request.Email == "" {
+		http.Error(w, "Invalid json format or missing email", http.StatusBadRequest)
+		return
+	}
+
+	var user model.User
+
+	err = userCollection.FindOne(context.TODO(), bson.M{"email": request.Email}).Decode(&user)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			http.Error(w, "User not found", http.StatusNotFound)
+		} else {
+			http.Error(w, "Error fetching user from DB", http.StatusInternalServerError)
+		}
+	}
+
+	view.RenderUsers(w, user)
+}
+
+func GetUserByUsername(w http.ResponseWriter, r *http.Request) {
+	var request struct {
+		Username string `json:"username"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&request)
+	if err != nil || request.Username == "" {
+		http.Error(w, "Invalid json format or missing username", http.StatusBadRequest)
+		return
+	}
+
+	var user model.User
+	fmt.Println("Received Username:", request.Username)
+
+	err = userCollection.FindOne(context.TODO(), bson.M{"username": request.Username}).Decode(&user)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			http.Error(w, "User not found", http.StatusNotFound)
+		} else {
+			http.Error(w, "Error fetching user from DB", http.StatusInternalServerError)
+		}
+	}
+
+	view.RenderUsers(w, user)
+}
