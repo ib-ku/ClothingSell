@@ -12,9 +12,10 @@
 
 
 ## References / Tools
-# MongoDB as Database
-# Postman
+MongoDB as Database
+Postman
 # Connection Video:
-# https://www.youtube.com/watch?v=Dg1v3-Rkxv0&ab_channel=NathanBirch
- # "go.mongodb.org/mongo-driver/bson"
- # "go.mongodb.org/mongo-driver/mongo"
+https://www.youtube.com/watch?v=Dg1v3-Rkxv0&ab_channel=NathanBirch
+
+"go.mongodb.org/mongo-driver/bson"
+"go.mongodb.org/mongo-driver/mongo"
