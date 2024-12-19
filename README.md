@@ -1,14 +1,14 @@
 # ClothingSell
 
 ## Description
-# The ClothingSell is the project that aims to develop site using Golang and Mongodb
+The ClothingSell is the project that aims to develop site using Golang and Mongodb
 
 ### Teammmembers
-# Orazbekov Ermek, Ibragim Kuandykov, Moldakhmet Abylay
+Orazbekov Ermek, Ibragim Kuandykov, Moldakhmet Abylay
 
 
 ## Installation
-# Install file, run main.go using console command "go run store/main.go"
+Install file, run main.go using console command "go run store/main.go"
 
 
 ## References / Tools
