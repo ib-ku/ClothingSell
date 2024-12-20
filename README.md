@@ -1,5 +1,6 @@
 # ClothingSell
-![изображение](https://github.com/user-attachments/assets/bf9bc51d-a33d-47ca-8ad2-2d4d91c07551)
+![Uploading image.png…]()
+
 
 ## Description
 The ClothingSell is the project that aims to develop site using Golang and Mongodb.
