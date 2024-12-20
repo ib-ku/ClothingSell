@@ -7,9 +7,19 @@
 </head>
 <body>
     <h1>Products and Users</h1>
-
+    
     <button onclick="fetchProductData()">Get All Products</button>
     <button onclick="fetchUserData()">Get All Users</button>
+
+    <h3>Manage Products</h3>
+    <button onclick="createProduct()">Create Product</button>
+    <button onclick="updateProduct()">Update Product</button>
+    <button onclick="deleteProduct()">Delete Product</button>
+
+    <h3>Manage Users</h3>
+    <button onclick="createUser()">Create User</button>
+    <button onclick="updateUser()">Update User</button>
+    <button onclick="deleteUser()">Delete User</button>
 
     <h3>Get Product by ID</h3>
     <input type="number" id="productIdInput" placeholder="Enter product ID">
@@ -26,6 +36,7 @@
     <h3>Get User by Username</h3>
     <input type="text" id="usernameInput" placeholder="Enter username">
     <button id="fetchUserByUsernameButton">Get User by Username</button>
+    
 
     <h3>Products</h3>
     <table id="productTable" border="1">
@@ -58,6 +69,171 @@
         document.getElementById("fetchProductByNameButton").addEventListener("click", fetchProductByName);
         document.getElementById("fetchUserByEmailButton").addEventListener("click", fetchUserByEmail);
         document.getElementById("fetchUserByUsernameButton").addEventListener("click", fetchUserByUsername);
+
+        function createProduct() {
+            const productID = prompt("Enter product ID:");
+            const productName = prompt("Enter product name:");
+            const productPrice = prompt("Enter product price:");
+                
+            if (!productID || !productName || !productPrice) {
+                alert("Product ID, name, and price are required.");
+                return;
+            }
+                     fetch('/postProduct', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id: parseInt(productID), 
+                    name: productName, 
+                    price: parseFloat(productPrice)
+                })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Error: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert(data.message || "Product created successfully.");
+                })
+                .catch(error => {
+                    console.error("Error creating product:", error);
+                    alert("Failed to create product. Check console for details.");
+                });
+        }
+
+
+        function updateProduct() {
+            const productId = prompt("Enter product ID to update:");
+            const productName = prompt("Enter new product name (leave blank to keep current):");
+            const productPrice = prompt("Enter new product price (leave blank to keep current):");
+
+            if (!productId) {
+                alert("Product ID is required.");
+                return;
+            }
+
+            const updateData = {};
+            if (productName) updateData.name = productName;
+            if (productPrice) updateData.price = parseFloat(productPrice);
+
+            fetch('/updateProductById', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: parseInt(productId), ...updateData })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message || "Product updated successfully.");
+                    fetchProductData();
+                })
+                .catch(error => {
+                    console.error("Error updating product:", error);
+                });
+        }
+
+        function deleteProduct() {
+            const productId = prompt("Enter product ID to delete:");
+
+            if (!productId) {
+                alert("Product ID is required.");
+                return;
+            }
+
+            fetch('/deleteProductById', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: parseInt(productId) })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message || "Product deleted successfully.");
+                    fetchProductData();
+                })
+                .catch(error => {
+                    console.error("Error deleting product:", error);
+                });
+        }
+
+        function createUser() {
+            const username = prompt("Enter username:");
+            const password = prompt("Enter password:");
+            const email = prompt("Enter email:");
+
+            if (!username || !password || !email) {
+                alert("Username, password, and email are required.");
+                return;
+            }
+
+            fetch('/postUser', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password, email })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message || "User created successfully.");
+                    fetchUserData();
+                })
+                .catch(error => {
+                    console.error("Error creating user:", error);
+                });
+        }
+
+
+        function updateUser() {
+            const email = prompt("Enter email of the user to update:");
+            const newUsername = prompt("Enter new username (leave blank to keep current):");
+            const newPassword = prompt("Enter new password (leave blank to keep current):");
+
+            if (!email) {
+                alert("Email is required to update a user.");
+                return;
+            }
+
+            const updateData = {};
+            if (newUsername) updateData.username = newUsername;
+            if (newPassword) updateData.password = newPassword;
+
+            fetch('/updateUserByEmail', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, ...updateData })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message || "User updated successfully.");
+                    fetchUserData();
+                })
+                .catch(error => {
+                    console.error("Error updating user:", error);
+                });
+        }
+
+
+        function deleteUser() {
+            const email = prompt("Enter email of the user to delete:");
+
+            if (!email) {
+                alert("Email is required to delete a user.");
+                return;
+            }
+
+            fetch('/deleteUserByEmail', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message || "User deleted successfully.");
+                    fetchUserData();
+                })
+                .catch(error => {
+                    console.error("Error deleting user:", error);
+                });
+        }
 
         function fetchProductData() {
             fetch('/allProducts')
