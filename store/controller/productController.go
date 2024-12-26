@@ -46,17 +46,22 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var requestProduct struct {
-		ID    *int     `json:"id"`
-		Name  string   `json:"name"`
-		Price *float64 `json:"price"`
-	}
-
-	err := json.NewDecoder(r.Body).Decode(&requestProduct)
+	var reqData map[string]interface{}
+	err := json.NewDecoder(r.Body).Decode(&reqData)
 	if err != nil {
+		http.Error(w, "Invalid JSON format: "+err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	// Validate fields
+	id, idExists := reqData["id"]
+	name, nameExists := reqData["name"]
+	price, priceExists := reqData["price"]
+
+	if !idExists || !nameExists || !priceExists {
 		response := map[string]string{
 			"status":  "fail",
-			"message": "Invalid JSON format",
+			"message": "Fields 'id', 'name', and 'price' are required",
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusBadRequest)
@@ -64,10 +69,10 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if requestProduct.ID == nil || requestProduct.Name == "" || requestProduct.Price == nil {
+	if _, ok := id.(float64); !ok { // JSON numbers are decoded as float64
 		response := map[string]string{
 			"status":  "fail",
-			"message": "Invalid product data: ID, Name, and Price are required",
+			"message": "'id' must be a number",
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusBadRequest)
@@ -75,10 +80,33 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if _, ok := name.(string); !ok {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "'name' must be a string",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	if _, ok := price.(float64); !ok {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "'price' must be a number",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	// Convert and insert the product
 	newProduct := model.Product{
-		ID:    *requestProduct.ID,
-		Name:  requestProduct.Name,
-		Price: *requestProduct.Price,
+		ID:    int(id.(float64)),
+		Name:  name.(string),
+		Price: price.(float64),
 	}
 
 	_, err = productCollection.InsertOne(context.TODO(), newProduct)
@@ -86,8 +114,6 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error inserting product into database", http.StatusInternalServerError)
 		return
 	}
-
-	fmt.Println("Received information:", "ID:", *requestProduct.ID, "Name:", requestProduct.Name, "Price:", *requestProduct.Price)
 
 	response := map[string]string{
 		"status":  "success",
@@ -104,15 +130,18 @@ func DeleteProductByID(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var request struct {
-		ID int `json:"id"`
-	}
-
-	err := json.NewDecoder(r.Body).Decode(&request)
+	var reqData map[string]interface{}
+	err := json.NewDecoder(r.Body).Decode(&reqData)
 	if err != nil {
+		http.Error(w, "Invalid JSON format: "+err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	id, idExists := reqData["id"]
+	if !idExists {
 		response := map[string]string{
 			"status":  "fail",
-			"message": "Invalid JSON format",
+			"message": "Field 'id' is required",
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusBadRequest)
@@ -120,10 +149,11 @@ func DeleteProductByID(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if request.ID == 0 {
+	idFloat, ok := id.(float64)
+	if !ok || idFloat <= 0 {
 		response := map[string]string{
 			"status":  "fail",
-			"message": "Invalid product ID",
+			"message": "'id' must be a positive number",
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusBadRequest)
@@ -131,7 +161,7 @@ func DeleteProductByID(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	filter := bson.M{"id": request.ID}
+	filter := bson.M{"id": int(idFloat)}
 	deleteResult, err := productCollection.DeleteOne(context.TODO(), filter)
 	if err != nil {
 		http.Error(w, "Failed to delete product from the database", http.StatusInternalServerError)
@@ -141,7 +171,7 @@ func DeleteProductByID(w http.ResponseWriter, r *http.Request) {
 	if deleteResult.DeletedCount == 0 {
 		response := map[string]string{
 			"status":  "fail",
-			"message": fmt.Sprintf("No product found with ID %d", request.ID),
+			"message": fmt.Sprintf("No product found with ID %d", int(idFloat)),
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusNotFound)
@@ -151,7 +181,7 @@ func DeleteProductByID(w http.ResponseWriter, r *http.Request) {
 
 	response := map[string]string{
 		"status":  "success",
-		"message": fmt.Sprintf("Product with ID %d successfully deleted", request.ID),
+		"message": fmt.Sprintf("Product with ID %d successfully deleted", int(idFloat)),
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -164,17 +194,18 @@ func UpdateProductByID(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var request struct {
-		ID    int      `json:"id"`
-		Name  *string  `json:"name,omitempty"`
-		Price *float64 `json:"price,omitempty"`
+	var reqData map[string]interface{}
+	err := json.NewDecoder(r.Body).Decode(&reqData)
+	if err != nil {
+		http.Error(w, "Invalid JSON format: "+err.Error(), http.StatusBadRequest)
+		return
 	}
 
-	err := json.NewDecoder(r.Body).Decode(&request)
-	if err != nil {
+	id, idExists := reqData["id"]
+	if !idExists {
 		response := map[string]string{
 			"status":  "fail",
-			"message": "Invalid JSON format",
+			"message": "Field 'id' is required",
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusBadRequest)
@@ -182,10 +213,11 @@ func UpdateProductByID(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if request.ID == 0 {
+	idFloat, ok := id.(float64)
+	if !ok || idFloat <= 0 {
 		response := map[string]string{
 			"status":  "fail",
-			"message": "ID is required to update a product",
+			"message": "'id' must be a positive number",
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusBadRequest)
@@ -194,11 +226,34 @@ func UpdateProductByID(w http.ResponseWriter, r *http.Request) {
 	}
 
 	updateFields := bson.M{}
-	if request.Name != nil {
-		updateFields["name"] = *request.Name
+	if name, nameExists := reqData["name"]; nameExists {
+		if nameStr, ok := name.(string); ok {
+			updateFields["name"] = nameStr
+		} else {
+			response := map[string]string{
+				"status":  "fail",
+				"message": "'name' must be a string",
+			}
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusBadRequest)
+			json.NewEncoder(w).Encode(response)
+			return
+		}
 	}
-	if request.Price != nil {
-		updateFields["price"] = *request.Price
+
+	if price, priceExists := reqData["price"]; priceExists {
+		if priceFloat, ok := price.(float64); ok {
+			updateFields["price"] = priceFloat
+		} else {
+			response := map[string]string{
+				"status":  "fail",
+				"message": "'price' must be a number",
+			}
+			w.Header().Set("Content-Type", "application/json")
+			w.WriteHeader(http.StatusBadRequest)
+			json.NewEncoder(w).Encode(response)
+			return
+		}
 	}
 
 	if len(updateFields) == 0 {
@@ -212,7 +267,7 @@ func UpdateProductByID(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	filter := bson.M{"id": request.ID}
+	filter := bson.M{"id": int(idFloat)}
 	update := bson.M{"$set": updateFields}
 	updateResult, err := productCollection.UpdateOne(context.TODO(), filter, update)
 	if err != nil {
@@ -223,7 +278,7 @@ func UpdateProductByID(w http.ResponseWriter, r *http.Request) {
 	if updateResult.MatchedCount == 0 {
 		response := map[string]string{
 			"status":  "fail",
-			"message": fmt.Sprintf("No product found with ID %d", request.ID),
+			"message": fmt.Sprintf("No product found with ID %d", int(idFloat)),
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusNotFound)
@@ -242,20 +297,39 @@ func UpdateProductByID(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetProductByID(w http.ResponseWriter, r *http.Request) {
-	var request struct {
-		ID int `json:"id"`
+	var reqData map[string]interface{}
+	err := json.NewDecoder(r.Body).Decode(&reqData)
+	if err != nil {
+		http.Error(w, "Invalid JSON format: "+err.Error(), http.StatusBadRequest)
+		return
 	}
 
-	err := json.NewDecoder(r.Body).Decode(&request)
-	if err != nil || request.ID == 0 {
-		http.Error(w, "Invalid JSON format or missing product ID", http.StatusBadRequest)
+	id, idExists := reqData["id"]
+	if !idExists {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "Field 'id' is required",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	idFloat, ok := id.(float64)
+	if !ok || idFloat <= 0 {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "'id' must be a positive number",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
 		return
 	}
 
 	var product model.Product
-	fmt.Println("Received Product ID:", request.ID)
-
-	err = productCollection.FindOne(context.TODO(), bson.M{"id": request.ID}).Decode(&product)
+	err = productCollection.FindOne(context.TODO(), bson.M{"id": int(idFloat)}).Decode(&product)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			http.Error(w, "Product not found", http.StatusNotFound)
@@ -265,24 +339,49 @@ func GetProductByID(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	view.RenderProducts(w, product)
+	response := map[string]interface{}{
+		"status":  "success",
+		"product": product,
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(response)
 }
 
 func GetProductByName(w http.ResponseWriter, r *http.Request) {
-	var request struct {
-		Name string `json:"name"`
+	var reqData map[string]interface{}
+	err := json.NewDecoder(r.Body).Decode(&reqData)
+	if err != nil {
+		http.Error(w, "Invalid JSON format: "+err.Error(), http.StatusBadRequest)
+		return
 	}
 
-	err := json.NewDecoder(r.Body).Decode(&request)
-	if err != nil || request.Name == "" {
-		http.Error(w, "Invalid JSON format or missing product name", http.StatusBadRequest)
+	name, nameExists := reqData["name"]
+	if !nameExists {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "Field 'name' is required",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	nameStr, ok := name.(string)
+	if !ok || nameStr == "" {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "'name' must be a non-empty string",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(response)
 		return
 	}
 
 	var product model.Product
-	fmt.Println("Received Product Name:", request.Name)
-
-	err = productCollection.FindOne(context.TODO(), bson.M{"name": request.Name}).Decode(&product)
+	err = productCollection.FindOne(context.TODO(), bson.M{"name": nameStr}).Decode(&product)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			http.Error(w, "Product not found", http.StatusNotFound)
@@ -292,5 +391,11 @@ func GetProductByName(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	view.RenderProducts(w, product)
+	response := map[string]interface{}{
+		"status":  "success",
+		"product": product,
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(response)
 }

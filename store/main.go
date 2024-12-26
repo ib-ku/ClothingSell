@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -36,10 +37,59 @@ func connectMongoDB() *mongo.Client {
 	return client
 }
 
+func message(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Only POST methods are allowed!", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var reqData map[string]interface{}
+	err := json.NewDecoder(r.Body).Decode(&reqData)
+	if err != nil {
+		http.Error(w, "Invalid JSON format: "+err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	_, exists := reqData["message"]
+	if !exists {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "key message is absent",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	_, ok := reqData["message"].(string)
+	if !ok {
+		response := map[string]string{
+			"status":  "fail",
+			"message": "Message field must be a string",
+		}
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(w).Encode(response)
+		return
+	}
+
+	response := map[string]string{
+		"status":  "success",
+		"message": "Hello,This is postman ",
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(response)
+}
+
 func handleRequests() {
+
 	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir("./static"))))
 	controller.InitializeProduct(client)
 	controller.InitializeUser(client)
+	http.HandleFunc("/home", message)
+
 	http.HandleFunc("/allProducts", controller.AllProducts)
 	http.HandleFunc("/allUsers", controller.AllUsers)
 
