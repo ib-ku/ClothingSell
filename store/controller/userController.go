@@ -7,10 +7,12 @@ import (
 	"net/http"
 	"store/model"
 	"store/view"
+	"strconv"
 	"strings"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 var userCollection *mongo.Collection
@@ -28,7 +30,53 @@ func jsonResponse(w http.ResponseWriter, statusCode int, response interface{}) {
 
 func AllUsers(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Endpoint Hit: All Users")
-	cursor, err := userCollection.Find(context.TODO(), bson.M{})
+
+	// filter
+	filterEmail := r.URL.Query().Get("email")
+	filterUsername := r.URL.Query().Get("username")
+	filter := bson.M{}
+
+	if filterEmail != "" {
+		filter["email"] = bson.M{"$regex": filterEmail, "$options": "i"}
+	}
+	if filterUsername != "" {
+		filter["username"] = bson.M{"$regex": filterUsername, "$options": "i"}
+	}
+
+	//sort
+	sortField := r.URL.Query().Get("sort")
+	var sortOrder int 
+	if sortField != ""{
+		sortOrder = 1
+		if sortField[0] == '-'{
+			sortField = sortField[1:]
+			sortOrder = -1
+		}
+	} else {
+        sortField = "username" 
+        sortOrder = 1
+    }
+
+	//pagination
+	page := r.URL.Query().Get("page")
+	limit := 10
+	skip := 0
+	
+	if p, err := strconv.Atoi(page); err == nil && p > 1{
+		skip = (p-1) * limit
+	} else {
+		page = "1"
+	}
+
+	cursor, err := userCollection.Find(
+        context.TODO(),
+        filter,
+        options.Find().
+            SetSort(bson.D{{Key: sortField, Value: sortOrder}}).
+            SetLimit(int64(limit)).
+            SetSkip(int64(skip)),
+    )
+
 	if err != nil {
 		jsonResponse(w, http.StatusInternalServerError, map[string]string{"status": "fail", "message": "Failed to fetch users from database"})
 		return
@@ -43,6 +91,7 @@ func AllUsers(w http.ResponseWriter, r *http.Request) {
 
 	view.RenderUsers(w, users)
 }
+
 
 func HandleUserPostRequest(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
@@ -202,3 +251,4 @@ func GetUserByUsername(w http.ResponseWriter, r *http.Request) {
 
 	view.RenderUsers(w, user)
 }
+
