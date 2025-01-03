@@ -7,9 +7,11 @@ import (
 	"net/http"
 	"store/model"
 	"store/view"
+	"strconv"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 var client *mongo.Client
@@ -24,7 +26,47 @@ func InitializeProduct(mongoClient *mongo.Client) {
 func AllProducts(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Endpoint Hit: All Products Endpoint")
 
-	cursor, err := productCollection.Find(context.TODO(), bson.M{})
+	//filter
+	filterName := r.URL.Query().Get("name")
+	filter := bson.M{}
+
+	if filterName != "" {
+		filter["name"] = bson.M{"$regex": filterName, "$options": "i"}
+	}
+
+	//sort
+	sortField := r.URL.Query().Get("sort")
+	var sortOrder int
+	if sortField != "" {
+		sortOrder = 1
+		if sortField[0] == '-' {
+			sortField = sortField[1:]
+			sortOrder = -1
+		}
+	} else {
+		sortField = "price"
+		sortOrder = 1
+	}
+
+	//pagination
+	page := r.URL.Query().Get("page")
+	limit := 10
+	skip := 0
+
+	if p, err := strconv.Atoi(page); err == nil && p > 1 {
+		skip = (p-1) * limit
+	}else {
+		page = "1"
+	}
+
+	cursor, err := productCollection.Find(
+		context.TODO(),
+		filter, 
+		options.Find().SetSort(bson.D{{Key: sortField, Value: sortOrder}}).
+		SetLimit(int64(limit)).
+		SetSkip(int64(skip)),
+	)
+	
 	if err != nil {
 		http.Error(w, "Error fetching products from database", http.StatusInternalServerError)
 		return
