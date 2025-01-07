@@ -4,79 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrative Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .section {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .section h2 {
+            margin-top: 0;
+        }
+        .filter, .sort, .pagination {
+            margin-bottom: 10px;
+        }
+        /* Email Section */
+        .email-section {
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
 
     <h1>Administrative Panel</h1>
 
-    <!-- Email Sending Section in container -->
-    <div style="border: 1px solid #ccc; padding: 20px; margin-bottom: 30px; background-color: #f9f9f9; border-radius: 5px;">
+    <!-- Email Sending Section -->
+    <div class="email-section">
         <h2>Send Promotional Email</h2>
         <form id="emailForm">
-            <label for="to" style="display: block; margin-bottom: 5px;">To:</label>
-            <input type="email" id="to" required style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px;"><br>
+            <label for="to">To:</label>
+            <input type="email" id="to" required><br>
             
-            <label for="subject" style="display: block; margin-bottom: 5px;">Subject:</label>
-            <input type="text" id="subject" required style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px;"><br>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" required><br>
 
-            <label for="body" style="display: block; margin-bottom: 5px;">Body:</label>
-            <textarea id="body" required style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px;"></textarea><br>
+            <label for="body">Body:</label>
+            <textarea id="body" required></textarea><br>
 
-            <label for="attachment" style="display: block; margin-bottom: 5px;">Attachment (optional):</label>
-            <input type="file" id="attachment" style="margin-bottom: 10px; border-radius: 5px;"><br>
+            <label for="attachment">Attachment (optional):</label>
+            <input type="file" id="attachment"><br>
 
-            <button type="button" onclick="sendEmail()" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Send Email</button>
+            <button type="button" onclick="sendEmail()">Send Email</button>
         </form>
     </div>
 
     <!-- Users and Products Management -->
-    <div style="display: flex; justify-content: space-between; gap: 20px;">
+    <div class="container">
         <!-- Users Section -->
-        <div style="flex: 1; border: 1px solid #ccc; padding: 20px; border-radius: 5px;">
+        <div class="section" id="users-section">
             <h2>All Users</h2>
-            <div style="margin-bottom: 10px;">
-                <label for="user-email" style="display: block;">Filter by Email:</label>
-                <input type="text" id="user-email" placeholder="Enter email" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px;">
-                <label for="user-username" style="display: block;">Filter by Username:</label>
-                <input type="text" id="user-username" placeholder="Enter username" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px;">
-                <button onclick="fetchUsers()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Apply Filters</button>
+            <div class="filter">
+                <label for="user-email">Filter by Email:</label>
+                <input type="text" id="user-email" placeholder="Enter email">
+                <label for="user-username">Filter by Username:</label>
+                <input type="text" id="user-username" placeholder="Enter username">
+                <button onclick="fetchUsers()">Apply Filters</button>
             </div>
-            <div style="margin-bottom: 10px;">
-                <label for="user-sort" style="display: block;">Sort:</label>
-                <select id="user-sort" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px;">
+            <div class="sort">
+                <label for="user-sort">Sort:</label>
+                <select id="user-sort">
                     <option value="username">Username (A-Z)</option>
                     <option value="-username">Username (Z-A)</option>
                 </select>
-                <button onclick="fetchUsers()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Apply Sort</button>
+                <button onclick="fetchUsers()">Apply Sort</button>
             </div>
-            <div style="margin-bottom: 10px;">
-                <label for="user-page" style="display: block;">Page:</label>
-                <input type="number" id="user-page" value="1" min="1" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px;">
-                <button onclick="fetchUsers()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Go</button>
+            <div class="pagination">
+                <label for="user-page">Page:</label>
+                <input type="number" id="user-page" value="1" min="1">
+                <button onclick="fetchUsers()">Go</button>
             </div>
             <ul id="users-list"></ul>
         </div>
 
         <!-- Products Section -->
-        <div style="flex: 1; border: 1px solid #ccc; padding: 20px; border-radius: 5px;">
+        <div class="section" id="products-section">
             <h2>All Products</h2>
-            <div style="margin-bottom: 10px;">
-                <label for="product-name" style="display: block;">Filter by Name:</label>
-                <input type="text" id="product-name" placeholder="Enter product name" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px;">
-                <button onclick="fetchProducts()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Apply Filters</button>
+            <div class="filter">
+                <label for="product-name">Filter by Name:</label>
+                <input type="text" id="product-name" placeholder="Enter product name">
+                <button onclick="fetchProducts()">Apply Filters</button>
             </div>
-            <div style="margin-bottom: 10px;">
-                <label for="product-sort" style="display: block;">Sort:</label>
-                <select id="product-sort" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px;">
+            <div class="sort">
+                <label for="product-sort">Sort:</label>
+                <select id="product-sort">
                     <option value="price">Price (Low to High)</option>
                     <option value="-price">Price (High to Low)</option>
                 </select>
-                <button onclick="fetchProducts()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Apply Sort</button>
+                <button onclick="fetchProducts()">Apply Sort</button>
             </div>
-            <div style="margin-bottom: 10px;">
-                <label for="product-page" style="display: block;">Page:</label>
-                <input type="number" id="product-page" value="1" min="1" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 5px;">
-                <button onclick="fetchProducts()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Go</button>
+            <div class="pagination">
+                <label for="product-page">Page:</label>
+                <input type="number" id="product-page" value="1" min="1">
+                <button onclick="fetchProducts()">Go</button>
             </div>
             <ul id="products-list"></ul>
         </div>
@@ -85,32 +112,33 @@
     <!-- CRUD Management -->
     <div>
         <h3>Manage Products</h3>
-        <button onclick="createProduct()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Create Product</button>
-        <button onclick="updateProduct()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Update Product</button>
-        <button onclick="deleteProduct()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Delete Product</button>
+        <button onclick="createProduct()">Create Product</button>
+        <button onclick="updateProduct()">Update Product</button>
+        <button onclick="deleteProduct()">Delete Product</button>
 
         <h3>Manage Users</h3>
-        <button onclick="createUser()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Create User</button>
-        <button onclick="updateUser()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Update User</button>
-        <button onclick="deleteUser()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Delete User</button>
+        <button onclick="createUser()">Create User</button>
+        <button onclick="updateUser()">Update User</button>
+        <button onclick="deleteUser()">Delete User</button>
     </div>
 
+    <!-- Search and Get Data by ID -->
     <div>
         <h3>Get Product by ID</h3>
-        <input type="number" id="productIdInput" placeholder="Enter product ID" style="padding: 8px; border-radius: 5px;">
-        <button onclick="fetchProductByID()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Get Product by ID</button>
+        <input type="number" id="productIdInput" placeholder="Enter product ID">
+        <button onclick="fetchProductByID()">Get Product by ID</button>
 
         <h3>Get Product by Name</h3>
-        <input type="text" id="productNameInput" placeholder="Enter product name" style="padding: 8px; border-radius: 5px;">
-        <button onclick="fetchProductByName()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Get Product by Name</button>
+        <input type="text" id="productNameInput" placeholder="Enter product name">
+        <button onclick="fetchProductByName()">Get Product by Name</button>
 
         <h3>Get User by Email</h3>
-        <input type="email" id="emailInput" placeholder="Enter email" style="padding: 8px; border-radius: 5px;">
-        <button onclick="fetchUserByEmail()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Get User by Email</button>
+        <input type="email" id="emailInput" placeholder="Enter email">
+        <button onclick="fetchUserByEmail()">Get User by Email</button>
 
         <h3>Get User by Username</h3>
-        <input type="text" id="usernameInput" placeholder="Enter username" style="padding: 8px; border-radius: 5px;">
-        <button onclick="fetchUserByUsername()" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">Get User by Username</button>
+        <input type="text" id="usernameInput" placeholder="Enter username">
+        <button onclick="fetchUserByUsername()">Get User by Username</button>
     </div>
 
     <h3>Products</h3>
@@ -140,6 +168,7 @@
     </table>
 
     <script>
+        // Add email sending functionality
         async function sendEmail() {
             const form = document.getElementById('emailForm');
             const to = document.getElementById('to').value;
@@ -157,6 +186,8 @@
             alert(result);
         }
 
+        // Add user and product fetch functionality here
+        // Add user/product CRUD functions here
     </script>
 
 </body>
