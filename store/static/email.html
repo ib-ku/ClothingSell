@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send Promotional Email</title>
+</head>
+<body>
+    <h2>Send Email</h2>
+    <form id="emailForm">
+        <label for="to">To:</label>
+        <input type="email" id="to" required><br>
+        
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" required><br>
+
+        <label for="body">Body:</label>
+        <textarea id="body" required></textarea><br>
+
+        <label for="attachment">Attachment (optional):</label>
+        <input type="file" id="attachment"><br>
+
+        <button type="button" onclick="sendEmail()">Send Email</button>
+    </form>
+
+    <script>
+        async function sendEmail() {
+            const form = document.getElementById('emailForm');
+            const to = document.getElementById('to').value;
+            const subject = document.getElementById('subject').value;
+            const body = document.getElementById('body').value;
+            const attachment = document.getElementById('attachment').files[0] || '';
+
+            const response = await fetch('http://localhost:8080/sendEmail', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ to, subject, body, attachment: attachment.name })
+            });
+
+            const result = await response.text();
+            alert(result);
+        }
+    </script>
+</body>
+</html>
