@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrative Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .section {
+            flex: 1;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .section h2 {
+            margin-top: 0;
+        }
+        .filter, .sort, .pagination {
+            margin-bottom: 10px;
+        }
+        .email-section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Administrative Panel</h1>
+    <a href="filter.html">Filter</a>
+    <a href="index.html">Home</a><br>
+    <div class="email-section">
+        <h2>Send Promotional Email</h2>
+        <form id="emailForm">
+            <label for="to">To:</label>
+            <input type="email" id="to" required><br>
+            
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" required><br>
+
+            <label for="body">Body:</label>
+            <textarea id="body" required></textarea><br>
+
+            <label for="attachment">Attachment (optional):</label>
+            <input type="file" id="attachment"><br>
+
+            <button type="button" onclick="sendEmail()">Send Email</button>
+        </form>
+    </div>
+
+
+    <script>
+        async function sendEmail() {
+            const form = document.getElementById('emailForm');
+            const to = document.getElementById('to').value;
+            const subject = document.getElementById('subject').value;
+            const body = document.getElementById('body').value;
+            const attachment = document.getElementById('attachment').files[0] || '';
+
+            const response = await fetch('http://localhost:8080/sendEmail', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ to, subject, body, attachment: attachment.name })
+            });
+
+            const result = await response.text();
+            alert(result);
+        }
+    </script>
+
+</body>
+</html>

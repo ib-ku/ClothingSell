@@ -1,0 +1,49 @@
+time="2025-01-13T18:29:17+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-13T18:29:17+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-13T18:29:17+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-13T18:29:23+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-13T18:29:23+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-13T18:29:50+05:00" level=info msg="User fetched successfully" action=get_user_by_username status=success username=Yermek
+time="2025-01-13T18:32:10+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-13T18:32:10+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-13T18:32:10+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-13T18:32:10+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-13T18:32:15+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-13T18:32:15+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-13T18:32:16+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-13T18:32:16+05:00" level=info msg="Fetched products successfully" action=all_products count=7 status=success
+time="2025-01-13T18:36:39+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-13T18:36:39+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-13T18:36:39+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-13T18:36:39+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-13T18:36:51+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-13T18:36:51+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-13T18:36:51+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-13T18:36:51+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-13T18:36:51+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-13T18:36:51+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-13T18:36:51+05:00" level=warning msg="Rate limit exceeded" action=rate_limit_exceeded status=fail
+time="2025-01-13T18:36:52+05:00" level=warning msg="Rate limit exceeded" action=rate_limit_exceeded status=fail
+time="2025-01-13T18:36:52+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-13T18:36:52+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-13T18:36:52+05:00" level=warning msg="Rate limit exceeded" action=rate_limit_exceeded status=fail
+time="2025-01-13T18:36:52+05:00" level=warning msg="Rate limit exceeded" action=rate_limit_exceeded status=fail
+time="2025-01-13T18:36:52+05:00" level=warning msg="Rate limit exceeded" action=rate_limit_exceeded status=fail
+time="2025-01-13T18:36:53+05:00" level=warning msg="Rate limit exceeded" action=rate_limit_exceeded status=fail
+time="2025-01-13T18:36:53+05:00" level=warning msg="Rate limit exceeded" action=rate_limit_exceeded status=fail
+time="2025-01-13T18:36:53+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-13T18:36:53+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-17T20:03:12+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-17T20:03:12+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-17T20:03:12+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-17T20:03:12+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-17T20:03:25+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-17T20:03:25+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-17T20:03:25+05:00" level=info msg="Fetched products successfully" action=all_products count=7 status=success
+time="2025-01-17T20:03:25+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-17T20:03:29+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-17T20:03:29+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-17T20:03:29+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-17T20:03:29+05:00" level=info msg="Fetched products successfully" action=all_products count=7 status=success
+time="2025-01-17T20:03:50+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-17T20:03:50+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
