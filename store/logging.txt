@@ -47,3 +47,17 @@ time="2025-01-17T20:03:29+05:00" level=info msg="Fetched users successfully" act
 time="2025-01-17T20:03:29+05:00" level=info msg="Fetched products successfully" action=all_products count=7 status=success
 time="2025-01-17T20:03:50+05:00" level=info msg="Fetching all users" action=fetch_users status=start
 time="2025-01-17T20:03:50+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-20T15:09:09+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-20T15:09:09+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-20T15:09:09+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-20T15:09:09+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-20T15:09:24+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-20T15:09:24+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-20T15:09:24+05:00" level=info msg="Fetched users successfully" action=all_users count=10 status=success
+time="2025-01-20T15:09:24+05:00" level=info msg="Fetched products successfully" action=all_products count=6 status=success
+time="2025-01-20T21:01:55+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-20T21:01:55+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-20T21:01:55+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-20T21:01:55+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-20T21:02:19+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-20T21:02:19+05:00" level=info msg="Fetched products successfully" action=all_products count=6 status=success
