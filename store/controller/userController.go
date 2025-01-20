@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 	"store/model"
 	"store/view"
 	"strconv"
@@ -21,6 +22,26 @@ var userCollection *mongo.Collection
 var limiter = rate.NewLimiter(1, 3)
 
 var log = logrus.New()
+
+func init() {
+	logFile, err := os.OpenFile("logging.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		fmt.Printf("Failed to open log file: %v\n", err)
+		return
+	}
+
+	log.SetOutput(logFile)
+
+	log.SetFormatter(&logrus.TextFormatter{
+		FullTimestamp: true,
+	})
+	log.SetLevel(logrus.InfoLevel)
+
+	log.WithFields(logrus.Fields{
+		"action": "initialize_logger",
+		"status": "success",
+	}).Info("Logger initialized and writing to logging.txt")
+}
 
 func InitializeUser(mongoClient *mongo.Client) {
 	userCollection = mongoClient.Database("storeDB").Collection("users")
@@ -307,14 +328,12 @@ func GetUserByUsername(w http.ResponseWriter, r *http.Request) {
 		Username string `json:"username"`
 	}
 
-	// Decode the request body
 	err := json.NewDecoder(r.Body).Decode(&request)
 	if err != nil || request.Username == "" {
 		jsonResponse(w, http.StatusBadRequest, map[string]string{"status": "fail", "message": "Invalid JSON format or missing username"})
 		return
 	}
 
-	// Fetch user by username
 	var user model.User
 	err = userCollection.FindOne(context.TODO(), bson.M{"username": request.Username}).Decode(&user)
 	if err != nil {

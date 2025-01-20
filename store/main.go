@@ -6,6 +6,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"time"
 
 	"store/controller"
 
@@ -15,7 +18,6 @@ import (
 
 var client *mongo.Client
 
-// Connect to MongoDB
 func connectMongoDB() *mongo.Client {
 	mongoURI := "mongodb://storeUser:securePassword@localhost:27017/storeDB"
 	clientOptions := options.Client().ApplyURI(mongoURI)
@@ -77,7 +79,7 @@ func message(w http.ResponseWriter, r *http.Request) {
 
 	response := map[string]string{
 		"status":  "success",
-		"message": "Hello, This is postman",
+		"message": "Hello,This is postman ",
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -85,14 +87,51 @@ func message(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleRequests() {
+
 	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir("./static"))))
 	controller.InitializeProduct(client)
 	controller.InitializeUser(client)
 	http.HandleFunc("/home", message)
 
+	http.HandleFunc("/allProducts", controller.AllProducts)
+	http.HandleFunc("/allUsers", controller.AllUsers)
+
+	http.HandleFunc("/postUser", controller.HandleUserPostRequest)
+	http.HandleFunc("/postProduct", controller.HandleProductPostRequest)
+
+	http.HandleFunc("/deleteProductById", controller.DeleteProductByID)
+	http.HandleFunc("/deleteUserByEmail", controller.DeleteUserByEmail)
+
+	http.HandleFunc("/updateProductById", controller.UpdateProductByID)
+	http.HandleFunc("/updateUserByEmail", controller.UpdateUserByEmail)
+
+	http.HandleFunc("/getUserEmail", controller.GetUserByEmail)
+	http.HandleFunc("/getUsername", controller.GetUserByUsername)
+
+	http.HandleFunc("/getProductByID", controller.GetProductByID)
+	http.HandleFunc("/getProductByName", controller.GetProductByName)
+
 	http.HandleFunc("/sendEmail", controller.SendPromotionalEmail)
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	server := &http.Server{Addr: ":8080", Handler: nil}
+
+	quit := make(chan os.Signal, 1)
+	signal.Notify(quit, os.Interrupt)
+
+	go func() {
+		<-quit
+		log.Println("Server is shutting down...")
+		ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+		defer cancel()
+
+		if err := server.Shutdown(ctx); err != nil {
+			log.Fatalf("Server forced to shutdown: %v", err)
+		}
+
+		log.Println("Server exiting")
+	}()
+
+	log.Fatal(server.ListenAndServe())
 }
 
 func main() {
@@ -103,15 +142,6 @@ func main() {
 		}
 		fmt.Println("Disconnected from MongoDB")
 	}()
-
-	from := "ibragimtop1@gmail.com"
-	password := "emlx wxgk ajik qiyl"
-
-	if from == "" || password == "" {
-		log.Println("Email address or password is not set.")
-		return
-	}
-
 	fmt.Println("http://localhost:8080")
 	handleRequests()
 }

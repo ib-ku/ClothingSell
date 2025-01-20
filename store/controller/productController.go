@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 	"store/model"
 	"store/view"
 	"strconv"
@@ -18,6 +19,26 @@ import (
 var client *mongo.Client
 var productCollection *mongo.Collection
 var logger = logrus.New()
+
+func init() {
+	logFile, err := os.OpenFile("logging.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		fmt.Printf("Failed to open log file: %v\n", err)
+		return
+	}
+
+	logger.SetOutput(logFile)
+
+	logger.SetFormatter(&logrus.TextFormatter{
+		FullTimestamp: true,
+	})
+	logger.SetLevel(logrus.InfoLevel)
+
+	logger.WithFields(logrus.Fields{
+		"action": "initialize_logger",
+		"status": "success",
+	}).Info("Logger initialized and writing to logging.txt")
+}
 
 func InitializeProduct(mongoClient *mongo.Client) {
 	client = mongoClient
@@ -325,7 +346,6 @@ func UpdateProductByID(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Validate required fields
 	if resp, valid := validateProductFields(reqData, []string{"id", "name", "price"}); !valid {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusBadRequest)
@@ -333,7 +353,6 @@ func UpdateProductByID(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Update the product
 	id := int(reqData["id"].(float64))
 	update := bson.M{
 		"$set": bson.M{

@@ -33,7 +33,6 @@ func SendPromotionalEmail(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Respond with success
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Email sent successfully"))
 }

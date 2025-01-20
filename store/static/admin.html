@@ -26,17 +26,15 @@
         .filter, .sort, .pagination {
             margin-bottom: 10px;
         }
-        /* Email Section */
         .email-section {
             margin-bottom: 30px;
         }
     </style>
 </head>
 <body>
-
     <h1>Administrative Panel</h1>
-
-    <!-- Email Sending Section -->
+    <a href="filter.html">Filter</a>
+    <a href="index.html">Home</a><br>
     <div class="email-section">
         <h2>Send Promotional Email</h2>
         <form id="emailForm">
@@ -56,119 +54,8 @@
         </form>
     </div>
 
-    <!-- Users and Products Management -->
-    <div class="container">
-        <!-- Users Section -->
-        <div class="section" id="users-section">
-            <h2>All Users</h2>
-            <div class="filter">
-                <label for="user-email">Filter by Email:</label>
-                <input type="text" id="user-email" placeholder="Enter email">
-                <label for="user-username">Filter by Username:</label>
-                <input type="text" id="user-username" placeholder="Enter username">
-                <button onclick="fetchUsers()">Apply Filters</button>
-            </div>
-            <div class="sort">
-                <label for="user-sort">Sort:</label>
-                <select id="user-sort">
-                    <option value="username">Username (A-Z)</option>
-                    <option value="-username">Username (Z-A)</option>
-                </select>
-                <button onclick="fetchUsers()">Apply Sort</button>
-            </div>
-            <div class="pagination">
-                <label for="user-page">Page:</label>
-                <input type="number" id="user-page" value="1" min="1">
-                <button onclick="fetchUsers()">Go</button>
-            </div>
-            <ul id="users-list"></ul>
-        </div>
-
-        <!-- Products Section -->
-        <div class="section" id="products-section">
-            <h2>All Products</h2>
-            <div class="filter">
-                <label for="product-name">Filter by Name:</label>
-                <input type="text" id="product-name" placeholder="Enter product name">
-                <button onclick="fetchProducts()">Apply Filters</button>
-            </div>
-            <div class="sort">
-                <label for="product-sort">Sort:</label>
-                <select id="product-sort">
-                    <option value="price">Price (Low to High)</option>
-                    <option value="-price">Price (High to Low)</option>
-                </select>
-                <button onclick="fetchProducts()">Apply Sort</button>
-            </div>
-            <div class="pagination">
-                <label for="product-page">Page:</label>
-                <input type="number" id="product-page" value="1" min="1">
-                <button onclick="fetchProducts()">Go</button>
-            </div>
-            <ul id="products-list"></ul>
-        </div>
-    </div>
-
-    <!-- CRUD Management -->
-    <div>
-        <h3>Manage Products</h3>
-        <button onclick="createProduct()">Create Product</button>
-        <button onclick="updateProduct()">Update Product</button>
-        <button onclick="deleteProduct()">Delete Product</button>
-
-        <h3>Manage Users</h3>
-        <button onclick="createUser()">Create User</button>
-        <button onclick="updateUser()">Update User</button>
-        <button onclick="deleteUser()">Delete User</button>
-    </div>
-
-    <!-- Search and Get Data by ID -->
-    <div>
-        <h3>Get Product by ID</h3>
-        <input type="number" id="productIdInput" placeholder="Enter product ID">
-        <button onclick="fetchProductByID()">Get Product by ID</button>
-
-        <h3>Get Product by Name</h3>
-        <input type="text" id="productNameInput" placeholder="Enter product name">
-        <button onclick="fetchProductByName()">Get Product by Name</button>
-
-        <h3>Get User by Email</h3>
-        <input type="email" id="emailInput" placeholder="Enter email">
-        <button onclick="fetchUserByEmail()">Get User by Email</button>
-
-        <h3>Get User by Username</h3>
-        <input type="text" id="usernameInput" placeholder="Enter username">
-        <button onclick="fetchUserByUsername()">Get User by Username</button>
-    </div>
-
-    <h3>Products</h3>
-    <table id="productTable" border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-
-    <h3>Users</h3>
-    <table id="userTable" border="1">
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
 
     <script>
-        // Add email sending functionality
         async function sendEmail() {
             const form = document.getElementById('emailForm');
             const to = document.getElementById('to').value;
@@ -185,9 +72,6 @@
             const result = await response.text();
             alert(result);
         }
-
-        // Add user and product fetch functionality here
-        // Add user/product CRUD functions here
     </script>
 
 </body>
