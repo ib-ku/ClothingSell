@@ -18,7 +18,9 @@ import (
 	"golang.org/x/time/rate"
 )
 
-var userCollection *mongo.Collection
+var (
+	UserCollection *mongo.Collection // Экспортируемая переменная
+)
 var limiter = rate.NewLimiter(1, 3)
 
 var log = logrus.New()
@@ -44,7 +46,7 @@ func init() {
 }
 
 func InitializeUser(mongoClient *mongo.Client) {
-	userCollection = mongoClient.Database("storeDB").Collection("users")
+	UserCollection = mongoClient.Database("storeDB").Collection("users")
 	log.WithFields(logrus.Fields{
 		"action": "initialize",
 		"status": "success",
@@ -109,7 +111,7 @@ func AllUsers(w http.ResponseWriter, r *http.Request) {
 		page = "1"
 	}
 
-	cursor, err := userCollection.Find(
+	cursor, err := UserCollection.Find(
 		context.TODO(),
 		filter,
 		options.Find().
@@ -181,7 +183,7 @@ func HandleUserPostRequest(w http.ResponseWriter, r *http.Request) {
 		Username: requestUser.Username,
 	}
 
-	_, err = userCollection.InsertOne(context.TODO(), newUser)
+	_, err = UserCollection.InsertOne(context.TODO(), newUser)
 	if err != nil {
 		log.WithFields(logrus.Fields{
 			"action": "handle_post_request",
@@ -228,7 +230,7 @@ func DeleteUserByEmail(w http.ResponseWriter, r *http.Request) {
 
 	request.Email = strings.TrimSpace(request.Email)
 	filter := bson.M{"email": bson.M{"$regex": request.Email, "$options": "i"}}
-	deleteResult, err := userCollection.DeleteOne(context.TODO(), filter)
+	deleteResult, err := UserCollection.DeleteOne(context.TODO(), filter)
 	if err != nil {
 		log.WithFields(logrus.Fields{
 			"action": "handle_delete_request",
@@ -302,7 +304,7 @@ func UpdateUserByEmail(w http.ResponseWriter, r *http.Request) {
 
 	filter := bson.M{"email": request.Email}
 	update := bson.M{"$set": updateFields}
-	updateResult, err := userCollection.UpdateOne(context.TODO(), filter, update)
+	updateResult, err := UserCollection.UpdateOne(context.TODO(), filter, update)
 	if err != nil || updateResult.MatchedCount == 0 {
 		log.WithFields(logrus.Fields{
 			"action": "handle_put_request",
@@ -335,7 +337,7 @@ func GetUserByUsername(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var user model.User
-	err = userCollection.FindOne(context.TODO(), bson.M{"username": request.Username}).Decode(&user)
+	err = UserCollection.FindOne(context.TODO(), bson.M{"username": request.Username}).Decode(&user)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			jsonResponse(w, http.StatusNotFound, map[string]string{"status": "fail", "message": "User not found"})
@@ -370,7 +372,7 @@ func GetUserByEmail(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var user model.User
-	err = userCollection.FindOne(context.TODO(), bson.M{"email": request.Email}).Decode(&user)
+	err = UserCollection.FindOne(context.TODO(), bson.M{"email": request.Email}).Decode(&user)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			log.WithFields(logrus.Fields{
