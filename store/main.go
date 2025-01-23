@@ -79,7 +79,7 @@ func message(w http.ResponseWriter, r *http.Request) {
 
 	response := map[string]string{
 		"status":  "success",
-		"message": "Hello,This is postman ",
+		"message": "Hello, This is postman ",
 	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -87,12 +87,19 @@ func message(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleRequests() {
+	// Ensure static directory for images exists
+	if _, err := os.Stat("./static/images"); os.IsNotExist(err) {
+		if err := os.MkdirAll("./static/images", os.ModePerm); err != nil {
+			log.Fatalf("Error creating images directory: %v", err)
+		}
+	}
 
 	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir("./static"))))
 	controller.InitializeProduct(client)
 	controller.InitializeUser(client)
 	http.HandleFunc("/home", message)
 
+	// Products & Users routes
 	http.HandleFunc("/allProducts", controller.AllProducts)
 	http.HandleFunc("/allUsers", controller.AllUsers)
 
@@ -134,6 +141,7 @@ func handleRequests() {
 		log.Println("Server exiting")
 	}()
 
+	log.Printf("Server is running on http://localhost:8080")
 	log.Fatal(server.ListenAndServe())
 }
 
@@ -145,6 +153,5 @@ func main() {
 		}
 		fmt.Println("Disconnected from MongoDB")
 	}()
-	fmt.Println("http://localhost:8080")
 	handleRequests()
 }

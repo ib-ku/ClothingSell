@@ -108,3 +108,29 @@ time="2025-01-21T15:42:58+05:00" level=info msg="Logger initialized and writing 
 time="2025-01-21T15:42:58+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
 time="2025-01-21T15:42:58+05:00" level=info msg="Product collection initialized" action=initialize status=success
 time="2025-01-21T15:42:58+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T10:53:39+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T10:53:39+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T10:53:39+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T10:53:39+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T10:56:07+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T10:56:07+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T10:56:07+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T10:56:07+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T10:57:41+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T10:57:41+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T10:57:41+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T10:57:41+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T11:00:30+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-23T11:00:30+05:00" level=info msg="Fetched products successfully" action=all_products count=6 status=success
+time="2025-01-23T11:00:47+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-23T11:00:47+05:00" level=warning msg="Validation failed: 'id' must be a positive number"
+time="2025-01-23T11:01:53+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-23T11:01:53+05:00" level=warning msg="Validation failed: 'price' must be a positive number"
+time="2025-01-23T11:02:07+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-23T11:02:07+05:00" level=info msg="Successfully added new product" action=create_product id=99 image= name=Glasses status=success
+time="2025-01-23T11:02:10+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-23T11:02:10+05:00" level=info msg="Fetched products successfully" action=all_products count=7 status=success
+time="2025-01-24T03:00:07+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:00:07+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:00:07+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T03:00:07+05:00" level=info msg="User collection initialized" action=initialize status=success

@@ -28,7 +28,6 @@ func init() {
 	}
 
 	logger.SetOutput(logFile)
-
 	logger.SetFormatter(&logrus.TextFormatter{
 		FullTimestamp: true,
 	})
@@ -38,6 +37,32 @@ func init() {
 		"action": "initialize_logger",
 		"status": "success",
 	}).Info("Logger initialized and writing to logging.txt")
+
+	client, err = mongo.Connect(context.Background(), options.Client().ApplyURI("mongodb://localhost:27017"))
+	if err != nil {
+		logger.WithFields(logrus.Fields{
+			"action": "initialize_mongo_client",
+			"status": "fail",
+			"error":  err,
+		}).Error("Failed to connect to MongoDB")
+		return
+	}
+
+	err = client.Ping(context.Background(), nil)
+	if err != nil {
+		logger.WithFields(logrus.Fields{
+			"action": "ping_mongo_client",
+			"status": "fail",
+			"error":  err,
+		}).Error("Failed to ping MongoDB")
+		return
+	}
+	productCollection = client.Database("testdb").Collection("products")
+
+	logger.WithFields(logrus.Fields{
+		"action": "initialize_mongo_collection",
+		"status": "success",
+	}).Info("MongoDB client and collection initialized successfully")
 }
 
 func InitializeProduct(mongoClient *mongo.Client) {
@@ -200,10 +225,17 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Handle the image field (image filename)
+	var imageName string
+	if image, ok := reqData["image"]; ok {
+		imageName = image.(string)
+	}
+
 	newProduct := model.Product{
 		ID:    int(reqData["id"].(float64)),
 		Name:  reqData["name"].(string),
 		Price: reqData["price"].(float64),
+		Image: imageName, // Add the image name to the product
 	}
 
 	_, err = productCollection.InsertOne(context.TODO(), newProduct)
@@ -224,11 +256,13 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(response)
+
 	log.WithFields(logrus.Fields{
 		"action": "create_product",
 		"status": "success",
 		"id":     newProduct.ID,
 		"name":   newProduct.Name,
+		"image":  newProduct.Image,
 	}).Info("Successfully added new product")
 }
 

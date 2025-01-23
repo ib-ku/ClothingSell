@@ -1,0 +1,23 @@
+time="2025-01-24T03:19:31+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:19:31+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:19:31+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-24T03:22:26+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:22:26+05:00" level=info msg="MongoDB client and collection initialized successfully" action=initialize_mongo_collection status=success
+time="2025-01-24T03:22:26+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:22:26+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-24T03:22:26+05:00" level=info msg="Successfully added new product" action=create_product id=101 image=product_image.png name="New Product" status=success
+time="2025-01-24T03:22:26+05:00" level=info msg="Start DeleteProductByID Handler" action=start_delete_product
+time="2025-01-24T03:22:26+05:00" level=info msg="Successfully deleted product" action=delete_product id=101 status=success
+time="2025-01-24T03:24:30+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:24:30+05:00" level=info msg="MongoDB client and collection initialized successfully" action=initialize_mongo_collection status=success
+time="2025-01-24T03:24:30+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:24:30+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-24T03:24:30+05:00" level=info msg="Successfully added new product" action=create_product id=101 image=product_image.png name="New Product" status=success
+time="2025-01-24T03:24:30+05:00" level=info msg="Start DeleteProductByID Handler" action=start_delete_product
+time="2025-01-24T03:24:30+05:00" level=info msg="Successfully deleted product" action=delete_product id=101 status=success
+time="2025-01-24T03:24:44+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:24:44+05:00" level=info msg="MongoDB client and collection initialized successfully" action=initialize_mongo_collection status=success
+time="2025-01-24T03:24:44+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:25:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:25:00+05:00" level=info msg="MongoDB client and collection initialized successfully" action=initialize_mongo_collection status=success
+time="2025-01-24T03:25:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
