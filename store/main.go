@@ -113,6 +113,9 @@ func handleRequests() {
 
 	http.HandleFunc("/sendEmail", controller.SendPromotionalEmail)
 
+	http.HandleFunc("/signup", controller.SignUp)
+	http.HandleFunc("/login", controller.Login)
+
 	server := &http.Server{Addr: ":8080", Handler: nil}
 
 	quit := make(chan os.Signal, 1)

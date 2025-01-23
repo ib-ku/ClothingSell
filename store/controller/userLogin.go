@@ -31,7 +31,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 		// Поиск пользователя в базе данных
 		var user User
-		err := userCollection.FindOne(context.TODO(), bson.M{"email": email}).Decode(&user)
+		err := UserCollection.FindOne(context.TODO(), bson.M{"email": email}).Decode(&user)
 		if err != nil {
 			http.Error(w, "Invalid email or password", http.StatusUnauthorized)
 			return
@@ -42,6 +42,10 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, "Invalid email or password", http.StatusUnauthorized)
 			return
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 314048de93309a1a2d46aa857dde6c102def36ee
 		// Успешный вход
 		response := map[string]string{
 			"status":  "success",
