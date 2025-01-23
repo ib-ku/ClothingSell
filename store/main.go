@@ -123,7 +123,7 @@ func handleRequests() {
 	http.HandleFunc("/signup", controller.SignUp)
 	http.HandleFunc("/login", controller.Login)
 
-	server := &http.Server{Addr: ":8080", Handler: nil}
+	server := &http.Server{Addr: ":8081", Handler: nil}
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, os.Interrupt)
@@ -141,7 +141,7 @@ func handleRequests() {
 		log.Println("Server exiting")
 	}()
 
-	log.Printf("Server is running on http://localhost:8080")
+	log.Printf("Server is running on http://localhost:8081")
 	log.Fatal(server.ListenAndServe())
 }
 

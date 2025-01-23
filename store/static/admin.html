@@ -189,30 +189,31 @@
             const productID = prompt("Enter product ID:");
             const productName = prompt("Enter product name:");
             const productPrice = prompt("Enter product price:");
-                
-            if (!productID || !productName || !productPrice) {
-                alert("Product ID, name, and price are required.");
+            const productImage = prompt("Enter product image URL:");
+
+            if (!productID || !productName || !productPrice || !productImage) {
+                alert("Product ID, name, price, and image URL are required.");
                 return;
             }
-                     fetch('/postProduct', {
+
+            fetch('/postProduct', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     id: parseInt(productID), 
                     name: productName, 
-                    price: parseFloat(productPrice)
+                    price: parseFloat(productPrice),
+                    image: productImage  // Sending the image URL along with other data
                 })
             })
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    alert(data.message || "Product created successfully.");
-                })
-                .catch(error => {
-                    console.error("Error creating product:", error);
-                    alert("Failed to create product. Check console for details.");
-                });
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || "Product created successfully.");
+            })
+            .catch(error => {
+                console.error("Error creating product:", error);
+                alert("Failed to create product. Check console for details.");
+            });
         }
 
 

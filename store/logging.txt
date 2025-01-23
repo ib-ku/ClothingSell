@@ -134,3 +134,40 @@ time="2025-01-24T03:00:07+05:00" level=info msg="Logger initialized and writing 
 time="2025-01-24T03:00:07+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
 time="2025-01-24T03:00:07+05:00" level=info msg="Product collection initialized" action=initialize status=success
 time="2025-01-24T03:00:07+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T03:37:54+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:37:54+05:00" level=info msg="MongoDB client and collection initialized successfully" action=initialize_mongo_collection status=success
+time="2025-01-24T03:37:54+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:37:54+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T03:37:54+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T03:38:30+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:38:30+05:00" level=info msg="MongoDB client and collection initialized successfully" action=initialize_mongo_collection status=success
+time="2025-01-24T03:38:30+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:38:30+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T03:38:30+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T03:38:59+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:38:59+05:00" level=info msg="MongoDB client and collection initialized successfully" action=initialize_mongo_collection status=success
+time="2025-01-24T03:38:59+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:38:59+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T03:38:59+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T03:39:20+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:39:20+05:00" level=info msg="MongoDB client and collection initialized successfully" action=initialize_mongo_collection status=success
+time="2025-01-24T03:39:20+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:39:20+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T03:39:20+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T03:40:30+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:40:30+05:00" level=info msg="MongoDB client and collection initialized successfully" action=initialize_mongo_collection status=success
+time="2025-01-24T03:40:30+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T03:40:30+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T03:40:30+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T03:40:40+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-24T03:40:40+05:00" level=info msg="Fetched products successfully" action=all_products count=7 status=success
+time="2025-01-24T03:40:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-24T03:40:51+05:00" level=info msg="Fetched products successfully" action=all_products count=7 status=success
+time="2025-01-24T03:41:06+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-24T03:41:06+05:00" level=info msg="Successfully added new product" action=create_product id=2000 image= name=coat status=success
+time="2025-01-24T03:41:09+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-24T03:41:09+05:00" level=info msg="Fetched products successfully" action=all_products count=8 status=success
+time="2025-01-24T03:45:58+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-24T03:45:58+05:00" level=info msg="Fetched products successfully" action=all_products count=8 status=success
+time="2025-01-24T03:46:12+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-24T03:46:12+05:00" level=info msg="Successfully added new product" action=create_product id=192 image= name=goo status=success

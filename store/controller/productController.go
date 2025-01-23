@@ -141,17 +141,14 @@ func AllProducts(w http.ResponseWriter, r *http.Request) {
 		"action": "start_all_products",
 	}).Info("Start AllProducts Handler")
 
-	// Filtering
 	filterName := r.URL.Query().Get("name")
 	filter := bson.M{}
 	if filterName != "" {
 		filter["name"] = bson.M{"$regex": filterName, "$options": "i"}
 	}
 
-	// Sorting
 	sortField, sortOrder := getSortingParams(r)
 
-	// Pagination
 	skip, limit := getPaginationParams(r)
 
 	cursor, err := productCollection.Find(
@@ -183,7 +180,13 @@ func AllProducts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	view.RenderProducts(w, products)
+	if r.Header.Get("Accept") == "text/html" {
+		view.RenderProducts(w, products)
+	} else {
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(products)
+	}
+
 	log.WithFields(logrus.Fields{
 		"action": "all_products",
 		"status": "success",
