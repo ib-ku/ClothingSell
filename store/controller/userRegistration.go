@@ -50,7 +50,7 @@ func sendConfirmationEmail(email string) error {
 // Сохранение пользователя в MongoDB
 func saveUserToDB(user User) error {
 	// Используем уже существующую коллекцию UserCollection
-	_, err := UserCollection.InsertOne(context.TODO(), user)
+	_, err := userCollection.InsertOne(context.TODO(), user)
 	return err
 }
 
