@@ -10,7 +10,6 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-// User model for storing user information
 type User struct {
 	Username string `json:"username" bson:"username"`
 	Email    string `json:"email" bson:"email"`
@@ -18,7 +17,6 @@ type User struct {
 	Role    string `json: "role" bson:"role"`
 }
 
-// Function to hash the password
 func hashPassword(password string) (string, error) {
 	bytes, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
@@ -27,13 +25,11 @@ func hashPassword(password string) (string, error) {
 	return string(bytes), nil
 }
 
-// Function to send a confirmation email
 func sendConfirmationEmail(email string, confirmationLink string) error {
 	from := "abylaymoldakhmet@gmail.com"
 	password := "byub ifbs izua qezn"
 	to := email
 	subject := "Account Creation Confirmation"
-	// HTML content of the email
 	body := fmt.Sprintf(`
     <html>
     <body>
@@ -54,7 +50,6 @@ func sendConfirmationEmail(email string, confirmationLink string) error {
 		"Content-Type: text/html; charset=\"UTF-8\"\n\n" +
 		body
 
-	// Authentication and sending
 	auth := smtp.PlainAuth("", from, password, "smtp.gmail.com")
 	err := smtp.SendMail("smtp.gmail.com:587", auth, from, []string{to}, []byte(msg))
 	if err != nil {
@@ -64,7 +59,6 @@ func sendConfirmationEmail(email string, confirmationLink string) error {
 	return nil
 }
 
-// Saving the user to MongoDB
 func saveUserToDB(user User) error {
 	_, err := userCollection.InsertOne(context.TODO(), user)
 	return err

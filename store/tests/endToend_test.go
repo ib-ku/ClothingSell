@@ -10,7 +10,6 @@ import (
 )
 
 func TestEndToEndProductSearch(t *testing.T) {
-	// Mock a POST request to add a product
 	product := map[string]interface{}{
 		"id":    1,
 		"name":  "Test Product",
@@ -27,7 +26,6 @@ func TestEndToEndProductSearch(t *testing.T) {
 		t.Fatalf("Failed to add product. Got status %v, response: %s", recAdd.Code, recAdd.Body.String())
 	}
 
-	// Mock a GET request to search for products
 	reqGet := httptest.NewRequest(http.MethodGet, "/allproducts", nil)
 	recGet := httptest.NewRecorder()
 
@@ -36,7 +34,6 @@ func TestEndToEndProductSearch(t *testing.T) {
 		t.Fatalf("Failed to fetch products. Got status %v, response: %s", recGet.Code, recGet.Body.String())
 	}
 
-	// Verify response contains the added product
 	var products []map[string]interface{}
 	err := json.Unmarshal(recGet.Body.Bytes(), &products)
 	if err != nil {

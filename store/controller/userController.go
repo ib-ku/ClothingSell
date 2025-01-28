@@ -100,7 +100,7 @@ func AllUsers(w http.ResponseWriter, r *http.Request) {
 
 	// pagination
 	page := r.URL.Query().Get("page")
-	limit := 10
+	limit := 3
 	skip := 0
 
 	if p, err := strconv.Atoi(page); err == nil && p > 1 {
