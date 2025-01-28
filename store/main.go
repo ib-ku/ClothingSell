@@ -87,7 +87,6 @@ func message(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleRequests() {
-	// Ensure static directory for images exists
 	if _, err := os.Stat("./static/images"); os.IsNotExist(err) {
 		if err := os.MkdirAll("./static/images", os.ModePerm); err != nil {
 			log.Fatalf("Error creating images directory: %v", err)
@@ -99,7 +98,6 @@ func handleRequests() {
 	controller.InitializeUser(client)
 	http.HandleFunc("/home", message)
 
-	// Products & Users routes
 	http.HandleFunc("/allProducts", controller.AllProducts)
 	http.HandleFunc("/allUsers", controller.AllUsers)
 

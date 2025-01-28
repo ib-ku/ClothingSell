@@ -4,11 +4,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 	"store/model"
 	"store/view"
 	"strconv"
+	"time"
 
 	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
@@ -209,8 +211,45 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Handling file upload (image)
+	err := r.ParseMultipartForm(10 << 20) // Limit file size to 10 MB
+	if err != nil {
+		log.Error("Error parsing multipart form: ", err)
+		http.Error(w, "Unable to parse form", http.StatusBadRequest)
+		return
+	}
+
+	// Get image file
+	file, _, err := r.FormFile("image")
+	if err != nil {
+		log.Error("Error retrieving image: ", err)
+		http.Error(w, "Unable to retrieve image", http.StatusBadRequest)
+		return
+	}
+	defer file.Close()
+
+	// Generate a unique name for the image
+	imageName := fmt.Sprintf("%d.jpg", time.Now().Unix())
+
+	// Save the image to a directory (e.g., "uploads/")
+	out, err := os.Create("uploads/" + imageName)
+	if err != nil {
+		log.Error("Error saving image: ", err)
+		http.Error(w, "Unable to save image", http.StatusInternalServerError)
+		return
+	}
+	defer out.Close()
+
+	_, err = io.Copy(out, file)
+	if err != nil {
+		log.Error("Error copying file: ", err)
+		http.Error(w, "Unable to save image", http.StatusInternalServerError)
+		return
+	}
+
+	// Create a new product with the image
 	var reqData map[string]interface{}
-	err := json.NewDecoder(r.Body).Decode(&reqData)
+	err = json.NewDecoder(r.Body).Decode(&reqData)
 	if err != nil {
 		log.WithFields(logrus.Fields{
 			"action": "invalid_json",
@@ -228,17 +267,11 @@ func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Handle the image field (image filename)
-	var imageName string
-	if image, ok := reqData["image"]; ok {
-		imageName = image.(string)
-	}
-
 	newProduct := model.Product{
 		ID:    int(reqData["id"].(float64)),
 		Name:  reqData["name"].(string),
 		Price: reqData["price"].(float64),
-		Image: imageName, // Add the image name to the product
+		Image: imageName, // Add the generated image name to the product
 	}
 
 	_, err = productCollection.InsertOne(context.TODO(), newProduct)

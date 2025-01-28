@@ -189,10 +189,10 @@
             const productID = prompt("Enter product ID:");
             const productName = prompt("Enter product name:");
             const productPrice = prompt("Enter product price:");
-            const productImage = prompt("Enter product image URL:");
+            const productImageName = prompt("Enter product image name (e.g., coat.jpg):");
 
-            if (!productID || !productName || !productPrice || !productImage) {
-                alert("Product ID, name, price, and image URL are required.");
+            if (!productID || !productName || !productPrice || !productImageName) {
+                alert("Product ID, name, price, and image name are required.");
                 return;
             }
 
@@ -203,7 +203,7 @@
                     id: parseInt(productID), 
                     name: productName, 
                     price: parseFloat(productPrice),
-                    image: productImage  // Sending the image URL along with other data
+                    image: productImageName
                 })
             })
             .then(response => response.json())
@@ -215,6 +215,7 @@
                 alert("Failed to create product. Check console for details.");
             });
         }
+
 
 
 
