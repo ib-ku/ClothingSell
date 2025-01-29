@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bv & Bl</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         .img-container {
             display: flex;
@@ -17,6 +18,10 @@
         }
         .img-container button {
             margin-top: 10px; 
+        }
+        .icon-large {
+            font-size: 3rem; /* Размер иконок */
+            margin-bottom: 10px; /* Отступ снизу */
         }
     </style>
 </head>
@@ -37,14 +42,29 @@
                             <a class="nav-link text-white" href="login.html">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="catalog.html">Catalog</a>
+                            <a class="nav-link text-white" href="catalog.html" onclick="checkCatalogLogin(event)">Catalog</a>
+                            <p id="catalogWarning" style="color: red; display: none;">Not logged in</p>
                         </li>
                     </ul>
+                    <ul class="navbar-nav" id="adminPanelNav" style="display: none;">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/admin.html">Admin Panel</a>
+                        </li>
+                    </ul>
+                    
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link text-white" href="cart.html">
-                                <i class="bi bi-cart"></i> Cart
+                                <i class="fas fa-shopping-cart"></i> Cart
                             </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav" id="userNav" style="display: none;">
+                        <li class="nav-item">
+                            <span class="nav-link text-white" id="usernameDisplay"></span>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-light" id="logoutBtn">Logout</button>
                         </li>
                     </ul>
                 </div>
@@ -53,43 +73,33 @@
     </header>
 
     <main>
-		<div>
-			<img src="https://static.zara.net/assets/public/ad43/1d68/c662497292f0/95aef629b74b/image-landscape-fill-cc081324-6647-4cc5-999f-8b94bd646664-default_0/image-landscape-fill-cc081324-6647-4cc5-999f-8b94bd646664-default_0.jpg?ts=1737723976207&w=2561" class="d-block w-100" alt="...">
-		</div>
-		
-		<div class="container">
-			<div class="row my-4">
-				<div class="col-12 col-md-6 mb-3 mb-md-0">
-					<img src="https://static.zara.net/assets/public/69df/04dd/49664b778bea/474ec2afb659/05070610800-p/05070610800-p.jpg?ts=1727861689559&w=850" alt="Zara Men 1" class="img-fluid">
-				</div>
-				<div class="col-12 col-md-6">
-					<img src="https://static.zara.net/assets/public/0548/a2a2/b4cb4ff092cb/3728a75b77a6/00706700712-p/00706700712-p.jpg?ts=1736438821677&w=850" alt="Zara Men 2" class="img-fluid">
-				</div>
-			</div>
-		</div>
-
+        <div>
+            <img src="https://static.zara.net/assets/public/ad43/1d68/c662497292f0/95aef629b74b/image-landscape-fill-cc081324-6647-4cc5-999f-8b94bd646664-default_0/image-landscape-fill-cc081324-6647-4cc5-999f-8b94bd646664-default_0.jpg?ts=1737723976207&w=2561" class="d-block w-100" alt="...">
+        </div>
+        
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-4 text-center mb-4 img-container">
+                    <i class="fas fa-tshirt icon-large"></i>
                     <img src="https://static.zara.net/assets/public/d15f/14c0/88514fb8b7f1/2b8b2414f632/04806401800-e1/04806401800-e1.jpg?ts=1734946681063&w=850" alt="Black Jeans" class="img-fluid">
-                    <a href="black_jeans.html">
-                        <button type="button" class="btn btn-secondary mt-3">more...</button>
-                    </a>
+                    <button type="button" class="btn btn-secondary mt-3" onclick="checkLogin(event, 'black_jeans.html')">More...</button>
+                    <p class="loginWarning" style="color: red; display: none;">Log in first</p>
                 </div>
                 <div class="col-12 col-md-4 text-center mb-4 img-container">
+                    <i class="fas fa-shoe-prints icon-large"></i>
                     <img src="https://static.zara.net/assets/public/429e/4b44/bb7646b6a9c4/6aff2ce1329f/04087400251-e1/04087400251-e1.jpg?ts=1737028984288&w=850" alt="White T-Shirt" class="img-fluid">
-                    <a href="white_t_shirt.html">
-                        <button type="button" class="btn btn-secondary mt-3">more...</button>
-                    </a>
+                    <button type="button" class="btn btn-secondary mt-3" onclick="checkLogin(event, 'white_t_shirt.html')">More...</button>
+                    <p class="loginWarning" style="color: red; display: none;">Log in first</p>
                 </div>
                 <div class="col-12 col-md-4 text-center mb-4 img-container">
+                    <i class="fas fa-hat-cowboy icon-large"></i>
                     <img src="https://static.zara.net/assets/public/b155/37f7/ce8245aba1c2/0135179a768b/06792865401-e1/06792865401-e1.jpg?ts=1727775303398&w=850" alt="Pidjak" class="img-fluid">
-                    <a href="man_pidjak.html">
-                        <button type="button" class="btn btn-secondary mt-3">more...</button>
-                    </a>
+                    <button type="button" class="btn btn-secondary mt-3" onclick="checkLogin(event, 'man_pidjak.html')">More...</button>
+                    <p class="loginWarning" style="color: red; display: none;">Log in first</p>
                 </div>
             </div>
         </div>
+        
 
         <div class="container-fluid bg-dark text-white py-5">
             <div class="row">
@@ -118,19 +128,108 @@
     </main>
 
     <script>
-        const text = document.getElementById("textBig")
-        text.style.fontSize = "20px"
-        text.addEventListener("click", function(){
-            if(text.style.fontSize == "20px"){
-                text.style.fontSize = "40px"
-            }else{
-                text.style.fontSize = "20px"
+        document.addEventListener("DOMContentLoaded", function () {
+            const userNav = document.getElementById("userNav");
+            const usernameDisplay = document.getElementById("usernameDisplay");
+            const logoutBtn = document.getElementById("logoutBtn");
+            const adminPanelNav = document.getElementById("adminPanelNav");
+    
+            function checkAuth() {
+                fetch("/getUser", {
+                    method: "GET",
+                    credentials: "include"
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error("Unauthorized");
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("DEBUG: User data from getUser =", data); // Проверка
+    
+                    if (data.email) {
+                        usernameDisplay.textContent = data.email;
+                        userNav.style.display = "flex";
+    
+                        if (data.role === "admin") {
+                            adminPanelNav.style.display = "flex"; // Показываем кнопку "Admin Panel"
+                        } else {
+                            adminPanelNav.style.display = "none"; // Скрываем для обычных пользователей
+                        }
+                    } else {
+                        userNav.style.display = "none";
+                        adminPanelNav.style.display = "none";
+                    }
+                })
+                .catch(() => {
+                    document.cookie = "Authorization=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+                    userNav.style.display = "none";
+                    adminPanelNav.style.display = "none";
+                });
             }
-        })
-    </script>    
+    
+            logoutBtn.addEventListener("click", function () {
+                fetch("/logout", { method: "POST", credentials: "include" }) 
+                .then(() => {
+                    document.cookie = "Authorization=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+                    usernameDisplay.textContent = "";
+                    userNav.style.display = "none";
+                    adminPanelNav.style.display = "none";
+                    window.location.href = "/index.html";
+                });
+            });
+    
+            checkAuth(); // Проверка авторизации при загрузке страницы
+    
+        
+        });
+        function checkLogin(event, url) {
+                event.preventDefault();
+                const warningMessage = event.target.parentElement.querySelector(".loginWarning");
+    
+                fetch("/getUser", {
+                    method: "GET",
+                    credentials: "include"
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.email) { // Проверяем email вместо username
+                        window.location.href = url;
+                    } else {
+                        warningMessage.style.display = "block";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error checking login:", error);
+                    warningMessage.style.display = "block";
+                });
+            }
+    
+            function checkCatalogLogin(event) {
+                event.preventDefault(); // Останавливаем переход по ссылке
+    
+                const warningMessage = document.getElementById("catalogWarning");
+    
+                fetch("/getUser", {
+                    method: "GET",
+                    credentials: "include"
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.email) { // Проверяем email вместо username
+                        window.location.href = "catalog.html"; // Если залогинен, переходим
+                    } else {
+                        warningMessage.style.display = "block"; // Показываем ошибку
+                    }
+                })
+                .catch(error => {
+                    console.error("Error checking login:", error);
+                    warningMessage.style.display = "block";
+                });
+            }
+    </script>
+    
+    
+    
+    
 </body>
 </html>
-
-
-
-

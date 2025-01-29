@@ -14,3 +14,6 @@ time="2025-01-28T18:03:17+05:00" level=info msg="Logger initialized and writing 
 time="2025-01-28T18:03:17+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
 time="2025-01-28T18:25:52+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
 time="2025-01-28T18:25:52+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T18:50:46+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T18:50:46+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T18:50:46+05:00" level=info msg="Start AllProducts Handler" action=start_all_products

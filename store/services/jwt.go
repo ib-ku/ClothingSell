@@ -2,6 +2,7 @@ package services
 
 import (
 	"errors"
+	"fmt"
 	"strings"
 	"time"
 
@@ -14,6 +15,7 @@ var jwtSecret = []byte("your_secret_key")
 // Claims structure
 type Claims struct {
 	Email string `json:"email"`
+	Role  string `json:"role"` // Добавляем роль
 	jwt.StandardClaims
 }
 
@@ -27,7 +29,7 @@ func GenerateJWT(email string, role string) (string, error) {
 		"role":  role,
 		"exp":   expirationTime.Unix(),
 	}
-
+	fmt.Println("DEBUG: Generating JWT with role =", role) // Проверка
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString(jwtSecret)
 }
@@ -47,6 +49,7 @@ func ValidateJWT(tokenString string) (*Claims, error) {
 	return claims, nil
 }
 
+// Extracts the role from a JWT token
 func GetUserRoleFromToken(tokenString string) (string, error) {
 	tokenString = strings.TrimPrefix(tokenString, "Bearer ")
 
@@ -54,21 +57,43 @@ func GetUserRoleFromToken(tokenString string) (string, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, errors.New("unexpected signing method")
 		}
-		return []byte("your_secret_key"), nil
+		return jwtSecret, nil
 	})
 	if err != nil || !token.Valid {
+		fmt.Println("DEBUG: Invalid token")
 		return "", errors.New("invalid token")
 	}
 
 	claims, ok := token.Claims.(jwt.MapClaims)
 	if !ok {
+		fmt.Println("DEBUG: Failed to parse claims")
 		return "", errors.New("failed to parse claims")
 	}
 
 	role, ok := claims["role"].(string)
 	if !ok {
+		fmt.Println("DEBUG: Role not found in token", claims)
 		return "", errors.New("role not found in token")
 	}
 
+	fmt.Println("DEBUG: Role from token =", role) // Теперь будем видеть роль в консоли
+
 	return role, nil
+}
+
+// ParseJWT extracts email from a JWT token
+func ParseJWT(tokenString string) (*Claims, error) {
+	token, err := jwt.ParseWithClaims(tokenString, &Claims{}, func(token *jwt.Token) (interface{}, error) {
+		return jwtSecret, nil
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	claims, ok := token.Claims.(*Claims)
+	if !ok || !token.Valid {
+		return nil, errors.New("invalid token claims")
+	}
+
+	return claims, nil
 }

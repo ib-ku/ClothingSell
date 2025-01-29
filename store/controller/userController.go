@@ -397,27 +397,3 @@ func GetUserByEmail(w http.ResponseWriter, r *http.Request) {
 		"email":  request.Email,
 	}).Info("User fetched successfully")
 }
-
-// Controller for assigning roles
-func AssignRole(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodPost {
-		email := r.FormValue("email")
-		newRole := r.FormValue("role")
-
-		if email == "" || newRole == "" {
-			http.Error(w, "Email and role are required", http.StatusBadRequest)
-			return
-		}
-
-		_, err := userCollection.UpdateOne(context.TODO(), bson.M{"email": email}, bson.M{"$set": bson.M{"role": newRole}})
-		if err != nil {
-			http.Error(w, "Failed to assign role", http.StatusInternalServerError)
-			return
-		}
-
-		fmt.Fprintf(w, "Role for user %s updated to %s", email, newRole)
-		return
-	}
-
-	http.ServeFile(w, r, "static/assign-role.html")
-}

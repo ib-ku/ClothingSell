@@ -184,6 +184,26 @@
         </div>
     </div>
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        fetch("/getUser", {
+            method: "GET",
+            credentials: "include"
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("User data:", data); // Debug: Проверяем, что приходит с сервера
+            if (data.role !== "admin") {
+                alert("Access denied: You are not an admin.");
+                window.location.href = "/index.html"; // Обычных пользователей редиректит
+            }
+        })
+        .catch(error => {
+            console.error("Access error:", error);
+            alert("Access denied: You are not logged in.");
+            window.location.href = "/index.html";
+        });
+    });
+
         document.getElementById("fetchProductByIdButton").addEventListener("click", fetchProductByID);
         document.getElementById("fetchProductByNameButton").addEventListener("click", fetchProductByName);
         document.getElementById("fetchUserByEmailButton").addEventListener("click", fetchUserByEmail);

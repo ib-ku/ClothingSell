@@ -107,7 +107,9 @@ func handleRequests() {
 	controller.InitializeUser(client)
 	http.HandleFunc("/home", message)
 
-	http.Handle("/admin", middleware.AdminMiddleware(http.HandlerFunc(AdminPanelHandler)))
+	http.Handle("/admin", middleware.IsAdmin(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "static/admin.html")
+	})))
 
 	http.HandleFunc("/allProducts", controller.AllProducts)
 	http.HandleFunc("/allUsers", controller.AllUsers)
@@ -126,13 +128,25 @@ func handleRequests() {
 
 	http.HandleFunc("/getProductByID", controller.GetProductByID)
 	http.HandleFunc("/getProductByName", controller.GetProductByName)
+	http.HandleFunc("/getUser", controller.GetUser)
 
+	http.HandleFunc("/logout", controller.Logout)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
+	// Регистрация и подтверждение email
 	http.HandleFunc("/signup", controller.SignUp)
-	http.HandleFunc("/login", controller.Login)
 	http.HandleFunc("/confirm", controller.Confirm)
+
+	// Вход, получение данных о пользователе
+	http.HandleFunc("/login", controller.Login)
+
+	// Маршруты для безопасности (JWT + роли)
 	http.Handle("/protected", middleware.AuthMiddleware(http.HandlerFunc(ProtectedHandler)))
 	http.Handle("/assign-role", middleware.IsAdmin(http.HandlerFunc(controller.AssignRole)))
+
+	// Двухфакторная аутентификация (OTP)
+	http.HandleFunc("/send-otp", controller.SendOTP)
+	http.HandleFunc("/verify-otp", controller.VerifyOTP)
 
 	http.HandleFunc("/sendEmail", controller.SendPromotionalEmail)
 

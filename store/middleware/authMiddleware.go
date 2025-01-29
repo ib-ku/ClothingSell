@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"fmt"
 	"net/http"
 	"store/services"
 	"strings"
@@ -8,13 +9,18 @@ import (
 
 func AuthMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Сначала пытаемся получить токен из заголовка
 		authHeader := r.Header.Get("Authorization")
 		if authHeader == "" {
-			http.Error(w, "Missing Authorization header", http.StatusUnauthorized)
-			return
+			// Если нет заголовка, проверяем Cookie
+			cookie, err := r.Cookie("Authorization")
+			if err != nil || cookie.Value == "" {
+				http.Error(w, "Unauthorized", http.StatusUnauthorized)
+				return
+			}
+			authHeader = cookie.Value
 		}
 
-		// Извлечение токена из заголовка
 		token := strings.TrimPrefix(authHeader, "Bearer ")
 		_, err := services.ValidateJWT(token)
 		if err != nil {
@@ -27,27 +33,37 @@ func AuthMiddleware(next http.Handler) http.Handler {
 }
 
 func IsAdmin(next http.Handler) http.Handler {
+	fmt.Println("DEBUG: IsAdmin middleware called") // Добавляем проверку
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// Извлекаем токен из заголовка Authorization
-		tokenString := r.Header.Get("Authorization")
-
-		// Если токен отсутствует
-		if tokenString == "" {
-			http.Error(w, "Forbidden: No token provided", http.StatusForbidden)
-			return
+		authHeader := r.Header.Get("Authorization")
+		if authHeader == "" {
+			cookie, err := r.Cookie("Authorization")
+			if err != nil || cookie.Value == "" {
+				http.Error(w, "Forbidden: No token provided", http.StatusForbidden)
+				return
+			}
+			authHeader = cookie.Value
 		}
 
-		// Проверка токена и извлечение роли из токена
-		role, err := services.GetUserRoleFromToken(tokenString) // Функция для получения роли из токена
-		if err != nil || role != "admin" {
+		token := strings.TrimPrefix(authHeader, "Bearer ")
+		role, err := services.GetUserRoleFromToken(token)
+		if err != nil {
+			fmt.Println("DEBUG: Error getting role:", err)
+			http.Error(w, "Forbidden: User is not an admin", http.StatusForbidden)
+			return
+		}
+		fmt.Println("DEBUG: Role from token =", role)
+		if role != "admin" {
+			fmt.Println("DEBUG: User is not an admin, role =", role)
 			http.Error(w, "Forbidden: User is not an admin", http.StatusForbidden)
 			return
 		}
 
-		// Если роль admin, продолжаем выполнение
+		fmt.Println("DEBUG: Access granted to admin panel")
 		next.ServeHTTP(w, r)
 	})
 }
+
 func AdminMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		cookie, err := r.Cookie("Authorization")

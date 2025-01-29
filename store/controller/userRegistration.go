@@ -11,10 +11,11 @@ import (
 )
 
 type User struct {
-	Username string `json:"username" bson:"username"`
-	Email    string `json:"email" bson:"email"`
-	Password string `json:"password" bson:"password"`
-	Role    string `json: "role" bson:"role"`
+	Username   string `json:"username" bson:"username"`
+	Email      string `json:"email" bson:"email"`
+	Password   string `json:"password" bson:"password"`
+	Role       string `json:"role" bson:"role"`
+	IsVerified bool   `json:"is_verified" bson:"is_verified"` // Добавлен флаг подтверждения email
 }
 
 func hashPassword(password string) (string, error) {
@@ -64,61 +65,44 @@ func saveUserToDB(user User) error {
 	return err
 }
 
-// Controller to handle registration
 func SignUp(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		// Retrieve data from the form
 		username := r.FormValue("username")
 		email := r.FormValue("email")
 		password := r.FormValue("password")
 		confirmPassword := r.FormValue("confirm_password")
 
-		// Validation: passwords must match
 		if password != confirmPassword {
 			http.Error(w, "Passwords do not match!", http.StatusBadRequest)
 			return
 		}
 
-		// Hash the password
-		hashedPassword, err := hashPassword(password)
+		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 		if err != nil {
 			http.Error(w, "Error hashing password", http.StatusInternalServerError)
 			return
 		}
 
-		// Create a new user
 		user := User{
-			Username: username,
-			Email:    email,
-			Password: hashedPassword,
-			Role:     "user",
+			Username:   username,
+			Email:      email,
+			Password:   string(hashedPassword),
+			Role:       "user",
+			IsVerified: false, // Новый пользователь не подтвержден
 		}
-		
 
-		// Save the user to the database
-		err = saveUserToDB(user)
+		_, err = userCollection.InsertOne(context.TODO(), user)
 		if err != nil {
 			http.Error(w, "Error saving user to database", http.StatusInternalServerError)
 			return
 		}
 
-		// Confirmation link
+		// Отправляем email с подтверждением
 		confirmationLink := fmt.Sprintf("http://localhost:8085/confirm?email=%s", email)
+		sendConfirmationEmail(email, confirmationLink)
 
-		// Send confirmation email
-		err = sendConfirmationEmail(email, confirmationLink)
-		if err != nil {
-			http.Error(w, "Error sending confirmation email", http.StatusInternalServerError)
-			return
-		}
-
-		// Redirect the user to the verification page
 		http.Redirect(w, r, "/verify.html", http.StatusSeeOther)
-		return
 	}
-
-	// If not a POST request, render the form
-	http.ServeFile(w, r, "public/signup.html")
 }
 
 // Controller to handle account confirmation
