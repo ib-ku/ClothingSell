@@ -144,7 +144,7 @@
                     return response.json();
                 })
                 .then(data => {
-                    console.log("DEBUG: User data from getUser =", data); // Проверка
+            
     
                     if (data.email) {
                         usernameDisplay.textContent = data.email;

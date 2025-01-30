@@ -2,7 +2,6 @@ package services
 
 import (
 	"errors"
-	"fmt"
 	"strings"
 	"time"
 
@@ -29,7 +28,6 @@ func GenerateJWT(email string, role string) (string, error) {
 		"role":  role,
 		"exp":   expirationTime.Unix(),
 	}
-	fmt.Println("DEBUG: Generating JWT with role =", role) // Проверка
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString(jwtSecret)
 }
@@ -60,23 +58,18 @@ func GetUserRoleFromToken(tokenString string) (string, error) {
 		return jwtSecret, nil
 	})
 	if err != nil || !token.Valid {
-		fmt.Println("DEBUG: Invalid token")
 		return "", errors.New("invalid token")
 	}
 
 	claims, ok := token.Claims.(jwt.MapClaims)
 	if !ok {
-		fmt.Println("DEBUG: Failed to parse claims")
 		return "", errors.New("failed to parse claims")
 	}
 
 	role, ok := claims["role"].(string)
 	if !ok {
-		fmt.Println("DEBUG: Role not found in token", claims)
 		return "", errors.New("role not found in token")
 	}
-
-	fmt.Println("DEBUG: Role from token =", role) // Теперь будем видеть роль в консоли
 
 	return role, nil
 }

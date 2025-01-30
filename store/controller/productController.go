@@ -6,9 +6,11 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"store/database"
 	"store/model"
 	"store/view"
 	"strconv"
+	"time"
 
 	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
@@ -126,32 +128,46 @@ func getSortingParams(r *http.Request) (string, int) {
 }
 
 func AllProducts(w http.ResponseWriter, r *http.Request) {
-	log.WithFields(logrus.Fields{
+	logrus.WithFields(logrus.Fields{
 		"action": "start_all_products",
 	}).Info("Start AllProducts Handler")
 
-	// Filtering
+	// Проверяем, инициализирована ли коллекция
+	if database.ProductCollection == nil {
+		logrus.WithFields(logrus.Fields{
+			"action": "all_products",
+			"status": "fail",
+		}).Error("Database not initialized")
+		http.Error(w, "Database not initialized", http.StatusInternalServerError)
+		return
+	}
+
+	// Фильтрация по имени
 	filterName := r.URL.Query().Get("name")
 	filter := bson.M{}
 	if filterName != "" {
 		filter["name"] = bson.M{"$regex": filterName, "$options": "i"}
 	}
 
-	// Sorting
+	// Сортировка
 	sortField, sortOrder := getSortingParams(r)
 
-	// Pagination
+	// Пагинация
 	skip, limit := getPaginationParams(r)
 
-	cursor, err := productCollection.Find(
-		context.TODO(),
+	// Запрос в базу данных
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	cursor, err := database.ProductCollection.Find(
+		ctx,
 		filter,
 		options.Find().SetSort(bson.D{{Key: sortField, Value: sortOrder}}).
 			SetLimit(int64(limit)).
 			SetSkip(int64(skip)),
 	)
 	if err != nil {
-		log.WithFields(logrus.Fields{
+		logrus.WithFields(logrus.Fields{
 			"action": "all_products",
 			"status": "fail",
 			"error":  err.Error(),
@@ -159,11 +175,11 @@ func AllProducts(w http.ResponseWriter, r *http.Request) {
 		jsonResponse(w, http.StatusInternalServerError, map[string]string{"status": "fail", "message": "Failed to fetch products from database"})
 		return
 	}
-	defer cursor.Close(context.TODO())
+	defer cursor.Close(ctx)
 
 	var products model.Products
-	if err = cursor.All(context.TODO(), &products); err != nil {
-		log.WithFields(logrus.Fields{
+	if err = cursor.All(ctx, &products); err != nil {
+		logrus.WithFields(logrus.Fields{
 			"action": "all_products",
 			"status": "fail",
 			"error":  err.Error(),
@@ -173,7 +189,8 @@ func AllProducts(w http.ResponseWriter, r *http.Request) {
 	}
 
 	view.RenderProducts(w, products)
-	log.WithFields(logrus.Fields{
+
+	logrus.WithFields(logrus.Fields{
 		"action": "all_products",
 		"status": "success",
 		"count":  len(products),

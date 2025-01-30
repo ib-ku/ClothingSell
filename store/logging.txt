@@ -756,3 +756,48 @@ time="2025-01-29T14:01:42+05:00" level=info msg="Product collection initialized"
 time="2025-01-29T14:01:42+05:00" level=info msg="User collection initialized" action=initialize status=success
 time="2025-01-29T14:01:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
 time="2025-01-29T14:01:51+05:00" level=info msg="Fetched products successfully" action=all_products count=3 status=success
+time="2025-01-29T14:05:28+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T14:05:28+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T14:05:28+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-29T14:05:28+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-29T14:07:18+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-29T14:07:18+05:00" level=info msg="Fetched users successfully" action=all_users count=3 status=success
+time="2025-01-29T14:07:28+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-29T14:07:29+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-29T14:07:29+05:00" level=info msg="Fetched users successfully" action=all_users count=3 status=success
+time="2025-01-29T14:31:43+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T14:31:43+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T14:31:43+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-29T14:31:43+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-29T14:38:14+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T14:38:14+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T14:38:14+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-29T14:38:14+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-29T14:39:54+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T14:39:54+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T14:39:54+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-29T14:39:54+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-29T14:40:55+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T14:40:55+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T14:40:55+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-29T14:40:55+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-29T14:44:17+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T14:44:17+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T14:44:17+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-29T14:44:17+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-29T15:04:48+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T15:04:48+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T15:04:48+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-29T15:04:48+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-29T15:09:19+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T15:09:19+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T15:09:19+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-29T15:09:19+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-29T15:18:09+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T15:18:09+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T15:18:09+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-29T15:18:09+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-29T15:23:39+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T15:23:40+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-29T15:23:40+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-29T15:23:40+05:00" level=info msg="User collection initialized" action=initialize status=success
