@@ -14,10 +14,11 @@ import (
 )
 
 type CartItem struct {
-	UserID      string `json:"user_id" bson:"user_id"`
-	ProductID   int    `json:"product_id" bson:"product_id"`
-	ProductName string `json:"product_name" bson:"product_name"` // Новое поле для имени товара
-	Quantity    int    `json:"quantity" bson:"quantity"`
+	UserID      string  `json:"user_id" bson:"user_id"`
+	ProductID   int     `json:"product_id" bson:"product_id"`
+	ProductName string  `json:"product_name" bson:"product_name"`
+	Quantity    int     `json:"quantity" bson:"quantity"`
+	Price       float64 `json:"price" bson:"price"`
 }
 
 var cartCollection *mongo.Collection
@@ -63,8 +64,9 @@ func AddToCart(w http.ResponseWriter, r *http.Request) {
 	}
 
 	cartItem.ProductName = product.Name
-	cartItem.UserID = claims.Email // Установить user_id
+	cartItem.UserID = claims.Email
 	cartItem.Quantity = 1
+	cartItem.Price = product.Price
 
 	_, err = cartCollection.InsertOne(ctx, cartItem)
 	if err != nil {

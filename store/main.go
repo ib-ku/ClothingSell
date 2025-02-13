@@ -10,6 +10,7 @@ import (
 	"os/signal"
 	"time"
 
+	"store/chat"
 	"store/controller"
 	"store/middleware"
 
@@ -106,12 +107,15 @@ func handleRequests() {
 	controller.InitializeProduct(client)
 	controller.InitializeUser(client)
 	controller.InitializeCart(client)
+	controller.InitializeTransaction(client)
+	chat.InitializeChatCollection(client)
 
 	http.HandleFunc("/home", message)
 
 	http.Handle("/admin", middleware.IsAdmin(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "static/admin.html")
 	})))
+	http.HandleFunc("/processTransaction", controller.ProcessTransaction)
 
 	http.Handle("/addToCart", middleware.AuthMiddleware(http.HandlerFunc(controller.AddToCart)))
 	http.Handle("/getCartItems", middleware.AuthMiddleware(http.HandlerFunc(controller.GetCartItems)))
@@ -154,6 +158,9 @@ func handleRequests() {
 	http.HandleFunc("/verify-otp", controller.VerifyOTP)
 
 	http.HandleFunc("/sendEmail", controller.SendPromotionalEmail)
+
+	http.HandleFunc("/chat", chat.HandleConnections)
+	go chat.HandleMessages()
 
 	server := &http.Server{Addr: ":8085", Handler: nil}
 

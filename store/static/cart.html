@@ -48,48 +48,91 @@
         }
     </style>
     <script>
-        async function loadCartItems() {
-            try {
-                const response = await fetch('/getCartItems', {
-                    method: 'GET',
-                    headers: { 'Content-Type': 'application/json' },
-                    credentials: 'include'
-                });
+        function showTransactionForm(productId) {
+        const formContainer = document.getElementById('transaction-form-container');
+        formContainer.style.display = 'block';
+        document.getElementById('product-id').value = productId;
+    }
 
-                if (response.ok) {
-                    const cartItems = await response.json();
-                    console.log('Cart Items:', cartItems);
-                    const cartContainer = document.getElementById('cart-container');
-                    cartContainer.innerHTML = '';
+    async function processTransaction(event) {
+        event.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const transactionId = `txn_${Math.random().toString(36).substr(2, 9)}`;
+        const productId = document.getElementById('product-id').value;
 
-                    if (cartItems.length === 0) {
-                        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
-                    } else {
-                        cartItems.forEach(item => {
-                            const cartItem = document.createElement('div');
-                            cartItem.classList.add('cart-item');
+        const requestData = {
+    transaction_id: transactionId,
+    amount: 100.00,
+    user_id: email,
+    product_id: parseInt(productId)
+};
 
-                            const productName = document.createElement('div');
-                            productName.classList.add('product-name');
-                            productName.textContent = `Product: ${item.product_name}`;
-                            cartItem.appendChild(productName);
 
-                            const productQuantity = document.createElement('div');
-                            productQuantity.classList.add('product-quantity');
-                            productQuantity.textContent = `Quantity: ${item.quantity}`;
-                            cartItem.appendChild(productQuantity);
+        try {
+            const response = await fetch('/processTransaction', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(requestData)
+            });
 
-                            cartContainer.appendChild(cartItem);
-                        });
-                    }
-                } else {
-                    alert('Failed to load cart items');
-                }
-            } catch (error) {
-                console.error('Error loading cart items:', error);
-                alert('Failed to load cart items');
-            }
+            const result = await response.text();
+            alert(result);
+            document.getElementById('transaction-form-container').style.display = 'none';
+        } catch (error) {
+            console.error('Transaction failed:', error);
+            alert('Transaction failed');
         }
+    }
+    async function loadCartItems() {
+    try {
+        const response = await fetch('/getCartItems', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include'
+        });
+
+        if (response.ok) {
+            const cartItems = await response.json();
+            console.log('Cart Items:', cartItems);
+            const cartContainer = document.getElementById('cart-container');
+            cartContainer.innerHTML = '';
+
+            if (cartItems.length === 0) {
+                cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+            } else {
+                cartItems.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+
+                    const productName = document.createElement('div');
+                    productName.classList.add('product-name');
+                    productName.textContent = `Product: ${item.product_name}`;
+                    cartItem.appendChild(productName);
+
+                    const productQuantity = document.createElement('div');
+                    productQuantity.classList.add('product-quantity');
+                    productQuantity.textContent = `Quantity: ${item.quantity}`;
+                    cartItem.appendChild(productQuantity);
+
+                    // Add the Buy button
+                    const buyButton = document.createElement('button');
+                    buyButton.textContent = 'Buy';
+                    buyButton.onclick = () => showTransactionForm(item.product_id); // Show transaction form
+                    cartItem.appendChild(buyButton);
+
+                    cartContainer.appendChild(cartItem);
+                });
+            }
+        } else {
+            alert('Failed to load cart items');
+        }
+    } catch (error) {
+        console.error('Error loading cart items:', error);
+        alert('Failed to load cart items');
+    }
+}
+
 
         window.onload = loadCartItems;
     </script>
@@ -97,5 +140,16 @@
 <body>
     <h1>Your Cart</h1>
     <div id="cart-container" class="cart-container"></div>
+    <div id="transaction-form-container" style="display:none; position:fixed; top:20%; left:50%; transform:translate(-50%, -20%); background:white; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5);">
+        <h3>Complete Transaction</h3>
+        <form onsubmit="processTransaction(event)">
+            <label for="email">Enter your Email:</label>
+            <input type="email" id="email" required>
+            <input type="hidden" id="product-id">
+            <button type="submit">Confirm Payment</button>
+            <button type="button" onclick="document.getElementById('transaction-form-container').style.display='none'">Cancel</button>
+        </form>
+    </div>
+    
 </body>
 </html>

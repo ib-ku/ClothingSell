@@ -921,3 +921,229 @@ time="2025-02-13T15:49:16+05:00" level=info msg="Item added to cart: {jk@gmail.c
 time="2025-02-13T15:49:19+05:00" level=info msg="GetCartItems handler reached"
 time="2025-02-13T15:49:19+05:00" level=info msg="User: jk@gmail.com"
 time="2025-02-13T15:49:19+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1} {jk@gmail.com 1  1} {jk@gmail.com 6  1} {jk@gmail.com 1  1} {jk@gmail.com 8 Shirt 1}]"
+time="2025-02-13T15:58:20+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:58:20+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:58:20+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:58:20+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:58:28+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:58:28+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T15:58:28+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1} {jk@gmail.com 1  1} {jk@gmail.com 6  1} {jk@gmail.com 1  1} {jk@gmail.com 8 Shirt 1}]"
+time="2025-02-13T16:42:41+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T16:42:41+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T16:42:41+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T16:42:41+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T16:45:06+05:00" level=info msg="Payment response: {12345 Declined}"
+time="2025-02-13T16:45:06+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T16:45:08+05:00" level=info msg="Payment response: {12345 Declined}"
+time="2025-02-13T16:45:08+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T16:45:08+05:00" level=info msg="Payment response: {12345 Declined}"
+time="2025-02-13T16:45:08+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T16:45:09+05:00" level=info msg="Payment response: {12345 Paid}"
+time="2025-02-13T16:45:09+05:00" level=info msg="Transaction successful. Generating receipt..."
+time="2025-02-13T16:45:09+05:00" level=info msg="Receipt generated: receipt_12345.pdf"
+time="2025-02-13T16:45:13+05:00" level=info msg="Transaction status updated to 'Completed'"
+time="2025-02-13T16:52:58+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T16:52:58+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T16:52:58+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T16:52:58+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T16:53:07+05:00" level=info msg="Payment response: {12345 Paid}"
+time="2025-02-13T16:53:07+05:00" level=info msg="Transaction successful. Generating receipt..."
+time="2025-02-13T16:53:07+05:00" level=info msg="Receipt generated: receipt_12345.pdf"
+time="2025-02-13T16:53:11+05:00" level=info msg="Transaction status updated to 'Completed'"
+time="2025-02-13T16:54:19+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T16:54:19+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T16:54:19+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T16:54:19+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T16:54:24+05:00" level=info msg="Payment response: {12345 Declined}"
+time="2025-02-13T16:54:24+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T16:54:26+05:00" level=info msg="Payment response: {12345 Declined}"
+time="2025-02-13T16:54:26+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T16:54:27+05:00" level=info msg="Payment response: {12345 Paid}"
+time="2025-02-13T16:54:27+05:00" level=info msg="Transaction successful. Generating receipt..."
+time="2025-02-13T16:54:27+05:00" level=info msg="Receipt generated: receipt_12345.pdf"
+time="2025-02-13T16:54:30+05:00" level=info msg="Transaction status updated to 'Completed'"
+time="2025-02-13T16:58:46+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T16:58:46+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T16:58:46+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T16:58:46+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T16:59:12+05:00" level=info msg="Payment response: {12345 Declined}"
+time="2025-02-13T16:59:12+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T16:59:13+05:00" level=info msg="Payment response: {12345 Paid}"
+time="2025-02-13T16:59:13+05:00" level=info msg="Transaction successful. Generating receipt..."
+time="2025-02-13T16:59:13+05:00" level=info msg="Receipt generated: receipt_12345.pdf"
+time="2025-02-13T16:59:17+05:00" level=info msg="Transaction status updated to 'Completed'"
+time="2025-02-13T17:03:49+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T17:03:49+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T17:03:49+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T17:03:49+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T17:04:01+05:00" level=info msg="Payment response: {12345 Paid}"
+time="2025-02-13T17:04:01+05:00" level=info msg="Transaction successful. Generating receipt..."
+time="2025-02-13T17:04:01+05:00" level=info msg="Receipt generated: receipt_12345.pdf"
+time="2025-02-13T17:04:04+05:00" level=info msg="Transaction status updated to 'Completed'"
+time="2025-02-13T17:26:06+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T17:26:06+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T17:26:06+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T17:26:06+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T17:26:14+05:00" level=info msg="Payment response: {12345 Declined}"
+time="2025-02-13T17:26:14+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T17:26:18+05:00" level=info msg="Payment response: {12345 Declined}"
+time="2025-02-13T17:26:18+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T17:26:19+05:00" level=info msg="Payment response: {12345 Paid}"
+time="2025-02-13T17:26:19+05:00" level=info msg="Transaction successful. Generating receipt..."
+time="2025-02-13T17:26:19+05:00" level=info msg="Receipt generated: receipt_12345.pdf"
+time="2025-02-13T17:26:22+05:00" level=info msg="Transaction status updated to 'Completed'"
+time="2025-02-13T17:39:47+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T17:39:47+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T17:39:47+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T17:39:47+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T17:40:03+05:00" level=info msg="Payment response: {12345 Paid}"
+time="2025-02-13T17:40:03+05:00" level=info msg="Transaction successful. Generating receipt..."
+time="2025-02-13T17:40:03+05:00" level=info msg="Receipt generated: receipt_12345.pdf"
+time="2025-02-13T17:40:09+05:00" level=info msg="Transaction successfully inserted into MongoDB."
+time="2025-02-13T17:47:18+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T17:47:18+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T17:47:18+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T17:47:18+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T17:58:11+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T17:58:11+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T17:58:11+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T17:58:11+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T17:58:42+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T17:58:42+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T17:58:42+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T17:58:42+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T17:58:47+05:00" level=info msg="Failed to contact payment microservice: Post \"http://localhost:8081/processPayment\": dial tcp [::1]:8081: connectex: No connection could be made because the target machine actively refused it."
+time="2025-02-13T18:06:41+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:06:42+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:06:42+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T18:06:42+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T18:07:01+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T18:07:01+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T18:07:01+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1} {jk@gmail.com 1  1} {jk@gmail.com 6  1} {jk@gmail.com 1  1} {jk@gmail.com 8 Shirt 1}]"
+time="2025-02-13T18:09:20+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:09:20+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:09:20+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T18:09:20+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T18:09:29+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T18:09:29+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T18:11:37+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:11:37+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:11:37+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T18:11:37+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T18:11:43+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T18:11:43+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T18:11:44+05:00" level=info msg="User ID (Email) from token: jk@gmail.com"
+time="2025-02-13T18:11:44+05:00" level=info msg="Item added to cart: {jk@gmail.com 8 Shirt 1 123.123}"
+time="2025-02-13T18:11:48+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T18:11:48+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T18:11:48+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 6  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 8 Shirt 1 0} {jk@gmail.com 8 Shirt 1 123.123}]"
+time="2025-02-13T18:22:09+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:22:09+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:22:09+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T18:22:09+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T18:22:22+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T18:22:22+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T18:22:25+05:00" level=info msg="User ID (Email) from token: jk@gmail.com"
+time="2025-02-13T18:22:25+05:00" level=info msg="Item added to cart: {jk@gmail.com 5 Cap 1 400}"
+time="2025-02-13T18:22:28+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T18:22:28+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T18:22:28+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 6  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 8 Shirt 1 0} {jk@gmail.com 8 Shirt 1 123.123} {jk@gmail.com 5 Cap 1 400}]"
+time="2025-02-13T18:22:35+05:00" level=info msg="Failed to decode payment request: json: cannot unmarshal string into Go struct field PaymentRequest.product_id of type int"
+time="2025-02-13T18:22:57+05:00" level=info msg="Failed to decode payment request: json: cannot unmarshal string into Go struct field PaymentRequest.product_id of type int"
+time="2025-02-13T18:23:27+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T18:23:27+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T18:23:44+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T18:23:44+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T18:23:44+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 6  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 8 Shirt 1 0} {jk@gmail.com 8 Shirt 1 123.123} {jk@gmail.com 5 Cap 1 400}]"
+time="2025-02-13T18:23:50+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T18:23:50+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T18:23:50+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 6  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 8 Shirt 1 0} {jk@gmail.com 8 Shirt 1 123.123} {jk@gmail.com 5 Cap 1 400}]"
+time="2025-02-13T18:26:53+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:26:53+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:26:53+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T18:26:53+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T18:27:05+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T18:27:05+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T18:27:05+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 6  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 8 Shirt 1 0} {jk@gmail.com 8 Shirt 1 123.123} {jk@gmail.com 5 Cap 1 400}]"
+time="2025-02-13T18:27:09+05:00" level=info msg="Failed to decode payment request: json: cannot unmarshal string into Go struct field PaymentRequest.product_id of type int"
+time="2025-02-13T18:28:51+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:28:51+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:28:51+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T18:28:51+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T18:29:07+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T18:29:07+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T18:29:07+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 6  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 8 Shirt 1 0} {jk@gmail.com 8 Shirt 1 123.123} {jk@gmail.com 5 Cap 1 400}]"
+time="2025-02-13T18:29:15+05:00" level=info msg="Processing transaction for: {txn_olq7hmqnj 100 hog123von@gmail.com 8}"
+time="2025-02-13T18:29:15+05:00" level=info msg="Payment response: {txn_olq7hmqnj Paid}"
+time="2025-02-13T18:29:15+05:00" level=info msg="Transaction successful. Generating receipt..."
+time="2025-02-13T18:29:15+05:00" level=info msg="Receipt generated: receipt_txn_olq7hmqnj.pdf"
+time="2025-02-13T18:29:16+05:00" level=info msg="Processing transaction for: {txn_vrbcfzgyt 100 hog123von@gmail.com 8}"
+time="2025-02-13T18:29:16+05:00" level=info msg="Payment response: {txn_vrbcfzgyt Declined}"
+time="2025-02-13T18:29:16+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T18:29:20+05:00" level=info msg="Transaction successfully inserted into MongoDB."
+time="2025-02-13T18:31:50+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T18:31:50+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T18:31:51+05:00" level=info msg="User ID (Email) from token: jk@gmail.com"
+time="2025-02-13T18:31:51+05:00" level=info msg="Item added to cart: {jk@gmail.com 3 Jeans 1 1500}"
+time="2025-02-13T18:31:57+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T18:31:57+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T18:31:57+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 6  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 8 Shirt 1 0} {jk@gmail.com 8 Shirt 1 123.123} {jk@gmail.com 5 Cap 1 400} {jk@gmail.com 3 Jeans 1 1500}]"
+time="2025-02-13T18:32:00+05:00" level=info msg="Processing transaction for: {txn_1lfgb623g 100 hog123von@gmail.com 3}"
+time="2025-02-13T18:32:00+05:00" level=info msg="Payment response: {txn_1lfgb623g Declined}"
+time="2025-02-13T18:32:00+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T18:32:06+05:00" level=info msg="Processing transaction for: {txn_q2ti8j76y 100 hog123von@gmail.com 3}"
+time="2025-02-13T18:32:06+05:00" level=info msg="Payment response: {txn_q2ti8j76y Declined}"
+time="2025-02-13T18:32:06+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T18:37:50+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:37:50+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T18:37:50+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T18:37:50+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T18:37:56+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T18:37:56+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T18:37:56+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 6  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 8 Shirt 1 0} {jk@gmail.com 8 Shirt 1 123.123} {jk@gmail.com 5 Cap 1 400} {jk@gmail.com 3 Jeans 1 1500}]"
+time="2025-02-13T18:38:04+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T18:38:04+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T18:38:05+05:00" level=info msg="User ID (Email) from token: jk@gmail.com"
+time="2025-02-13T18:38:05+05:00" level=info msg="Item added to cart: {jk@gmail.com 2 Trainers 1 2000}"
+time="2025-02-13T18:38:08+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T18:38:08+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T18:38:08+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 6  1 0} {jk@gmail.com 1  1 0} {jk@gmail.com 8 Shirt 1 0} {jk@gmail.com 8 Shirt 1 123.123} {jk@gmail.com 5 Cap 1 400} {jk@gmail.com 3 Jeans 1 1500} {jk@gmail.com 2 Trainers 1 2000}]"
+time="2025-02-13T18:38:12+05:00" level=info msg="Processing transaction for: {txn_31xh7c44q 100 hog123von@gmail.com 2}"
+time="2025-02-13T18:38:12+05:00" level=info msg="Payment response: {txn_31xh7c44q Declined}"
+time="2025-02-13T18:38:12+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T18:38:15+05:00" level=info msg="Processing transaction for: {txn_uynr0bu33 100 hog123von@gmail.com 2}"
+time="2025-02-13T18:38:15+05:00" level=info msg="Payment response: {txn_uynr0bu33 Paid}"
+time="2025-02-13T18:38:15+05:00" level=info msg="Transaction successful. Generating receipt..."
+time="2025-02-13T18:38:15+05:00" level=info msg="Receipt generated: receipt_txn_uynr0bu33.pdf"
+time="2025-02-13T18:38:16+05:00" level=info msg="Processing transaction for: {txn_t6wrcl80l 100 hog123von@gmail.com 2}"
+time="2025-02-13T18:38:16+05:00" level=info msg="Payment response: {txn_t6wrcl80l Declined}"
+time="2025-02-13T18:38:16+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T18:38:18+05:00" level=info msg="Processing transaction for: {txn_sn4r04qzn 100 hog123von@gmail.com 2}"
+time="2025-02-13T18:38:18+05:00" level=info msg="Payment response: {txn_sn4r04qzn Declined}"
+time="2025-02-13T18:38:18+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T18:38:19+05:00" level=info msg="Transaction successfully inserted into MongoDB."
+time="2025-02-13T18:38:54+05:00" level=info msg="Processing transaction for: {txn_jpnpmud7q 100 hog123von@gmail.com 2}"
+time="2025-02-13T18:38:54+05:00" level=info msg="Payment response: {txn_jpnpmud7q Declined}"
+time="2025-02-13T18:38:54+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T18:40:22+05:00" level=info msg="Processing transaction for: {txn_inuiestvw 100 hog123von@gmail.com 1}"
+time="2025-02-13T18:40:22+05:00" level=info msg="Payment response: {txn_inuiestvw Declined}"
+time="2025-02-13T18:40:22+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T18:40:27+05:00" level=info msg="Processing transaction for: {txn_ielrgf0cq 100 hog123von@gmail.com 2}"
+time="2025-02-13T18:40:27+05:00" level=info msg="Payment response: {txn_ielrgf0cq Paid}"
+time="2025-02-13T18:40:27+05:00" level=info msg="Transaction successful. Generating receipt..."
+time="2025-02-13T18:40:27+05:00" level=info msg="Receipt generated: receipt_txn_ielrgf0cq.pdf"
+time="2025-02-13T18:40:27+05:00" level=info msg="Processing transaction for: {txn_8jfnfk1q7 100 hog123von@gmail.com 2}"
+time="2025-02-13T18:40:27+05:00" level=info msg="Payment response: {txn_8jfnfk1q7 Paid}"
+time="2025-02-13T18:40:27+05:00" level=info msg="Transaction successful. Generating receipt..."
+time="2025-02-13T18:40:27+05:00" level=info msg="Receipt generated: receipt_txn_8jfnfk1q7.pdf"
+time="2025-02-13T18:40:28+05:00" level=info msg="Processing transaction for: {txn_keilatflp 100 hog123von@gmail.com 2}"
+time="2025-02-13T18:40:28+05:00" level=info msg="Payment response: {txn_keilatflp Declined}"
+time="2025-02-13T18:40:28+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T18:40:30+05:00" level=info msg="Processing transaction for: {txn_bru04lpkk 100 hog123von@gmail.com 2}"
+time="2025-02-13T18:40:30+05:00" level=info msg="Payment response: {txn_bru04lpkk Declined}"
+time="2025-02-13T18:40:30+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-13T18:40:32+05:00" level=info msg="Transaction successfully inserted into MongoDB."
+time="2025-02-13T18:40:33+05:00" level=info msg="Transaction successfully inserted into MongoDB."
+time="2025-02-13T18:42:10+05:00" level=info msg="Processing transaction for: {txn_u7gml8ene 100 hog123von@gmail.com 3}"
+time="2025-02-13T18:42:10+05:00" level=info msg="Payment response: {txn_u7gml8ene Declined}"
+time="2025-02-13T18:42:10+05:00" level=info msg="Transaction declined. No receipt will be sent."
