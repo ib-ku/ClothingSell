@@ -59,13 +59,25 @@ func validateProductFields(reqData map[string]interface{}, requiredFields []stri
 			}, false
 		}
 	}
-	if id, ok := reqData["id"].(float64); !ok || id <= 0 {
+
+	if id, ok := reqData["id"].(float64); !ok {
+		if idInt, ok := reqData["id"].(int); ok && idInt > 0 {
+			id = float64(idInt)
+		} else {
+			logger.Warn("Validation failed: 'id' must be a positive number")
+			return map[string]string{
+				"status":  "fail",
+				"message": "'id' must be a positive number",
+			}, false
+		}
+	} else if id <= 0 {
 		logger.Warn("Validation failed: 'id' must be a positive number")
 		return map[string]string{
 			"status":  "fail",
 			"message": "'id' must be a positive number",
 		}, false
 	}
+
 	if name, ok := reqData["name"].(string); !ok || name == "" {
 		logger.Warn("Validation failed: 'name' must be a non-empty string")
 		return map[string]string{
@@ -73,6 +85,7 @@ func validateProductFields(reqData map[string]interface{}, requiredFields []stri
 			"message": "'name' must be a non-empty string",
 		}, false
 	}
+
 	if price, ok := reqData["price"].(float64); !ok || price <= 0 {
 		logger.Warn("Validation failed: 'price' must be a positive number")
 		return map[string]string{
@@ -80,6 +93,7 @@ func validateProductFields(reqData map[string]interface{}, requiredFields []stri
 			"message": "'price' must be a positive number",
 		}, false
 	}
+
 	return nil, true
 }
 

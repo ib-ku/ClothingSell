@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"store/controller"
+	"store/middleware"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -86,12 +87,34 @@ func message(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-func handleRequests() {
+func ProtectedHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Welcome to the protected route!")
+}
 
+func AdminPanelHandler(w http.ResponseWriter, r *http.Request) {
+	adminData := map[string]string{
+		"title":   "Admin Dashboard",
+		"message": "Welcome to the admin panel!",
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(adminData)
+}
+
+func handleRequests() {
 	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir("./static"))))
 	controller.InitializeProduct(client)
 	controller.InitializeUser(client)
+	controller.InitializeCart(client)
+
 	http.HandleFunc("/home", message)
+
+	http.Handle("/admin", middleware.IsAdmin(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "static/admin.html")
+	})))
+
+	http.Handle("/addToCart", middleware.AuthMiddleware(http.HandlerFunc(controller.AddToCart)))
+	http.Handle("/getCartItems", middleware.AuthMiddleware(http.HandlerFunc(controller.GetCartItems)))
 
 	http.HandleFunc("/allProducts", controller.AllProducts)
 	http.HandleFunc("/allUsers", controller.AllUsers)
@@ -110,10 +133,29 @@ func handleRequests() {
 
 	http.HandleFunc("/getProductByID", controller.GetProductByID)
 	http.HandleFunc("/getProductByName", controller.GetProductByName)
+	http.HandleFunc("/getUser", controller.GetUser)
+
+	http.HandleFunc("/logout", controller.Logout)
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
+	// Регистрация и подтверждение email
+	http.HandleFunc("/signup", controller.SignUp)
+	http.HandleFunc("/confirm", controller.Confirm)
+
+	// Вход, получение данных о пользователе
+	http.HandleFunc("/login", controller.Login)
+
+	// Маршруты для безопасности (JWT + роли)
+	http.Handle("/protected", middleware.AuthMiddleware(http.HandlerFunc(ProtectedHandler)))
+	http.Handle("/assign-role", middleware.IsAdmin(http.HandlerFunc(controller.AssignRole)))
+
+	// Двухфакторная аутентификация (OTP)
+	http.HandleFunc("/send-otp", controller.SendOTP)
+	http.HandleFunc("/verify-otp", controller.VerifyOTP)
 
 	http.HandleFunc("/sendEmail", controller.SendPromotionalEmail)
 
-	server := &http.Server{Addr: ":8080", Handler: nil}
+	server := &http.Server{Addr: ":8085", Handler: nil}
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, os.Interrupt)
@@ -142,6 +184,6 @@ func main() {
 		}
 		fmt.Println("Disconnected from MongoDB")
 	}()
-	fmt.Println("http://localhost:8080")
+	fmt.Println("http://localhost:8085")
 	handleRequests()
 }

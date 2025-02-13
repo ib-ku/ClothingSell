@@ -47,3 +47,877 @@ time="2025-01-17T20:03:29+05:00" level=info msg="Fetched users successfully" act
 time="2025-01-17T20:03:29+05:00" level=info msg="Fetched products successfully" action=all_products count=7 status=success
 time="2025-01-17T20:03:50+05:00" level=info msg="Fetching all users" action=fetch_users status=start
 time="2025-01-17T20:03:50+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-21T15:11:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:11:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:11:57+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-21T15:11:57+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-21T15:12:03+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-21T15:12:03+05:00" level=info msg="Fetched products successfully" action=all_products count=7 status=success
+time="2025-01-21T15:12:04+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:12:04+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-21T15:22:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:22:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:22:00+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-21T15:22:00+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-21T15:22:09+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:22:09+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-21T15:22:09+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-21T15:22:09+05:00" level=info msg="Fetched products successfully" action=all_products count=7 status=success
+time="2025-01-21T15:22:29+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:22:29+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-21T15:22:30+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:22:30+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-21T15:22:44+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:22:44+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-21T15:22:44+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-21T15:22:44+05:00" level=info msg="Fetched products successfully" action=all_products count=7 status=success
+time="2025-01-21T15:22:46+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:22:46+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-21T15:22:47+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:22:47+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-21T15:23:02+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:02+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:12+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:12+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:13+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:13+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:13+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:13+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:14+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:14+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:19+05:00" level=info msg="Received user information and inserted into the database" action=handle_post_request email=1 status=success username=1
+time="2025-01-21T15:23:20+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:20+05:00" level=info msg="Fetched users successfully" action=all_users count=6 status=success
+time="2025-01-21T15:23:24+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:24+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:25+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:25+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:26+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:26+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:38+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:38+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:39+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:39+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:39+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:39+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:39+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:39+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:41+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:41+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:42+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:42+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:42+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:23:42+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:23:43+05:00" level=warning msg="Rate limit exceeded" action=rate_limit_exceeded status=fail
+time="2025-01-21T15:23:52+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-21T15:23:52+05:00" level=info msg="Successfully added new product" action=create_product id=1 name=1 status=success
+time="2025-01-21T15:23:55+05:00" level=info msg="Start: GetProductByID Handler" action=start_get_product status=initiated
+time="2025-01-21T15:23:55+05:00" level=info msg="Successfully fetched product" action=fetch_product id=1 status=success
+time="2025-01-21T15:23:57+05:00" level=info msg="Successfully fetched product" action=fetch_product name=1 status=success
+time="2025-01-21T15:24:05+05:00" level=info msg="Start: UpdateProductByID Handler" action=start_update_product status=initiated
+time="2025-01-21T15:24:05+05:00" level=info msg="Successfully updated product" action=update_product id=1 status=success
+time="2025-01-21T15:24:06+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-21T15:24:06+05:00" level=info msg="Fetched products successfully" action=all_products count=8 status=success
+time="2025-01-21T15:24:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-21T15:24:15+05:00" level=info msg="Fetched products successfully" action=all_products count=2 status=success
+time="2025-01-21T15:24:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-21T15:24:15+05:00" level=info msg="Fetched products successfully" action=all_products count=2 status=success
+time="2025-01-21T15:24:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-21T15:24:15+05:00" level=info msg="Fetched products successfully" action=all_products count=2 status=success
+time="2025-01-21T15:24:54+05:00" level=info msg="Start DeleteProductByID Handler" action=start_delete_product
+time="2025-01-21T15:24:54+05:00" level=info msg="Successfully deleted product" action=delete_product id=1 status=success
+time="2025-01-21T15:24:56+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-21T15:24:56+05:00" level=info msg="Fetched products successfully" action=all_products count=7 status=success
+time="2025-01-21T15:24:59+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=1 status=success
+time="2025-01-21T15:25:00+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:25:00+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-21T15:28:36+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:28:36+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:28:36+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-21T15:28:36+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-21T15:28:55+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:28:55+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-21T15:29:02+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-21T15:29:02+05:00" level=info msg="Fetched products successfully" action=all_products count=0 status=success
+time="2025-01-21T15:29:05+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-21T15:29:05+05:00" level=info msg="Fetched products successfully" action=all_products count=2 status=success
+time="2025-01-21T15:29:13+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-21T15:29:13+05:00" level=info msg="Successfully added new product" action=create_product id=1 name=1 status=success
+time="2025-01-21T15:29:19+05:00" level=info msg="Start: UpdateProductByID Handler" action=start_update_product status=initiated
+time="2025-01-21T15:29:19+05:00" level=info msg="Successfully updated product" action=update_product id=1 status=success
+time="2025-01-21T15:29:20+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-21T15:29:20+05:00" level=info msg="Fetched products successfully" action=all_products count=8 status=success
+time="2025-01-21T15:31:03+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:31:04+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:31:04+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-21T15:31:04+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-21T15:31:11+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-21T15:31:11+05:00" level=info msg="Fetched users successfully" action=all_users count=5 status=success
+time="2025-01-21T15:31:12+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-21T15:31:12+05:00" level=info msg="Fetched products successfully" action=all_products count=8 status=success
+time="2025-01-21T15:36:51+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:36:51+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:36:51+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-21T15:36:51+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-21T15:47:30+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:47:30+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:47:30+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-21T15:47:30+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-21T15:47:54+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-21T15:47:54+05:00" level=error msg="Invalid JSON format" action=invalid_json error="invalid character '-' in numeric literal" status=fail
+time="2025-01-21T15:51:39+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:51:39+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-21T15:51:39+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-21T15:51:39+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-21T15:51:55+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-21T15:51:55+05:00" level=error msg="Failed to convert ID to integer" action=invalid_id_conversion error="strconv.Atoi: parsing \"\": invalid syntax" status=fail
+time="2025-01-22T18:18:11+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-22T18:18:11+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-22T18:18:11+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-22T18:18:11+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-22T18:19:28+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-22T18:19:28+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-22T18:19:28+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-22T18:19:28+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-22T18:24:24+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-22T18:24:24+05:00" level=error msg="Failed to convert ID to integer" action=invalid_id_conversion error="strconv.Atoi: parsing \"\": invalid syntax" status=fail
+time="2025-01-22T18:29:24+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-22T18:29:24+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-22T18:29:24+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-22T18:29:24+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-22T18:29:38+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-22T18:29:38+05:00" level=info msg="Fetched products successfully" action=all_products count=8 status=success
+time="2025-01-22T18:36:20+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-22T18:36:20+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-22T18:36:20+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-22T18:36:20+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-22T18:36:44+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-22T18:36:44+05:00" level=info msg="Successfully added new product" action=create_product id=1 name=1 status=success
+time="2025-01-22T18:36:48+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-22T18:36:48+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-23T18:32:37+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T18:32:37+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T18:32:37+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T18:32:37+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T18:32:47+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-23T18:32:47+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-23T18:32:48+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-23T18:32:48+05:00" level=info msg="Fetched users successfully" action=all_users count=6 status=success
+time="2025-01-23T18:47:22+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T18:47:22+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T18:47:22+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T18:47:22+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:00:40+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:00:40+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:00:40+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:00:40+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:02:48+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:02:48+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:02:48+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:02:48+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:06:03+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:06:03+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:06:03+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:06:03+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:08:47+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:08:47+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:08:47+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:08:47+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:12:23+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-23T19:12:23+05:00" level=info msg="Fetched users successfully" action=all_users count=9 status=success
+time="2025-01-23T19:12:53+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-23T19:12:53+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-23T19:15:42+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:15:42+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:15:42+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:15:42+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:22:26+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:22:26+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:22:26+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:22:26+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:28:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:28:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:28:00+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:28:00+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:29:01+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:29:01+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:29:01+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:29:01+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:30:06+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:30:06+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:30:07+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:30:07+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:30:53+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:30:53+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:30:53+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:30:53+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:38:16+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:38:16+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:38:16+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:38:16+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:39:41+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:39:41+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:39:41+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:39:41+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:40:47+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:40:47+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:40:47+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:40:47+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:42:09+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:42:09+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:42:09+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:42:09+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:43:18+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:43:19+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:43:19+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:43:19+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-23T19:48:09+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:48:09+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-23T19:48:09+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-23T19:48:09+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T10:58:25+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T10:58:25+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T10:58:25+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T10:58:25+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T10:59:52+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T10:59:52+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T10:59:52+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T10:59:52+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T11:05:15+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T11:05:15+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T11:05:15+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T11:05:15+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T11:07:07+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T11:07:07+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T11:07:07+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T11:07:07+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T11:07:38+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-24T11:07:38+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-24T11:07:40+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T11:07:40+05:00" level=info msg="Fetched users successfully" action=all_users count=10 status=success
+time="2025-01-24T11:08:07+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-24T11:08:10+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T11:08:10+05:00" level=info msg="Fetched users successfully" action=all_users count=10 status=success
+time="2025-01-24T11:09:04+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-24T11:09:05+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T11:09:05+05:00" level=info msg="Fetched users successfully" action=all_users count=10 status=success
+time="2025-01-24T11:09:25+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-24T11:09:27+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T11:09:27+05:00" level=info msg="Fetched users successfully" action=all_users count=10 status=success
+time="2025-01-24T11:09:33+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-24T11:09:34+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T11:09:34+05:00" level=info msg="Fetched users successfully" action=all_users count=9 status=success
+time="2025-01-24T11:09:37+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-24T11:09:39+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T11:09:39+05:00" level=info msg="Fetched users successfully" action=all_users count=8 status=success
+time="2025-01-24T11:09:42+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-24T11:09:43+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T11:09:43+05:00" level=info msg="Fetched users successfully" action=all_users count=7 status=success
+time="2025-01-24T11:09:55+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=hog123von@gmail.com status=success
+time="2025-01-24T11:09:57+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T11:09:57+05:00" level=info msg="Fetched users successfully" action=all_users count=6 status=success
+time="2025-01-24T11:09:59+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-24T11:09:59+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-24T11:16:42+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T11:16:42+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T11:16:42+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T11:16:42+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T11:18:26+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T11:18:26+05:00" level=info msg="Fetched users successfully" action=all_users count=7 status=success
+time="2025-01-24T12:03:20+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T12:03:20+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T12:03:20+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T12:03:20+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T12:43:27+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T12:43:27+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T12:43:27+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T12:43:27+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T12:45:25+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T12:45:25+05:00" level=info msg="Fetched users successfully" action=all_users count=7 status=success
+time="2025-01-24T12:45:25+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T12:45:25+05:00" level=info msg="Fetched users successfully" action=all_users count=7 status=success
+time="2025-01-24T12:45:38+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-24T12:45:38+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-24T12:45:41+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T12:45:41+05:00" level=info msg="Fetched users successfully" action=all_users count=7 status=success
+time="2025-01-24T12:51:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T12:51:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T12:51:57+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T12:51:57+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T12:52:34+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T12:52:34+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T12:52:35+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T12:52:35+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T12:55:02+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T12:55:02+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T12:55:02+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T12:55:02+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T13:05:59+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T13:05:59+05:00" level=info msg="Fetched users successfully" action=all_users count=8 status=success
+time="2025-01-24T13:08:18+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T13:08:18+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T13:09:07+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T13:09:07+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T13:09:26+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T13:09:26+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T13:09:26+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T13:09:26+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T13:09:43+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T13:09:43+05:00" level=info msg="Fetched users successfully" action=all_users count=8 status=success
+time="2025-01-24T13:09:53+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-24T13:09:53+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-24T13:12:35+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T13:12:35+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T13:12:35+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T13:12:35+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-24T13:17:22+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-24T13:17:22+05:00" level=info msg="Fetched users successfully" action=all_users count=9 status=success
+time="2025-01-24T13:51:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T13:51:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-24T13:51:00+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-24T13:51:00+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-26T18:43:39+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-26T18:43:39+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-26T18:43:39+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-26T18:43:39+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-26T20:19:24+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-26T20:19:24+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-26T20:19:24+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-26T20:19:24+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-26T20:59:03+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-26T20:59:03+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-26T20:59:03+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-26T20:59:03+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-26T21:04:53+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-26T21:04:53+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-26T21:04:53+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-26T21:04:53+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-26T21:12:58+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-26T21:12:58+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-26T21:12:58+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-26T21:12:58+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-27T17:03:19+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-27T17:03:19+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-27T17:03:19+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-27T17:03:19+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T14:20:56+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T14:20:56+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T14:20:56+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T14:20:56+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T14:22:04+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T14:22:04+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-28T14:22:06+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:22:06+05:00" level=info msg="Fetched users successfully" action=all_users count=10 status=success
+time="2025-01-28T14:35:04+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T14:35:04+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T14:35:04+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T14:35:04+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T14:35:34+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:35:34+05:00" level=info msg="Fetched users successfully" action=all_users count=10 status=success
+time="2025-01-28T14:36:12+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:36:12+05:00" level=info msg="Fetched users successfully" action=all_users count=10 status=success
+time="2025-01-28T14:36:18+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:36:18+05:00" level=info msg="Fetched users successfully" action=all_users count=10 status=success
+time="2025-01-28T14:36:19+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:36:19+05:00" level=info msg="Fetched users successfully" action=all_users count=10 status=success
+time="2025-01-28T14:36:24+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:36:24+05:00" level=info msg="Fetched users successfully" action=all_users count=0 status=success
+time="2025-01-28T14:36:27+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:36:27+05:00" level=info msg="Fetched users successfully" action=all_users count=3 status=success
+time="2025-01-28T14:36:42+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-28T14:36:44+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:36:44+05:00" level=info msg="Fetched users successfully" action=all_users count=10 status=success
+time="2025-01-28T14:36:47+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-28T14:36:48+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:36:48+05:00" level=info msg="Fetched users successfully" action=all_users count=10 status=success
+time="2025-01-28T14:36:50+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-28T14:36:50+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:36:50+05:00" level=info msg="Fetched users successfully" action=all_users count=10 status=success
+time="2025-01-28T14:36:58+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-28T14:37:00+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:37:00+05:00" level=info msg="Fetched users successfully" action=all_users count=9 status=success
+time="2025-01-28T14:37:26+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-28T14:37:27+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:37:27+05:00" level=info msg="Fetched users successfully" action=all_users count=8 status=success
+time="2025-01-28T14:37:31+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-28T14:37:32+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:37:32+05:00" level=info msg="Fetched users successfully" action=all_users count=7 status=success
+time="2025-01-28T14:37:44+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=hog123von@gmail.com status=success
+time="2025-01-28T14:37:45+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:37:45+05:00" level=info msg="Fetched users successfully" action=all_users count=6 status=success
+time="2025-01-28T14:45:33+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T14:45:33+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T14:45:33+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T14:45:33+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T14:45:40+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T14:45:40+05:00" level=info msg="Fetched users successfully" action=all_users count=6 status=success
+time="2025-01-28T14:46:49+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T14:46:49+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-28T14:52:16+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T14:52:16+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T14:52:16+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T14:52:16+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T14:58:28+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T14:58:28+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T14:58:28+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T14:58:28+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T15:01:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:01:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:01:57+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T15:01:57+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T15:03:54+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:03:54+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:03:54+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T15:03:54+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T15:05:55+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:05:55+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:06:31+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:06:31+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:06:31+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T15:06:31+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T15:10:44+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:10:44+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:10:44+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T15:10:44+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T15:17:42+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:17:42+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:17:42+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T15:17:42+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T15:41:54+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:41:54+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T15:41:54+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T15:41:54+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T15:44:41+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T15:44:41+05:00" level=info msg="Fetched users successfully" action=all_users count=8 status=success
+time="2025-01-28T15:44:55+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek@gmail.com status=success
+time="2025-01-28T15:44:56+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T15:44:56+05:00" level=info msg="Fetched users successfully" action=all_users count=7 status=success
+time="2025-01-28T15:45:05+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek@gmail.com status=success
+time="2025-01-28T15:45:05+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T15:45:05+05:00" level=info msg="Fetched users successfully" action=all_users count=6 status=success
+time="2025-01-28T15:45:11+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T15:45:11+05:00" level=info msg="Fetched users successfully" action=all_users count=6 status=success
+time="2025-01-28T15:45:22+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T15:45:22+05:00" level=info msg="Fetched users successfully" action=all_users count=6 status=success
+time="2025-01-28T15:46:19+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T15:46:19+05:00" level=info msg="Fetched users successfully" action=all_users count=6 status=success
+time="2025-01-28T16:43:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T16:43:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T16:43:57+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T16:43:57+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T16:50:14+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T16:50:14+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T16:50:14+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T16:50:14+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T16:50:56+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T16:50:56+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-28T16:51:01+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T16:51:01+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-28T17:50:58+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T17:50:58+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-28T17:51:09+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T17:51:09+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-28T17:51:10+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T17:51:10+05:00" level=info msg="Fetched users successfully" action=all_users count=7 status=success
+time="2025-01-28T17:51:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T17:51:15+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-28T17:51:17+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T17:51:17+05:00" level=info msg="Fetched users successfully" action=all_users count=7 status=success
+time="2025-01-28T17:52:28+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T17:52:28+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T17:52:28+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T17:52:28+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T17:53:14+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T17:53:14+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T17:53:14+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T17:53:14+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T17:53:50+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T17:53:50+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-28T17:55:46+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T17:55:46+05:00" level=info msg="Fetched users successfully" action=all_users count=8 status=success
+time="2025-01-28T17:55:47+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T17:55:47+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-28T17:57:15+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T17:57:15+05:00" level=info msg="MongoDB client and collection initialized successfully" action=initialize_mongo_collection status=success
+time="2025-01-28T17:57:15+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T17:57:15+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T17:57:15+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T17:57:34+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T17:57:34+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-28T17:57:59+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T17:57:59+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-28T17:58:13+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-28T17:58:13+05:00" level=error msg="Error parsing multipart form: request Content-Type isn't multipart/form-data"
+time="2025-01-28T17:59:06+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-28T17:59:06+05:00" level=error msg="Error parsing multipart form: request Content-Type isn't multipart/form-data"
+time="2025-01-28T17:59:21+05:00" level=info msg="Received user information and inserted into the database" action=handle_post_request email=simple@gmail.com status=success username=simple
+time="2025-01-28T17:59:22+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T17:59:22+05:00" level=info msg="Fetched users successfully" action=all_users count=9 status=success
+time="2025-01-28T17:59:37+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=ermek050702@gmail.com status=success
+time="2025-01-28T17:59:38+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T17:59:38+05:00" level=info msg="Fetched users successfully" action=all_users count=8 status=success
+time="2025-01-28T17:59:44+05:00" level=info msg="User successfully deleted from the database" action=handle_delete_request email=simple@gmail.com status=success
+time="2025-01-28T17:59:45+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T17:59:45+05:00" level=info msg="Fetched users successfully" action=all_users count=7 status=success
+time="2025-01-28T17:59:56+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T17:59:56+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T17:59:56+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T17:59:56+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T18:00:11+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-01-28T18:00:11+05:00" level=info msg="Successfully added new product" action=create_product id=10 name=gh status=success
+time="2025-01-28T18:00:13+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T18:00:13+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-01-28T18:00:22+05:00" level=info msg="Start DeleteProductByID Handler" action=start_delete_product
+time="2025-01-28T18:00:22+05:00" level=info msg="Successfully deleted product" action=delete_product id=10 status=success
+time="2025-01-28T18:00:22+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T18:00:22+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-01-28T18:01:07+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T18:01:07+05:00" level=info msg="Fetched users successfully" action=all_users count=7 status=success
+time="2025-01-28T18:01:22+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T18:01:22+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T18:01:22+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T18:01:22+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T18:01:32+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T18:01:32+05:00" level=info msg="Fetched products successfully" action=all_products count=3 status=success
+time="2025-01-28T18:01:35+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T18:01:35+05:00" level=info msg="Fetched products successfully" action=all_products count=3 status=success
+time="2025-01-28T18:01:36+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T18:01:36+05:00" level=info msg="Fetched products successfully" action=all_products count=3 status=success
+time="2025-01-28T18:01:39+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-01-28T18:01:39+05:00" level=info msg="Fetched products successfully" action=all_products count=3 status=success
+time="2025-01-28T18:15:05+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T18:15:05+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T18:15:05+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T18:15:05+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-01-28T18:15:32+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T18:15:32+05:00" level=info msg="Fetched users successfully" action=all_users count=3 status=success
+time="2025-01-28T18:15:37+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T18:15:37+05:00" level=info msg="Fetched users successfully" action=all_users count=3 status=success
+time="2025-01-28T18:15:39+05:00" level=info msg="Fetching all users" action=fetch_users status=start
+time="2025-01-28T18:15:39+05:00" level=info msg="Fetched users successfully" action=all_users count=1 status=success
+time="2025-01-28T18:18:27+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T18:18:27+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-01-28T18:18:27+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-01-28T18:18:27+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T13:32:50+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T13:32:50+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T13:32:50+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T13:32:50+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T13:34:09+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T13:34:09+05:00" level=info msg="Fetched products successfully" action=all_products count=3 status=success
+time="2025-02-13T13:49:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T13:49:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T13:49:57+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T13:49:57+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T13:51:41+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T13:51:41+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T13:51:41+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T13:51:41+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T13:52:49+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T13:52:49+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T13:52:49+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T13:52:49+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T13:57:34+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T13:57:34+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T13:57:34+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T13:57:34+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T13:58:07+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T13:58:07+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T13:58:07+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T13:58:07+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T14:11:05+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:11:05+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:11:05+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T14:11:05+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T14:11:31+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:11:31+05:00" level=info msg="Fetched products successfully" action=all_products count=3 status=success
+time="2025-02-13T14:18:40+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:18:40+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:18:40+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T14:18:40+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T14:18:55+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:18:55+05:00" level=info msg="Fetched products successfully" action=all_products count=3 status=success
+time="2025-02-13T14:19:31+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:19:31+05:00" level=info msg="Fetched products successfully" action=all_products count=3 status=success
+time="2025-02-13T14:19:52+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:19:52+05:00" level=info msg="Fetched products successfully" action=all_products count=3 status=success
+time="2025-02-13T14:20:10+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:20:10+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:20:10+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T14:20:10+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T14:20:21+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:20:21+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T14:20:45+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:20:45+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:20:45+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T14:20:45+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T14:20:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:20:51+05:00" level=info msg="Fetched products successfully" action=all_products count=3 status=success
+time="2025-02-13T14:27:15+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:27:15+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:27:15+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T14:27:15+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T14:27:47+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:27:47+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T14:29:59+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:29:59+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:29:59+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T14:29:59+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T14:30:11+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:30:11+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T14:31:29+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:31:29+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:31:30+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T14:31:30+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T14:32:11+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:32:11+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T14:32:25+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:32:25+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T14:35:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:35:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:35:00+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T14:35:00+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T14:35:18+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:35:18+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T14:42:27+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:42:27+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:42:27+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T14:42:27+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T14:42:39+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:42:39+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T14:44:39+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:44:39+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T14:51:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:51:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:51:00+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T14:51:00+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T14:51:13+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:51:13+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T14:51:29+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:51:29+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T14:54:07+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:54:07+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:54:07+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T14:54:07+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T14:54:16+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:54:16+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T14:56:47+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:56:47+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T14:56:47+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T14:56:47+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T14:57:00+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T14:57:00+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T14:57:02+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImprQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NTQxOCwicm9sZSI6InVzZXIifQ.pmIHoH16wvhyPa4JpKLmtqVPYmJWZs5LSNtmgqm5G1A"
+time="2025-02-13T14:57:02+05:00" level=info msg="Token successfully validated for user: jk@gmail.com"
+time="2025-02-13T14:57:02+05:00" level=info msg="Failed to decode JSON: json: cannot unmarshal number into Go struct field CartItem.product_id of type string"
+time="2025-02-13T14:57:15+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImprQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NTQxOCwicm9sZSI6InVzZXIifQ.pmIHoH16wvhyPa4JpKLmtqVPYmJWZs5LSNtmgqm5G1A"
+time="2025-02-13T14:57:15+05:00" level=info msg="Token successfully validated for user: jk@gmail.com"
+time="2025-02-13T14:57:15+05:00" level=info msg="Failed to decode JSON: json: cannot unmarshal number into Go struct field CartItem.product_id of type string"
+time="2025-02-13T14:57:20+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImprQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NTQxOCwicm9sZSI6InVzZXIifQ.pmIHoH16wvhyPa4JpKLmtqVPYmJWZs5LSNtmgqm5G1A"
+time="2025-02-13T14:57:20+05:00" level=info msg="Token successfully validated for user: jk@gmail.com"
+time="2025-02-13T14:57:20+05:00" level=info msg="Failed to decode JSON: json: cannot unmarshal number into Go struct field CartItem.product_id of type string"
+time="2025-02-13T15:00:25+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:00:25+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:00:25+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:00:25+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:00:33+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T15:00:33+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T15:00:35+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImprQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NTYzMiwicm9sZSI6InVzZXIifQ.S0A4buvQTciai50BZfM3cefpSK76gW_yaqbEtVQUZNY"
+time="2025-02-13T15:00:35+05:00" level=info msg="Token successfully validated for user: jk@gmail.com"
+time="2025-02-13T15:00:35+05:00" level=info msg="Failed to decode JSON: json: cannot unmarshal number into Go struct field CartItem.product_id of type string"
+time="2025-02-13T15:00:50+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:00:50+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:00:50+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:00:50+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:01:04+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T15:01:04+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T15:01:05+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImprQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NTY2MCwicm9sZSI6InVzZXIifQ.xfaAxjwEbkO6ul-36LKLCgjSEG0hq2xRHQlUJjhIs70"
+time="2025-02-13T15:01:05+05:00" level=info msg="Token successfully validated for user: jk@gmail.com"
+time="2025-02-13T15:01:05+05:00" level=info msg="Failed to decode JSON: json: cannot unmarshal number into Go struct field CartItem.product_id of type string"
+time="2025-02-13T15:01:45+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImprQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NTY2MCwicm9sZSI6InVzZXIifQ.xfaAxjwEbkO6ul-36LKLCgjSEG0hq2xRHQlUJjhIs70"
+time="2025-02-13T15:01:45+05:00" level=info msg="Token successfully validated for user: jk@gmail.com"
+time="2025-02-13T15:01:45+05:00" level=info msg="Failed to decode JSON: json: cannot unmarshal number into Go struct field CartItem.product_id of type string"
+time="2025-02-13T15:03:30+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImprQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NTY2MCwicm9sZSI6InVzZXIifQ.xfaAxjwEbkO6ul-36LKLCgjSEG0hq2xRHQlUJjhIs70"
+time="2025-02-13T15:03:30+05:00" level=info msg="Token successfully validated for user: jk@gmail.com"
+time="2025-02-13T15:03:30+05:00" level=info msg="Failed to decode JSON: json: cannot unmarshal number into Go struct field CartItem.product_id of type string"
+time="2025-02-13T15:08:38+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:08:38+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:08:38+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:08:38+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:08:46+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T15:08:46+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T15:08:48+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImprQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NjEyNSwicm9sZSI6InVzZXIifQ.Yt-kXiHaYezvN7nDRPleeXPUp7j96Y4XtHCyHNKGn-4"
+time="2025-02-13T15:08:48+05:00" level=info msg="Token successfully validated for user: jk@gmail.com"
+time="2025-02-13T15:08:48+05:00" level=info msg="Raw Request Body: {\"product_id\":1}"
+time="2025-02-13T15:08:48+05:00" level=info msg="Received Cart Item: { 1 0}"
+time="2025-02-13T15:08:48+05:00" level=info msg="Item added to cart successfully for user: jk@gmail.com"
+time="2025-02-13T15:09:56+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:09:56+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:09:56+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:09:56+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:11:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:11:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:11:57+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:11:57+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:12:23+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T15:12:23+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T15:12:24+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImprQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NjMzNSwicm9sZSI6InVzZXIifQ.hKvrQLTiWDd3YYdJSwaHWa8UMIv7is68VzjyDqCRzYc"
+time="2025-02-13T15:12:24+05:00" level=info msg="Token successfully validated for user: jk@gmail.com"
+time="2025-02-13T15:12:24+05:00" level=info msg="Raw Request Body: {\"product_id\":1}"
+time="2025-02-13T15:12:24+05:00" level=info msg="Received Cart Item: { 1 0}"
+time="2025-02-13T15:12:24+05:00" level=info msg="Item added to cart successfully for user: jk@gmail.com"
+time="2025-02-13T15:12:26+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImprQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NjMzNSwicm9sZSI6InVzZXIifQ.hKvrQLTiWDd3YYdJSwaHWa8UMIv7is68VzjyDqCRzYc"
+time="2025-02-13T15:12:26+05:00" level=info msg="Token successfully validated for user: jk@gmail.com"
+time="2025-02-13T15:12:26+05:00" level=info msg="Raw Request Body: {\"product_id\":6}"
+time="2025-02-13T15:12:26+05:00" level=info msg="Received Cart Item: { 6 0}"
+time="2025-02-13T15:12:26+05:00" level=info msg="Item added to cart successfully for user: jk@gmail.com"
+time="2025-02-13T15:15:01+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:15:01+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:15:02+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:15:02+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:15:06+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T15:15:06+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T15:15:06+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImprQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NjMzNSwicm9sZSI6InVzZXIifQ.hKvrQLTiWDd3YYdJSwaHWa8UMIv7is68VzjyDqCRzYc"
+time="2025-02-13T15:15:06+05:00" level=info msg="Token successfully validated for user: jk@gmail.com"
+time="2025-02-13T15:15:06+05:00" level=info msg="Raw Request Body: {\"product_id\":1}"
+time="2025-02-13T15:15:06+05:00" level=info msg="Received Cart Item: { 1 0}"
+time="2025-02-13T15:15:06+05:00" level=info msg="Item added to cart successfully for user: jk@gmail.com"
+time="2025-02-13T15:17:03+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:17:03+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:17:03+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:17:03+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:23:15+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:23:15+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:23:15+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:23:15+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:27:49+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:27:49+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:27:49+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:27:49+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:27:59+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:27:59+05:00" level=info msg="Failed to retrieve claims from context"
+time="2025-02-13T15:30:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:30:00+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:30:00+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:30:00+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:30:10+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:30:10+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T15:30:10+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1 1} {jk@gmail.com 1 1} {jk@gmail.com 6 1} {jk@gmail.com 1 1}]"
+time="2025-02-13T15:30:31+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:30:31+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:30:31+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:30:31+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:30:46+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:30:46+05:00" level=info msg="User: ermek050702@gmail.com"
+time="2025-02-13T15:30:46+05:00" level=info msg="Cart items retrieved: []"
+time="2025-02-13T15:30:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T15:30:51+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T15:30:53+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVybWVrMDUwNzAyQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NzQ0NCwicm9sZSI6InVzZXIifQ.Cytz50KZ5GHyTIQnt9eIn1YwlT24LJBOiKZu9mi90j4"
+time="2025-02-13T15:30:53+05:00" level=info msg="Token successfully validated for user: ermek050702@gmail.com"
+time="2025-02-13T15:30:53+05:00" level=info msg="Raw Request Body: {\"product_id\":2}"
+time="2025-02-13T15:30:53+05:00" level=info msg="Received Cart Item: { 2 0}"
+time="2025-02-13T15:30:53+05:00" level=info msg="Item added to cart successfully for user: ermek050702@gmail.com"
+time="2025-02-13T15:30:57+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVybWVrMDUwNzAyQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NzQ0NCwicm9sZSI6InVzZXIifQ.Cytz50KZ5GHyTIQnt9eIn1YwlT24LJBOiKZu9mi90j4"
+time="2025-02-13T15:30:57+05:00" level=info msg="Token successfully validated for user: ermek050702@gmail.com"
+time="2025-02-13T15:30:57+05:00" level=info msg="Raw Request Body: {\"product_id\":7}"
+time="2025-02-13T15:30:57+05:00" level=info msg="Received Cart Item: { 7 0}"
+time="2025-02-13T15:30:57+05:00" level=info msg="Item added to cart successfully for user: ermek050702@gmail.com"
+time="2025-02-13T15:31:00+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:31:00+05:00" level=info msg="User: ermek050702@gmail.com"
+time="2025-02-13T15:31:00+05:00" level=info msg="Cart items retrieved: [{ermek050702@gmail.com 2 1} {ermek050702@gmail.com 7 1}]"
+time="2025-02-13T15:33:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:33:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:33:57+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:33:57+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:34:07+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:34:07+05:00" level=info msg="User: ermek050702@gmail.com"
+time="2025-02-13T15:34:07+05:00" level=info msg="Cart items retrieved: [{ermek050702@gmail.com 2  1} {ermek050702@gmail.com 7  1}]"
+time="2025-02-13T15:34:10+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T15:34:10+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T15:34:12+05:00" level=info msg="Extracted Token (cleaned): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVybWVrMDUwNzAyQGdtYWlsLmNvbSIsImV4cCI6MTc0MDA0NzY0NSwicm9sZSI6InVzZXIifQ.QdTTBL048J6hNp4E7f2GZp-Kgq-zjDEl3QoTwAqveno"
+time="2025-02-13T15:34:12+05:00" level=info msg="Token successfully validated for user: ermek050702@gmail.com"
+time="2025-02-13T15:34:12+05:00" level=info msg="Raw Request Body: {\"product_id\":6}"
+time="2025-02-13T15:34:12+05:00" level=info msg="Received Cart Item: { 6  0}"
+time="2025-02-13T15:34:12+05:00" level=info msg="Item added to cart successfully for user: ermek050702@gmail.com"
+time="2025-02-13T15:34:15+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:34:15+05:00" level=info msg="User: ermek050702@gmail.com"
+time="2025-02-13T15:34:15+05:00" level=info msg="Cart items retrieved: [{ermek050702@gmail.com 2  1} {ermek050702@gmail.com 7  1} {ermek050702@gmail.com 6  1}]"
+time="2025-02-13T15:38:42+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:38:42+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:38:42+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:38:42+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:38:50+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T15:38:50+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T15:38:52+05:00" level=info msg="Item added to cart: { 4 T-Shirt 1}"
+time="2025-02-13T15:38:55+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:38:55+05:00" level=info msg="User: ermek050702@gmail.com"
+time="2025-02-13T15:38:55+05:00" level=info msg="Cart items retrieved: [{ermek050702@gmail.com 2  1} {ermek050702@gmail.com 7  1} {ermek050702@gmail.com 6  1}]"
+time="2025-02-13T15:40:24+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:40:24+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:40:24+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:40:24+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:40:34+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:40:34+05:00" level=info msg="User: ermek050702@gmail.com"
+time="2025-02-13T15:40:34+05:00" level=info msg="Cart items retrieved: [{ermek050702@gmail.com 2  1} {ermek050702@gmail.com 7  1} {ermek050702@gmail.com 6  1}]"
+time="2025-02-13T15:42:28+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:42:28+05:00" level=info msg="User: ermek050702@gmail.com"
+time="2025-02-13T15:42:28+05:00" level=info msg="Cart items retrieved: [{ermek050702@gmail.com 2  1} {ermek050702@gmail.com 7  1} {ermek050702@gmail.com 6  1}]"
+time="2025-02-13T15:42:36+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:42:36+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:42:36+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:42:36+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:43:40+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:43:40+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:43:40+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:43:40+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:43:48+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:43:48+05:00" level=info msg="User: ermek050702@gmail.com"
+time="2025-02-13T15:43:48+05:00" level=info msg="Cart items retrieved: [{ermek050702@gmail.com 2  1} {ermek050702@gmail.com 7  1} {ermek050702@gmail.com 6  1}]"
+time="2025-02-13T15:45:36+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:45:36+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T15:45:36+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1} {jk@gmail.com 1  1} {jk@gmail.com 6  1} {jk@gmail.com 1  1}]"
+time="2025-02-13T15:45:44+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:45:44+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T15:45:44+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1} {jk@gmail.com 1  1} {jk@gmail.com 6  1} {jk@gmail.com 1  1}]"
+time="2025-02-13T15:46:11+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:46:11+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T15:46:11+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1} {jk@gmail.com 1  1} {jk@gmail.com 6  1} {jk@gmail.com 1  1}]"
+time="2025-02-13T15:46:33+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T15:46:33+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T15:46:34+05:00" level=info msg="Item added to cart: { 2 Trainers 1}"
+time="2025-02-13T15:46:36+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:46:36+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T15:46:36+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1} {jk@gmail.com 1  1} {jk@gmail.com 6  1} {jk@gmail.com 1  1}]"
+time="2025-02-13T15:46:39+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T15:46:39+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T15:46:40+05:00" level=info msg="Item added to cart: { 1 2 1}"
+time="2025-02-13T15:46:46+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:46:46+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T15:46:46+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1} {jk@gmail.com 1  1} {jk@gmail.com 6  1} {jk@gmail.com 1  1}]"
+time="2025-02-13T15:47:03+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:47:03+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:47:03+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:47:03+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:47:13+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:47:13+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T15:47:13+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1} {jk@gmail.com 1  1} {jk@gmail.com 6  1} {jk@gmail.com 1  1}]"
+time="2025-02-13T15:47:17+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T15:47:17+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T15:47:18+05:00" level=info msg="Item added to cart: { 3 Jeans 1}"
+time="2025-02-13T15:47:20+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:47:20+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T15:47:20+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1} {jk@gmail.com 1  1} {jk@gmail.com 6  1} {jk@gmail.com 1  1}]"
+time="2025-02-13T15:49:04+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:49:04+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-13T15:49:04+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-13T15:49:04+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-13T15:49:11+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:49:11+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T15:49:11+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1} {jk@gmail.com 1  1} {jk@gmail.com 6  1} {jk@gmail.com 1  1}]"
+time="2025-02-13T15:49:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-13T15:49:15+05:00" level=info msg="Fetched products successfully" action=all_products count=9 status=success
+time="2025-02-13T15:49:16+05:00" level=info msg="User ID (Email) from token: jk@gmail.com"
+time="2025-02-13T15:49:16+05:00" level=info msg="Item added to cart: {jk@gmail.com 8 Shirt 1}"
+time="2025-02-13T15:49:19+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-13T15:49:19+05:00" level=info msg="User: jk@gmail.com"
+time="2025-02-13T15:49:19+05:00" level=info msg="Cart items retrieved: [{jk@gmail.com 1  1} {jk@gmail.com 1  1} {jk@gmail.com 6  1} {jk@gmail.com 1  1} {jk@gmail.com 8 Shirt 1}]"
