@@ -1147,3 +1147,601 @@ time="2025-02-13T18:40:33+05:00" level=info msg="Transaction successfully insert
 time="2025-02-13T18:42:10+05:00" level=info msg="Processing transaction for: {txn_u7gml8ene 100 hog123von@gmail.com 3}"
 time="2025-02-13T18:42:10+05:00" level=info msg="Payment response: {txn_u7gml8ene Declined}"
 time="2025-02-13T18:42:10+05:00" level=info msg="Transaction declined. No receipt will be sent."
+time="2025-02-19T14:00:38+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T14:00:38+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T14:00:39+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T14:00:39+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T14:04:08+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T14:04:08+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T15:48:27+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T15:48:27+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T15:48:27+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T15:48:27+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T15:48:35+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T15:48:35+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T15:48:36+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T15:48:36+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T15:48:37+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T15:48:37+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T15:48:37+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T15:48:37+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T15:48:37+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T15:48:37+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T15:48:38+05:00" level=info msg="User ID (Email) from token: abylaimoldahmet@gmail.com"
+time="2025-02-19T15:48:38+05:00" level=info msg="Item added to cart: {abylaimoldahmet@gmail.com 52 mittens 1 9.99}"
+time="2025-02-19T15:48:42+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-19T15:48:42+05:00" level=info msg="User: abylaimoldahmet@gmail.com"
+time="2025-02-19T15:48:42+05:00" level=info msg="Cart items retrieved: [{abylaimoldahmet@gmail.com 52 mittens 1 9.99}]"
+time="2025-02-19T15:48:50+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T15:48:50+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T15:48:53+05:00" level=info msg="User ID (Email) from token: abylaimoldahmet@gmail.com"
+time="2025-02-19T15:48:53+05:00" level=info msg="Item added to cart: {abylaimoldahmet@gmail.com 2 t-shirt 1 9.99}"
+time="2025-02-19T15:48:55+05:00" level=info msg="User ID (Email) from token: abylaimoldahmet@gmail.com"
+time="2025-02-19T15:48:55+05:00" level=info msg="Item added to cart: {abylaimoldahmet@gmail.com 21 beanie 1 10.5}"
+time="2025-02-19T15:48:58+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-19T15:48:58+05:00" level=info msg="User: abylaimoldahmet@gmail.com"
+time="2025-02-19T15:48:58+05:00" level=info msg="Cart items retrieved: [{abylaimoldahmet@gmail.com 52 mittens 1 9.99} {abylaimoldahmet@gmail.com 2 t-shirt 1 9.99} {abylaimoldahmet@gmail.com 21 beanie 1 10.5}]"
+time="2025-02-19T15:49:03+05:00" level=info msg="Processing transaction for: {txn_bgjfovg03 100 abylaimoldahmet@gmail.com 52}"
+time="2025-02-19T15:49:03+05:00" level=info msg="Failed to contact payment microservice: Post \"http://localhost:8081/processPayment\": dial tcp [::1]:8081: connectex: No connection could be made because the target machine actively refused it."
+time="2025-02-19T15:49:06+05:00" level=info msg="Processing transaction for: {txn_ev1wzf9x7 100 abylaimoldahmet@gmail.com 2}"
+time="2025-02-19T15:49:06+05:00" level=info msg="Failed to contact payment microservice: Post \"http://localhost:8081/processPayment\": dial tcp [::1]:8081: connectex: No connection could be made because the target machine actively refused it."
+time="2025-02-19T15:49:08+05:00" level=info msg="Processing transaction for: {txn_c4vo336mk 100 abylaimoldahmet@gmail.com 21}"
+time="2025-02-19T15:49:08+05:00" level=info msg="Failed to contact payment microservice: Post \"http://localhost:8081/processPayment\": dial tcp [::1]:8081: connectex: No connection could be made because the target machine actively refused it."
+time="2025-02-19T15:49:12+05:00" level=info msg="Processing transaction for: {txn_ej6aepix1 100 abylaimoldahmet@gmail.com 21}"
+time="2025-02-19T15:49:12+05:00" level=info msg="Failed to contact payment microservice: Post \"http://localhost:8081/processPayment\": dial tcp [::1]:8081: connectex: No connection could be made because the target machine actively refused it."
+time="2025-02-19T15:49:17+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-19T15:49:17+05:00" level=info msg="User: abylaimoldahmet@gmail.com"
+time="2025-02-19T15:49:17+05:00" level=info msg="Cart items retrieved: [{abylaimoldahmet@gmail.com 52 mittens 1 9.99} {abylaimoldahmet@gmail.com 2 t-shirt 1 9.99} {abylaimoldahmet@gmail.com 21 beanie 1 10.5}]"
+time="2025-02-19T15:49:20+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T15:49:20+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T15:54:25+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T15:54:25+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T15:54:25+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T15:54:25+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T15:54:32+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T15:54:32+05:00" level=info msg="Fetched products successfully" action=all_products count=70 status=success
+time="2025-02-19T15:56:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T15:56:15+05:00" level=info msg="Fetched products successfully" action=all_products count=70 status=success
+time="2025-02-19T15:56:24+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T15:56:24+05:00" level=info msg="Fetched products successfully" action=all_products count=70 status=success
+time="2025-02-19T16:02:48+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T16:02:48+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T16:02:48+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T16:02:48+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T16:02:57+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T16:02:57+05:00" level=info msg="Fetched products successfully" action=all_products count=70 status=success
+time="2025-02-19T17:07:37+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T17:07:37+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T17:07:37+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T17:07:37+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T17:07:44+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:07:44+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:10:13+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:10:13+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:10:14+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:10:14+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:10:14+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:10:14+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:10:14+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:10:14+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:10:14+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:10:14+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:12:24+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:12:24+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:12:25+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:12:25+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:12:25+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:12:25+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:14:20+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:14:20+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:14:21+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:14:21+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:14:21+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:14:21+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:15:45+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:15:45+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:15:46+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:15:46+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:15:46+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:15:46+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:15:47+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:15:47+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:15:47+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:15:47+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:15:47+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:15:47+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:15:47+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:15:47+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:15:48+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:15:48+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:15:48+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:15:48+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:21+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:21+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:21+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:21+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:21+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:21+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:21+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:21+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:21+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:21+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:22+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:22+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:22+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:22+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:22+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:22+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:22+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:22+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:22+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:22+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:23+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:23+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:23+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:23+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:23+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:23+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:23+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:23+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:23+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:23+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:23+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:23+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:24+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:24+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:24+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:24+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:19:24+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:19:24+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:15+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:15+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:16+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:16+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:16+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:16+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:16+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:16+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:16+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:16+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:16+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:16+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:16+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:16+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:17+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:17+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:17+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:17+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:17+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:17+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:17+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:17+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:17+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:17+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:18+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:18+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:18+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:18+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:18+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:18+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:18+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:18+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:18+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:18+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:22:18+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:22:18+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:29+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:29+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:29+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:29+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:29+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:29+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:30+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:30+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:30+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:30+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:30+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:30+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:30+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:30+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:30+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:30+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:30+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:30+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:31+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:31+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:31+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:31+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:31+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:31+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:31+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:31+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:31+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:31+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:31+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:31+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:31+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:31+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:32+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:32+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:32+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:32+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:32+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:32+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:32+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:32+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:32+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:32+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:32+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:32+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:33+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:33+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:33+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:33+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:33+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:33+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:33+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:33+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:33+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:33+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:33+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:33+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:34+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:34+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:24:34+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:24:34+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:25:11+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:25:11+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:25:11+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:25:11+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:02+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:02+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:02+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:03+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:03+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:03+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:03+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:03+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:03+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:03+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:03+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:03+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:03+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:03+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:04+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:04+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:04+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:04+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:04+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:04+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:04+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:04+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:04+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:04+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:04+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:04+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:05+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:05+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:05+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:05+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:05+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:05+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:05+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:05+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:05+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:05+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:06+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:06+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:06+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:06+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:06+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:06+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:06+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:06+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:06+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:06+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:06+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:06+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:07+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:07+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:07+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:07+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:07+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:07+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:07+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:07+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:07+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:07+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:07+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:07+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:08+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:08+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:08+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:08+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:08+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:08+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:08+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:08+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:08+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:08+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:09+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:09+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:09+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:09+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:09+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:09+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:09+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:09+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:09+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:09+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:09+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:09+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:10+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:10+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:10+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:10+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:10+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:10+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:10+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:10+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:10+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:10+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:11+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:11+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:11+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:11+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:11+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:11+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:11+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:11+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:11+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:11+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:12+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:12+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:12+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:12+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:12+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:12+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:12+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:12+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:12+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:12+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:12+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:12+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:13+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:13+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:13+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:13+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:13+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:13+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:13+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:13+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:13+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:13+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:14+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:14+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:14+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:14+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:14+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:14+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:14+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:14+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:14+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:14+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:15+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:15+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:15+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:15+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:15+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:15+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:15+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:16+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:16+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:16+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:16+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:36+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:36+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:26:42+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:26:42+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:28:22+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:28:22+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:28:36+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:28:36+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:28:57+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:28:57+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:46+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:46+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:47+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:47+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:47+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:47+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:48+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:48+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:48+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:48+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:48+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:48+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:48+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:48+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:48+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:48+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:49+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:49+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:49+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:49+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:49+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:49+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:49+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:49+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:49+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:49+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:49+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:49+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:50+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:50+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:50+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:50+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:50+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:50+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:50+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:50+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:50+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:50+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:51+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:51+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:51+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:51+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:51+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:51+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:52+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:52+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:52+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:52+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:52+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:52+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:52+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:52+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:52+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:52+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:53+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:53+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:53+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:53+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:53+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:53+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:53+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:29:53+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:29:55+05:00" level=info msg="User ID (Email) from token: abylaimoldahmet@gmail.com"
+time="2025-02-19T17:29:55+05:00" level=info msg="Item added to cart: {abylaimoldahmet@gmail.com 9 belt 1 15.2}"
+time="2025-02-19T17:29:59+05:00" level=info msg="GetCartItems handler reached"
+time="2025-02-19T17:29:59+05:00" level=info msg="User: abylaimoldahmet@gmail.com"
+time="2025-02-19T17:29:59+05:00" level=info msg="Cart items retrieved: [{abylaimoldahmet@gmail.com 52 mittens 1 9.99} {abylaimoldahmet@gmail.com 2 t-shirt 1 9.99} {abylaimoldahmet@gmail.com 21 beanie 1 10.5} {abylaimoldahmet@gmail.com 9 belt 1 15.2}]"
+time="2025-02-19T17:30:12+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:12+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:49+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:49+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:50+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:50+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:50+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:50+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:51+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:51+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:51+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:51+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:51+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:51+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:51+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:52+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:52+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:52+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:52+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:52+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:52+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:52+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:52+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:52+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:30:52+05:00" level=info msg="Fetched products successfully" action=all_products count=10 status=success
+time="2025-02-19T17:30:58+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T17:30:58+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T17:30:58+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T17:30:58+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T17:31:04+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T17:31:04+05:00" level=info msg="Fetched products successfully" action=all_products count=66 status=success
+time="2025-02-19T18:29:17+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-02-19T18:29:17+05:00" level=warning msg="Validation failed: 'id' must be a positive number"
+time="2025-02-19T18:29:32+05:00" level=info msg="Start HandleProductPostRequest Handler" action=start_create_product
+time="2025-02-19T18:29:32+05:00" level=warning msg="Validation failed: 'image' must be a valid URL"
+time="2025-02-19T18:56:42+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T18:56:42+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T18:56:42+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T18:56:42+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T18:58:19+05:00" level=info msg="Start AllProducts Handler" action=start_all_products
+time="2025-02-19T18:58:19+05:00" level=info msg="Fetched products successfully" action=all_products count=67 status=success
+time="2025-02-19T19:01:06+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:01:06+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:01:06+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:01:06+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:06:06+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:06:06+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:06:06+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:06:06+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:08:28+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:08:28+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:08:28+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:08:28+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:09:55+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:09:56+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:09:56+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:09:56+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:15:21+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:15:21+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:15:21+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:15:21+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:18:15+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:18:15+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:18:15+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:18:15+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:20:34+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:20:34+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:20:34+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:20:34+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:21:53+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:21:54+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:21:54+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:21:54+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:27:11+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:27:11+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:27:11+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:27:11+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:30:40+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:30:40+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:30:40+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:30:40+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:38:56+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:38:56+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:38:56+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:38:56+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:43:27+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:43:27+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:43:27+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:43:27+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:44:11+05:00" level=info msg="Загружаем файл в Cloudinary: Снимок экрана 2024-06-05 011140.png"
+time="2025-02-19T19:44:12+05:00" level=info msg="Cloudinary URL: "
+time="2025-02-19T19:47:41+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:47:41+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:47:41+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:47:41+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:48:01+05:00" level=info msg="Пришел POST-запрос на создание продукта"
+time="2025-02-19T19:48:01+05:00" level=info msg="Загружаем файл в Cloudinary: AG.png"
+time="2025-02-19T19:48:02+05:00" level=info msg="Cloudinary URL: "
+time="2025-02-19T19:49:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:49:57+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T19:49:57+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T19:49:57+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T19:50:24+05:00" level=info msg="🚀 Получен POST-запрос на /postProduct"
+time="2025-02-19T19:50:24+05:00" level=info msg="Пришел POST-запрос на создание продукта"
+time="2025-02-19T19:50:24+05:00" level=info msg="Загружаем файл в Cloudinary: AG.png"
+time="2025-02-19T19:50:26+05:00" level=info msg="Cloudinary URL: "
+time="2025-02-19T20:00:09+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T20:00:09+05:00" level=info msg="Logger initialized and writing to logging.txt" action=initialize_logger status=success
+time="2025-02-19T20:00:09+05:00" level=info msg="Product collection initialized" action=initialize status=success
+time="2025-02-19T20:00:09+05:00" level=info msg="User collection initialized" action=initialize status=success
+time="2025-02-19T20:00:35+05:00" level=info msg="Пришел POST-запрос на создание продукта"

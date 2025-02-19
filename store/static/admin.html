@@ -16,7 +16,7 @@
             margin-right: 10px;
             text-decoration: none;
             color: #007BFF;
-        }
+        }   
         header a:hover {
             text-decoration: underline;
         }
@@ -162,6 +162,8 @@
                 <button onclick="createProduct()">Create Product</button>
                 <button onclick="updateProduct()">Update Product</button>
                 <button onclick="deleteProduct()">Delete Product</button>
+                <input type="file" id="productImage" accept="image/*">
+                <button onclick="createProduct()">Add Product</button>
             </div>
             <h3>Search Product</h3>
             <label>ID:</label>
@@ -193,31 +195,47 @@
             const productID = prompt("Enter product ID:");
             const productName = prompt("Enter product name:");
             const productPrice = prompt("Enter product price:");
-                
-            if (!productID || !productName || !productPrice) {
-                alert("Product ID, name, and price are required.");
+            const productImageInput = document.getElementById("productImage");
+            
+            if (!productImageInput || !productImageInput.files.length) {
+                alert("Выберите файл изображения!");
                 return;
             }
-                     fetch('/postProduct', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    id: parseInt(productID), 
-                    name: productName, 
-                    price: parseFloat(productPrice)
-                })
+            
+            const productImage = productImageInput.files[0]; 
+
+            if (!productID || !productName || !productPrice || !productImage) {
+                alert("Product ID, name, price, and image are required.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("id", productID); 
+            formData.append("name", productName);
+            formData.append("price", productPrice);
+            formData.append("image", productImage);
+
+            console.log("Отправляемые данные:");
+            formData.forEach((value, key) => {
+                console.log(`${key}:`, value);
+            });
+
+            
+            fetch("/postProduct", {
+                method: "POST",
+                body: formData
             })
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    alert(data.message || "Product created successfully.");
-                })
-                .catch(error => {
-                    console.error("Error creating product:", error);
-                    alert("Failed to create product. Check console for details.");
-                });
+            .then(response => response.text()) // Изменил на text() для отладки
+            .then(data => {
+                console.log("Ответ сервера:", data);
+                alert("Product created successfully.");
+            })
+            .catch(error => {
+                console.error("Ошибка при создании продукта:", error);
+                alert("Failed to create product. Check console for details.");
+            });
         }
+
 
 
 

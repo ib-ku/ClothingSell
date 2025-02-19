@@ -7,9 +7,12 @@ import (
 	"net/http"
 	"os"
 	"store/model"
+	"store/services"
 	"store/view"
 	"strconv"
 
+	"github.com/cloudinary/cloudinary-go/v2"
+	"github.com/cloudinary/cloudinary-go/v2/api/uploader"
 	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -19,6 +22,30 @@ import (
 var client *mongo.Client
 var productCollection *mongo.Collection
 var logger = logrus.New()
+
+var cloudService = services.NewCloudinaryService("dm8u6glkj", "783155925285613", "siW7iJr7yOxB8QIAVpVSaxYAmw4")
+
+func UploadProductImageHandler(w http.ResponseWriter, r *http.Request) {
+	r.ParseMultipartForm(10 << 20) // Ограничение на 10MB
+	file, _, err := r.FormFile("image")
+	if err != nil {
+		http.Error(w, "Ошибка загрузки файла", http.StatusBadRequest)
+		return
+	}
+	defer file.Close()
+
+	// Сохраняем временный файл
+	tempFilePath := "temp-image.jpg"
+	// ...код для сохранения file в tempFilePath...
+
+	imageURL, err := cloudService.UploadImage(tempFilePath)
+	if err != nil {
+		http.Error(w, "Ошибка загрузки в Cloudinary", http.StatusInternalServerError)
+		return
+	}
+
+	json.NewEncoder(w).Encode(map[string]string{"image_url": imageURL})
+}
 
 func init() {
 	logFile, err := os.OpenFile("logging.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
@@ -43,7 +70,7 @@ func init() {
 func InitializeProduct(mongoClient *mongo.Client) {
 	client = mongoClient
 	productCollection = client.Database("storeDB").Collection("products")
-	log.WithFields(logrus.Fields{
+	logger.WithFields(logrus.Fields{
 		"action": "initialize",
 		"status": "success",
 	}).Info("Product collection initialized")
@@ -60,17 +87,7 @@ func validateProductFields(reqData map[string]interface{}, requiredFields []stri
 		}
 	}
 
-	if id, ok := reqData["id"].(float64); !ok {
-		if idInt, ok := reqData["id"].(int); ok && idInt > 0 {
-			id = float64(idInt)
-		} else {
-			logger.Warn("Validation failed: 'id' must be a positive number")
-			return map[string]string{
-				"status":  "fail",
-				"message": "'id' must be a positive number",
-			}, false
-		}
-	} else if id <= 0 {
+	if id, ok := reqData["id"].(float64); !ok || id <= 0 {
 		logger.Warn("Validation failed: 'id' must be a positive number")
 		return map[string]string{
 			"status":  "fail",
@@ -94,12 +111,20 @@ func validateProductFields(reqData map[string]interface{}, requiredFields []stri
 		}, false
 	}
 
+	if image, ok := reqData["image"].(string); !ok || image == "" {
+		logger.Warn("Validation failed: 'image' must be a valid URL")
+		return map[string]string{
+			"status":  "fail",
+			"message": "'image' must be a valid URL",
+		}, false
+	}
+
 	return nil, true
 }
 
 func getPaginationParams(r *http.Request) (int, int) {
 	page := r.URL.Query().Get("page")
-	limit := 10
+	limit := 100
 	skip := 0
 
 	if p, err := strconv.Atoi(page); err == nil && p > 1 {
@@ -109,6 +134,7 @@ func getPaginationParams(r *http.Request) (int, int) {
 	}
 	return skip, limit
 }
+
 func getSortingParams(r *http.Request) (string, int) {
 	sortField := r.URL.Query().Get("sort")
 	var sortOrder int
@@ -126,21 +152,17 @@ func getSortingParams(r *http.Request) (string, int) {
 }
 
 func AllProducts(w http.ResponseWriter, r *http.Request) {
-	log.WithFields(logrus.Fields{
+	logger.WithFields(logrus.Fields{
 		"action": "start_all_products",
 	}).Info("Start AllProducts Handler")
 
-	// Filtering
 	filterName := r.URL.Query().Get("name")
 	filter := bson.M{}
 	if filterName != "" {
 		filter["name"] = bson.M{"$regex": filterName, "$options": "i"}
 	}
 
-	// Sorting
 	sortField, sortOrder := getSortingParams(r)
-
-	// Pagination
 	skip, limit := getPaginationParams(r)
 
 	cursor, err := productCollection.Find(
@@ -151,7 +173,7 @@ func AllProducts(w http.ResponseWriter, r *http.Request) {
 			SetSkip(int64(skip)),
 	)
 	if err != nil {
-		log.WithFields(logrus.Fields{
+		logger.WithFields(logrus.Fields{
 			"action": "all_products",
 			"status": "fail",
 			"error":  err.Error(),
@@ -163,7 +185,7 @@ func AllProducts(w http.ResponseWriter, r *http.Request) {
 
 	var products model.Products
 	if err = cursor.All(context.TODO(), &products); err != nil {
-		log.WithFields(logrus.Fields{
+		logger.WithFields(logrus.Fields{
 			"action": "all_products",
 			"status": "fail",
 			"error":  err.Error(),
@@ -173,7 +195,7 @@ func AllProducts(w http.ResponseWriter, r *http.Request) {
 	}
 
 	view.RenderProducts(w, products)
-	log.WithFields(logrus.Fields{
+	logger.WithFields(logrus.Fields{
 		"action": "all_products",
 		"status": "success",
 		"count":  len(products),
@@ -181,69 +203,75 @@ func AllProducts(w http.ResponseWriter, r *http.Request) {
 }
 
 func HandleProductPostRequest(w http.ResponseWriter, r *http.Request) {
-	log.WithFields(logrus.Fields{
-		"action": "start_create_product",
-	}).Info("Start HandleProductPostRequest Handler")
+	// Подключаем Cloudinary (замени API_KEY, API_SECRET и CLOUD_NAME)
+	cld, err := cloudinary.NewFromURL("cloudinary://API_KEY:API_SECRET@CLOUD_NAME")
+	if err != nil {
+		log.Fatalf("Ошибка Cloudinary: %v", err)
+		http.Error(w, "Cloudinary initialization failed", http.StatusInternalServerError)
+		return
+	}
 
+	// Проверяем метод запроса
 	if r.Method != http.MethodPost {
-		log.WithFields(logrus.Fields{
-			"action": "method_not_allowed",
-			"status": "fail",
-			"method": r.Method,
-		}).Warn("Only POST methods are allowed!")
 		http.Error(w, "Only POST methods are allowed!", http.StatusMethodNotAllowed)
 		return
 	}
 
-	var reqData map[string]interface{}
-	err := json.NewDecoder(r.Body).Decode(&reqData)
+	// Разбираем форму (10MB лимит)
+	err = r.ParseMultipartForm(10 << 20)
 	if err != nil {
-		log.WithFields(logrus.Fields{
-			"action": "invalid_json",
-			"status": "fail",
-			"error":  err.Error(),
-		}).Error("Invalid JSON format")
-		http.Error(w, "Invalid JSON format: "+err.Error(), http.StatusBadRequest)
+		http.Error(w, "Error parsing form: "+err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	if resp, valid := validateProductFields(reqData, []string{"id", "name", "price"}); !valid {
-		w.Header().Set("Content-Type", "application/json")
-		w.WriteHeader(http.StatusBadRequest)
-		json.NewEncoder(w).Encode(resp)
+	// Получаем данные из формы
+	id, _ := strconv.Atoi(r.FormValue("id"))
+	name := r.FormValue("name")
+	price, _ := strconv.ParseFloat(r.FormValue("price"), 64)
+
+	log.Println("Пришел POST-запрос на создание продукта")
+
+
+	// Получаем файл изображения
+	file, fileHeader, err := r.FormFile("image")
+	if err != nil {
+		http.Error(w, "Error retrieving image: "+err.Error(), http.StatusBadRequest)
+		return
+	}
+	defer file.Close()
+
+	// Загружаем изображение в Cloudinary
+	uploadResult, err := cld.Upload.Upload(context.Background(), file, uploader.UploadParams{
+		Folder:   "products",
+		PublicID: fileHeader.Filename, // Используем имя файла в Cloudinary
+	})
+
+	if err != nil {
+		http.Error(w, "Failed to upload image: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	newProduct := model.Product{
-		ID:    int(reqData["id"].(float64)),
-		Name:  reqData["name"].(string),
-		Price: reqData["price"].(float64),
+	// Создаём новый продукт
+	newProduct := map[string]interface{}{
+		"id":    id,
+		"name":  name,
+		"price": price,
+		"image": uploadResult.SecureURL, // URL загруженного изображения
 	}
 
+	// Записываем в MongoDB
 	_, err = productCollection.InsertOne(context.TODO(), newProduct)
 	if err != nil {
-		log.WithFields(logrus.Fields{
-			"action": "create_product",
-			"status": "fail",
-			"error":  err.Error(),
-		}).Error("Failed to create product")
-		jsonResponse(w, http.StatusInternalServerError, map[string]string{"status": "fail", "message": "Failed to create product"})
+		http.Error(w, "Failed to create product", http.StatusInternalServerError)
 		return
 	}
 
-	response := map[string]string{
-		"status":  "success",
-		"message": "Product data successfully received",
-	}
+	// Отправляем успешный ответ
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(response)
-	log.WithFields(logrus.Fields{
-		"action": "create_product",
-		"status": "success",
-		"id":     newProduct.ID,
-		"name":   newProduct.Name,
-	}).Info("Successfully added new product")
+	json.NewEncoder(w).Encode(map[string]string{
+		"status":  "success",
+		"message": "Product added successfully",
+	})
 }
 
 func DeleteProductByID(w http.ResponseWriter, r *http.Request) {
