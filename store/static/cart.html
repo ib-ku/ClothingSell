@@ -16,91 +16,124 @@
             padding: 20px;
             background-color: #333;
             color: white;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
             margin-bottom: 20px;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 250px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
         .cart-container {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
-            padding: 0 20px;
         }
         .cart-item {
             border: 1px solid #ddd;
             padding: 10px;
-            width: 200px;
+            width: 220px;
             background-color: white;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
         }
-        .cart-item:hover {
-            transform: translateY(-5px);
+        .cart-item button {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+            margin-top: 5px;
         }
-        .cart-item .product-name {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 10px 0;
+        .buy-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .buy-btn:hover {
+            background-color: #218838;
+        }
+        .remove-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+        .transaction-form-container {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -20%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             text-align: center;
         }
-        .cart-item .product-quantity {
-            font-size: 16px;
-            text-align: center;
+        .transaction-form-container input {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .transaction-form-container button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
         }
     </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search..." onkeyup="loadCartItems()">
+    </div>
+    <div id="cart-container" class="cart-container"></div>
+
+    <div id="transaction-form-container" class="transaction-form-container">
+        <h3>Complete Purchase</h3>
+        <form onsubmit="completePurchase(event)">
+            <label for="email">Enter your Email:</label>
+            <input type="email" id="email" required>
+            <input type="hidden" id="product-id">
+            <button type="submit" class="buy-btn">Confirm Payment</button>
+            <button type="button" class="remove-btn" onclick="document.getElementById('transaction-form-container').style.display='none'">Cancel</button>
+        </form>
+    </div>
+
     <script>
-        function showTransactionForm(productId) {
-        const formContainer = document.getElementById('transaction-form-container');
-        formContainer.style.display = 'block';
-        document.getElementById('product-id').value = productId;
-    }
+        async function loadCartItems() {
+            try {
+                const searchQuery = document.getElementById('searchInput').value;
+                const response = await fetch(`/getCartItems?search=${encodeURIComponent(searchQuery)}`, {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include'
+                });
 
-    async function processTransaction(event) {
-        event.preventDefault();
-        
-        const email = document.getElementById('email').value;
-        const transactionId = `txn_${Math.random().toString(36).substr(2, 9)}`;
-        const productId = document.getElementById('product-id').value;
+                if (!response.ok) throw new Error("Failed to fetch cart items");
 
-        const requestData = {
-    transaction_id: transactionId,
-    amount: 100.00,
-    user_id: email,
-    product_id: parseInt(productId)
-};
+                const cartItems = await response.json();
+                const cartContainer = document.getElementById('cart-container');
+                cartContainer.innerHTML = '';
 
+                if (cartItems.length === 0) {
+                    cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+                    return;
+                }
 
-        try {
-            const response = await fetch('/processTransaction', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(requestData)
-            });
-
-            const result = await response.text();
-            alert(result);
-            document.getElementById('transaction-form-container').style.display = 'none';
-        } catch (error) {
-            console.error('Transaction failed:', error);
-            alert('Transaction failed');
-        }
-    }
-    async function loadCartItems() {
-    try {
-        const response = await fetch('/getCartItems', {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include'
-        });
-
-        if (response.ok) {
-            const cartItems = await response.json();
-            console.log('Cart Items:', cartItems);
-            const cartContainer = document.getElementById('cart-container');
-            cartContainer.innerHTML = '';
-
-            if (cartItems.length === 0) {
-                cartContainer.innerHTML = '<p>Your cart is empty.</p>';
-            } else {
                 cartItems.forEach(item => {
                     const cartItem = document.createElement('div');
                     cartItem.classList.add('cart-item');
@@ -115,41 +148,89 @@
                     productQuantity.textContent = `Quantity: ${item.quantity}`;
                     cartItem.appendChild(productQuantity);
 
-                    // Add the Buy button
                     const buyButton = document.createElement('button');
+                    buyButton.classList.add('buy-btn');
                     buyButton.textContent = 'Buy';
-                    buyButton.onclick = () => showTransactionForm(item.product_id); // Show transaction form
+                    buyButton.onclick = () => showTransactionForm(item.product_id);
                     cartItem.appendChild(buyButton);
+
+                    const removeButton = document.createElement('button');
+                    removeButton.classList.add('remove-btn');
+                    removeButton.textContent = 'Remove';
+                    removeButton.onclick = () => removeFromCart(item.product_id);
+                    cartItem.appendChild(removeButton);
 
                     cartContainer.appendChild(cartItem);
                 });
+            } catch (error) {
+                console.error('Error loading cart items:', error);
+                alert('Failed to load cart items');
             }
+        }
+
+        function showTransactionForm(productId) {
+            document.getElementById('transaction-form-container').style.display = 'block';
+            document.getElementById('product-id').value = productId;
+        }
+
+        async function completePurchase(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const productId = document.getElementById('product-id').value;
+            const transactionId = `txn_${Math.random().toString(36).substr(2, 9)}`;
+
+            const requestData = {
+                transaction_id: transactionId,
+                amount: 100.00,
+                user_id: email,
+                product_id: parseInt(productId)
+            };
+
+            try {
+                const response = await fetch('/completePurchase', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestData)
+                });
+
+                const result = await response.json();
+                alert(result.message);
+                document.getElementById('transaction-form-container').style.display = 'none';
+                loadCartItems();
+            } catch (error) {
+                console.error('Transaction failed:', error);
+                alert('Transaction failed');
+            }
+        }
+
+        async function removeFromCart(productId) {
+    console.log("Trying to remove product:", productId); // Проверка в консоли
+
+    try {
+        const response = await fetch('/removeFromCart', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ product_id: productId })
+        });
+
+        const result = await response.json();
+        
+        if (response.ok) {
+            alert(result.message);
+            loadCartItems(); // Обновить корзину
         } else {
-            alert('Failed to load cart items');
+            console.error("Remove failed:", result);
+            alert(result.message || 'Failed to remove item');
         }
     } catch (error) {
-        console.error('Error loading cart items:', error);
-        alert('Failed to load cart items');
+        console.error('Error removing item:', error);
+        alert('Failed to remove item');
     }
 }
 
 
         window.onload = loadCartItems;
     </script>
-</head>
-<body>
-    <h1>Your Cart</h1>
-    <div id="cart-container" class="cart-container"></div>
-    <div id="transaction-form-container" style="display:none; position:fixed; top:20%; left:50%; transform:translate(-50%, -20%); background:white; padding:20px; box-shadow:0 0 10px rgba(0,0,0,0.5);">
-        <h3>Complete Transaction</h3>
-        <form onsubmit="processTransaction(event)">
-            <label for="email">Enter your Email:</label>
-            <input type="email" id="email" required>
-            <input type="hidden" id="product-id">
-            <button type="submit">Confirm Payment</button>
-            <button type="button" onclick="document.getElementById('transaction-form-container').style.display='none'">Cancel</button>
-        </form>
-    </div>
-    
 </body>
 </html>

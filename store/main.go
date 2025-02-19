@@ -21,7 +21,7 @@ import (
 var client *mongo.Client
 
 func connectMongoDB() *mongo.Client {
-	mongoURI := "mongodb://storeUser:securePassword@localhost:27017/storeDB"
+	mongoURI := "mongodb://127.0.0.1:27017/storeDB"
 	clientOptions := options.Client().ApplyURI(mongoURI)
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
@@ -160,6 +160,8 @@ func handleRequests() {
 	http.HandleFunc("/sendEmail", controller.SendPromotionalEmail)
 
 	http.HandleFunc("/chat", chat.HandleConnections)
+	http.Handle("/removeFromCart", middleware.AuthMiddleware(http.HandlerFunc(controller.RemoveFromCart))) // Новый маршрут
+
 	go chat.HandleMessages()
 
 	server := &http.Server{Addr: ":8085", Handler: nil}

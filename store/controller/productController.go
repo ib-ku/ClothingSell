@@ -99,7 +99,7 @@ func validateProductFields(reqData map[string]interface{}, requiredFields []stri
 
 func getPaginationParams(r *http.Request) (int, int) {
 	page := r.URL.Query().Get("page")
-	limit := 10
+	limit := 0
 	skip := 0
 
 	if p, err := strconv.Atoi(page); err == nil && p > 1 {
@@ -130,17 +130,53 @@ func AllProducts(w http.ResponseWriter, r *http.Request) {
 		"action": "start_all_products",
 	}).Info("Start AllProducts Handler")
 
-	// Filtering
+	// Фильтрация по названию
 	filterName := r.URL.Query().Get("name")
 	filter := bson.M{}
 	if filterName != "" {
 		filter["name"] = bson.M{"$regex": filterName, "$options": "i"}
 	}
 
-	// Sorting
-	sortField, sortOrder := getSortingParams(r)
+	// Фильтрация по цене
+	minPriceStr := r.URL.Query().Get("minPrice")
+	maxPriceStr := r.URL.Query().Get("maxPrice")
 
-	// Pagination
+	// Преобразуем строки в float64
+	var minPrice, maxPrice float64
+	var err error
+
+	if minPriceStr != "" {
+		minPrice, err = strconv.ParseFloat(minPriceStr, 64)
+		if err != nil {
+			log.WithFields(logrus.Fields{"error": err.Error()}).Warn("Invalid minPrice format")
+			http.Error(w, "Invalid minPrice format", http.StatusBadRequest)
+			return
+		}
+	}
+
+	if maxPriceStr != "" {
+		maxPrice, err = strconv.ParseFloat(maxPriceStr, 64)
+		if err != nil {
+			log.WithFields(logrus.Fields{"error": err.Error()}).Warn("Invalid maxPrice format")
+			http.Error(w, "Invalid maxPrice format", http.StatusBadRequest)
+			return
+		}
+	}
+
+	// Добавляем фильтр по цене, если переданы параметры
+	priceFilter := bson.M{}
+	if minPrice > 0 {
+		priceFilter["$gte"] = minPrice
+	}
+	if maxPrice > 0 {
+		priceFilter["$lte"] = maxPrice
+	}
+	if len(priceFilter) > 0 {
+		filter["price"] = priceFilter
+	}
+
+	// Сортировка и пагинация
+	sortField, sortOrder := getSortingParams(r)
 	skip, limit := getPaginationParams(r)
 
 	cursor, err := productCollection.Find(

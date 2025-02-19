@@ -34,6 +34,36 @@
         .navigation a:hover {
             background-color: #555;
         }
+        .search-filter-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .search-bar input {
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .filter-bar {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        .filter-bar input, .filter-bar select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
         .product-container {
             display: flex;
             flex-wrap: wrap;
@@ -75,20 +105,47 @@
 <body>
     <h1>Product Catalog</h1>
     
-    <!-- Navigation Buttons -->
     <div class="navigation">
         <a href="index.html">Home</a>
         <a href="login.html">Log In</a>
         <a href="registration.html">Sign Up</a>
     </div>
+    
+    <div class="search-filter-container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search...">
+        </div>
+        <div class="filter-bar">
+            <input type="number" id="minPrice" placeholder="Min $">
+            <span>-</span>
+            <input type="number" id="maxPrice" placeholder="Max $">
+            <select id="sortOrder">
+                <option value="price">Price: Low to High</option>
+                <option value="-price">Price: High to Low</option>
+                <option value="name">Name: A-Z</option>
+                <option value="-name">Name: Z-A</option>
+            </select>
+            <button onclick="fetchProducts()">Apply</button>
+        </div>
+    </div>
 
     <div class="product-container" id="product-container"></div>
 
     <script>
-        fetch('/allProducts')
-            .then(response => response.json())
-            .then(data => {
-                if (Array.isArray(data)) {
+        function fetchProducts() {
+            let searchQuery = document.getElementById("searchInput").value.trim();
+            let minPrice = document.getElementById("minPrice").value;
+            let maxPrice = document.getElementById("maxPrice").value;
+            let sortOrder = document.getElementById("sortOrder").value;
+            
+            let url = `/allProducts?name=${encodeURIComponent(searchQuery)}`;
+            if (minPrice) url += `&minPrice=${minPrice}`;
+            if (maxPrice) url += `&maxPrice=${maxPrice}`;
+            if (sortOrder) url += `&sort=${sortOrder}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
                     const productContainer = document.getElementById('product-container');
                     productContainer.innerHTML = '';
                     data.forEach(product => {
@@ -114,14 +171,14 @@
                         addToCartButton.style.marginTop = "10px";
                         addToCartButton.addEventListener('click', async () => {
                             const response = await fetch('/addToCart', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            credentials: 'include', // Ensure the cookie is sent
-                            body: JSON.stringify({ product_id: product.id })
-                        });
-
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                credentials: 'include',
+                                body: JSON.stringify({ product_id: product.id })
+                            });
+    
                             if (response.ok) {
                                 alert('Item added to cart');
                             } else {
@@ -132,13 +189,13 @@
     
                         productContainer.appendChild(productCard);
                     });
-                } else {
-                    console.error('Expected an array of products.');
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching products:', error);
-            });
+                })
+                .catch(error => {
+                    console.error('Error fetching products:', error);
+                });
+        }
+        
+        document.addEventListener("DOMContentLoaded", fetchProducts);
     </script>
     
 </body>
