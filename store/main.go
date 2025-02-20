@@ -14,6 +14,7 @@ import (
 	"store/controller"
 	"store/middleware"
 
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -27,18 +28,29 @@ func connectMongoDB() *mongo.Client {
 	if err != nil {
 		log.Fatalf("Error connecting to MongoDB: %v", err)
 	}
+
 	err = client.Ping(context.TODO(), nil)
 	if err != nil {
 		log.Fatalf("Failed to ping MongoDB: %v", err)
 	}
+
 	fmt.Println("Successfully connected to MongoDB!")
-	testCollection := client.Database("storeDB").Collection("test")
-	_, err = testCollection.InsertOne(context.TODO(), map[string]string{"test": "connection"})
-	if err != nil {
-		log.Fatalf("Test insertion failed: %v", err)
-	} else {
-		fmt.Println("Test document inserted successfully")
+
+	db := client.Database("storeDB")
+	collection := db.Collection("products")
+
+	idIndex := mongo.IndexModel{
+		Keys:    bson.D{{Key: "id", Value: 1}},
+		Options: options.Index().SetUnique(true),
 	}
+
+	_, err = collection.Indexes().CreateOne(context.TODO(), idIndex)
+	if err != nil {
+		log.Fatalf("Failed to create index: %v", err)
+	}
+
+	fmt.Println("Index on 'id' created successfully")
+
 	return client
 }
 
@@ -103,67 +115,66 @@ func AdminPanelHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleRequests() {
-	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir("./static"))))
+	// 1. Запрещаем прямой доступ к admin.html (выдаём 404)
+	http.HandleFunc("/admin.html", func(w http.ResponseWriter, r *http.Request) {
+		http.NotFound(w, r)
+	})
+
+	// 2. Ограничиваем раздачу статических файлов, запрещая admin.html
+	fs := http.FileServer(http.Dir("./static"))
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path == "/admin.html" {
+			http.NotFound(w, r)
+			return
+		}
+		fs.ServeHTTP(w, r)
+	})
+
+	// 3. Доступ в админку только через /admin и только для админов
+	http.Handle("/admin", middleware.IsAdmin(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "static/admin.html")
+	})))
+
 	controller.InitializeProduct(client)
 	controller.InitializeUser(client)
 	controller.InitializeCart(client)
 	controller.InitializeTransaction(client)
 	chat.InitializeChatCollection(client)
+	controller.InitializeAdmin(client)
 
 	http.HandleFunc("/home", message)
-
-	http.Handle("/admin", middleware.IsAdmin(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "static/admin.html")
-	})))
 	http.HandleFunc("/processTransaction", controller.ProcessTransaction)
-
+	http.HandleFunc("/getChatHistory", chat.GetUserChatHistory)
+	http.Handle("/getPurchaseHistory", middleware.AuthMiddleware(http.HandlerFunc(controller.GetPurchaseHistory)))
 	http.Handle("/addToCart", middleware.AuthMiddleware(http.HandlerFunc(controller.AddToCart)))
 	http.Handle("/getCartItems", middleware.AuthMiddleware(http.HandlerFunc(controller.GetCartItems)))
-
 	http.HandleFunc("/allProducts", controller.AllProducts)
 	http.HandleFunc("/allUsers", controller.AllUsers)
-
 	http.HandleFunc("/postUser", controller.HandleUserPostRequest)
 	http.HandleFunc("/postProduct", controller.HandleProductPostRequest)
-
 	http.HandleFunc("/deleteProductById", controller.DeleteProductByID)
 	http.HandleFunc("/deleteUserByEmail", controller.DeleteUserByEmail)
-
 	http.HandleFunc("/updateProductById", controller.UpdateProductByID)
 	http.HandleFunc("/updateUserByEmail", controller.UpdateUserByEmail)
-
 	http.HandleFunc("/getUserEmail", controller.GetUserByEmail)
 	http.HandleFunc("/getUsername", controller.GetUserByUsername)
-
 	http.HandleFunc("/getProductByID", controller.GetProductByID)
 	http.HandleFunc("/getProductByName", controller.GetProductByName)
 	http.HandleFunc("/getUser", controller.GetUser)
-
 	http.HandleFunc("/logout", controller.Logout)
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-
-	// Регистрация и подтверждение email
 	http.HandleFunc("/signup", controller.SignUp)
 	http.HandleFunc("/confirm", controller.Confirm)
-
-	// Вход, получение данных о пользователе
 	http.HandleFunc("/login", controller.Login)
-
-	// Маршруты для безопасности (JWT + роли)
 	http.Handle("/protected", middleware.AuthMiddleware(http.HandlerFunc(ProtectedHandler)))
 	http.Handle("/assign-role", middleware.IsAdmin(http.HandlerFunc(controller.AssignRole)))
-
-	// Двухфакторная аутентификация (OTP)
 	http.HandleFunc("/send-otp", controller.SendOTP)
 	http.HandleFunc("/verify-otp", controller.VerifyOTP)
-
 	http.HandleFunc("/sendEmail", controller.SendPromotionalEmail)
-
 	http.HandleFunc("/chat", chat.HandleConnections)
+	http.HandleFunc("/admin/metrics", controller.GetAdminMetrics)
 	go chat.HandleMessages()
 
 	server := &http.Server{Addr: ":8085", Handler: nil}
-
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, os.Interrupt)
 

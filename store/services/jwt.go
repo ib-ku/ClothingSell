@@ -14,11 +14,10 @@ var jwtSecret = []byte("your_secret_key")
 
 // Claims structure
 type Claims struct {
-    Email string `json:"email"`
-    Role  string `json:"role"`
-    jwt.StandardClaims
+	Email string `json:"email"`
+	Role  string `json:"role"`
+	jwt.StandardClaims
 }
-
 
 // GenerateJWT generates a new token for a user
 func GenerateJWT(email string, role string) (string, error) {
@@ -60,18 +59,25 @@ func GetUserRoleFromToken(tokenString string) (string, error) {
 		return jwtSecret, nil
 	})
 	if err != nil || !token.Valid {
+		log.Println("Invalid token:", err)
 		return "", errors.New("invalid token")
 	}
 
 	claims, ok := token.Claims.(jwt.MapClaims)
 	if !ok {
+		log.Println("Failed to parse claims")
 		return "", errors.New("failed to parse claims")
 	}
 
+	log.Println("Token claims:", claims) // <-- Отладочный вывод
+
 	role, ok := claims["role"].(string)
 	if !ok {
+		log.Println("Role not found in token")
 		return "", errors.New("role not found in token")
 	}
+
+	log.Println("Extracted role:", role) // <-- Логируем роль
 
 	return role, nil
 }

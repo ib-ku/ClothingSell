@@ -16,7 +16,7 @@
             margin-right: 10px;
             text-decoration: none;
             color: #007BFF;
-        }
+        }   
         header a:hover {
             text-decoration: underline;
         }
@@ -162,6 +162,8 @@
                 <button onclick="createProduct()">Create Product</button>
                 <button onclick="updateProduct()">Update Product</button>
                 <button onclick="deleteProduct()">Delete Product</button>
+                <input type="file" id="productImage" accept="image/*">
+                <button onclick="createProduct()">Add Product</button>
             </div>
             <h3>Search Product</h3>
             <label>ID:</label>
@@ -183,6 +185,33 @@
             </table>
         </div>
     </div>
+
+    <table border="1" style="width: 100%; text-align: center; border-collapse: collapse;">
+        <tr>
+            <th>Total Sales</th>
+            <th>Total Revenue</th>
+            <th>Best-Selling Product</th>
+            <th>Least-Selling Product</th>
+            <th>Most Viewed Product</th>
+            <th>Least Viewed Product</th>
+            <th>Average Sold Price</th>
+            <th>Repeat Customers</th>
+            <th>Average Order Value</th>
+            <th>Unique Buyers</th>
+        </tr>
+        <tr>
+            <td id="total-sales">Loading...</td>
+            <td id="total-revenue">Loading...</td>
+            <td id="best-selling-product">Loading...</td>
+            <td id="least-selling-product">Loading...</td>
+            <td id="most-viewed-product">Loading...</td>
+            <td id="least-viewed-product">Loading...</td>
+            <td id="average-price">Loading...</td>
+            <td id="repeat-customers">Loading...</td>
+            <td id="average-order-value">Loading...</td>
+            <td id="unique-buyers">Loading...</td>
+        </tr>
+    </table>
     <script>
         document.getElementById("fetchProductByIdButton").addEventListener("click", fetchProductByID);
         document.getElementById("fetchProductByNameButton").addEventListener("click", fetchProductByName);
@@ -193,31 +222,47 @@
             const productID = prompt("Enter product ID:");
             const productName = prompt("Enter product name:");
             const productPrice = prompt("Enter product price:");
-                
-            if (!productID || !productName || !productPrice) {
-                alert("Product ID, name, and price are required.");
+            const productImageInput = document.getElementById("productImage");
+            
+            if (!productImageInput || !productImageInput.files.length) {
+                alert("Выберите файл изображения!");
                 return;
             }
-                     fetch('/postProduct', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    id: parseInt(productID), 
-                    name: productName, 
-                    price: parseFloat(productPrice)
-                })
+            
+            const productImage = productImageInput.files[0]; 
+
+            if (!productID || !productName || !productPrice || !productImage) {
+                alert("Product ID, name, price, and image are required.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("id", productID); 
+            formData.append("name", productName);
+            formData.append("price", productPrice);
+            formData.append("image", productImage);
+
+            console.log("Отправляемые данные:");
+            formData.forEach((value, key) => {
+                console.log(`${key}:`, value);
+            });
+
+            
+            fetch("/postProduct", {
+                method: "POST",
+                body: formData
             })
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    alert(data.message || "Product created successfully.");
-                })
-                .catch(error => {
-                    console.error("Error creating product:", error);
-                    alert("Failed to create product. Check console for details.");
-                });
+            .then(response => response.text()) // Изменил на text() для отладки
+            .then(data => {
+                console.log("Ответ сервера:", data);
+                alert("Product created successfully.");
+            })
+            .catch(error => {
+                console.error("Ошибка при создании продукта:", error);
+                alert("Failed to create product. Check console for details.");
+            });
         }
+
 
 
 
@@ -617,6 +662,27 @@
             const result = await response.text();
             alert(result);
         }
+        async function fetchAdminMetrics() {
+    try {
+        const response = await fetch('/admin/metrics');
+        const data = await response.json();
+
+        document.getElementById("total-sales").textContent = data.totalSales;
+        document.getElementById("total-revenue").textContent = `$${data.totalRevenue}`;
+        document.getElementById("best-selling-product").textContent = data.bestSellingProduct;
+        document.getElementById("least-selling-product").textContent = data.leastSellingProduct;
+        document.getElementById("most-viewed-product").textContent = data.mostViewedProduct;
+        document.getElementById("least-viewed-product").textContent = data.leastViewedProduct;
+        document.getElementById("average-price").textContent = `$${data.averagePrice}`;
+        document.getElementById("repeat-customers").textContent = data.repeatCustomers;
+        document.getElementById("average-order-value").textContent = `$${data.averageOrderValue}`;
+        document.getElementById("unique-buyers").textContent = data.uniqueBuyers;
+    } catch (error) {
+        console.error("Error fetching admin metrics:", error);
+    }
+}
+
+window.onload = fetchAdminMetrics;
     </script>
 </body>
 </html>

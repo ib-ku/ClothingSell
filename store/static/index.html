@@ -155,15 +155,17 @@
                     </ul>
                     <ul class="navbar-nav" id="adminPanelNav" style="display: none;">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/admin.html">Admin Panel</a>
+                            <a class="nav-link text-white" href="/admin">Admin Panel</a>
                         </li>
                     </ul>
                     
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="cart.html">
+                            <a class="nav-link text-white" href="cart.html" onclick="return checkCartLogin(event);">
                                 <i class="fas fa-shopping-cart"></i> Cart
                             </a>
+                            <p id="cartWarning" style="color: red; display: none;">Log in first</p>
+                            
                         </li>
                     </ul>
                     <ul class="navbar-nav" id="userNav" style="display: none;">
@@ -252,35 +254,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const usernameDisplay = document.getElementById("usernameDisplay");
     const logoutBtn = document.getElementById("logoutBtn");
     const adminPanelNav = document.getElementById("adminPanelNav");
-
-    function checkAuth() {
-        fetch("/getUser", { method: "GET", credentials: "include" })
-            .then(response => {
-                if (!response.ok) throw new Error("Unauthorized");
-                return response.json();
-            })
-            .then(data => {
-                if (data.email) {
-                    usernameDisplay.textContent = data.email;
-                    userNav.style.display = "flex";
-
-                    if (data.role === "admin") {
-                        adminPanelNav.style.display = "flex";
-                    } else {
-                        adminPanelNav.style.display = "none";
-                    }
-                } else {
-                    userNav.style.display = "none";
-                    adminPanelNav.style.display = "none";
-                }
-            })
-            .catch(() => {
-                document.cookie = "Authorization=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 UTC;";
-                userNav.style.display = "none";
-                adminPanelNav.style.display = "none";
-            });
-    }
-
     logoutBtn.addEventListener("click", function () {
         fetch("/logout", { method: "POST", credentials: "include" })
             .then(() => {
@@ -291,8 +264,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.location.href = "/index.html";
             });
     });
-
-    checkAuth(); // Run authentication check on page load
 });
 function checkLogin(event, url) {
                 event.preventDefault();
@@ -430,8 +401,87 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('userId') || "currentUser";  // Default to current user if no userId is provided
 
+    fetch(`/getChatHistory?userId=${userId}`)
+        .then(response => response.json())
+        .then(data => {
+            const chatLog = document.getElementById('chatLog');
+            chatLog.innerHTML = '';  // Clear previous messages
+            data.forEach(message => {
+                appendMessage(message.sender, message.message);
+            });
+        })
+        .catch(error => console.error('Error fetching chat history:', error));
+});
 
+function appendMessage(sender, messageText) {
+    const newMessage = document.createElement('div');
+    if (sender === 'Bot') {
+        newMessage.classList.add('bot');
+        newMessage.innerHTML = `Bot: ${convertLinksToAnchor(messageText)}`;
+    } else {
+        newMessage.classList.add('user');
+        newMessage.textContent = `${sender}: ${messageText}`;
+    }
+    const chatLog = document.getElementById('chatLog');
+    chatLog.appendChild(newMessage);
+    chatLog.scrollTop = chatLog.scrollHeight;
+}
+document.addEventListener("DOMContentLoaded", function () {
+    checkAuth();
+});
+
+function checkAuth() {
+    fetch("/getUser", { method: "GET", credentials: "include" })
+        .then(response => {
+            if (!response.ok) throw new Error("Unauthorized");
+            return response.json();
+        })
+        .then(data => {
+            if (data.email) {
+                document.getElementById("usernameDisplay").textContent = data.email;
+                document.getElementById("userNav").style.display = "flex";
+
+                if (data.role === "admin") {
+                    document.getElementById("adminPanelNav").style.display = "flex";
+                } else {
+                    document.getElementById("adminPanelNav").style.display = "none";
+                }
+            } else {
+                document.getElementById("userNav").style.display = "none";
+                document.getElementById("adminPanelNav").style.display = "none";
+            }
+        })
+        .catch(() => {
+            document.cookie = "Authorization=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+            document.getElementById("userNav").style.display = "none";
+            document.getElementById("adminPanelNav").style.display = "none";
+        });
+}
+
+function checkCartLogin(event) {
+    event.preventDefault(); // Останавливаем переход
+
+    fetch("/getUser", { method: "GET", credentials: "include" })
+        .then(response => response.json())
+        .then(data => {
+            if (data.email) {
+                window.location.href = "cart.html"; // Если залогинен, переходим в корзину
+            } else {
+                document.getElementById("cartWarning").style.display = "block"; // Показываем сообщение
+            }
+        })
+        .catch(error => {
+            console.error("Error checking login:", error);
+            document.getElementById("cartWarning").style.display = "block";
+        });
+
+    return false;
+}
+    
 
     </script>
 </body>

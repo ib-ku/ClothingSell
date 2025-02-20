@@ -4,15 +4,21 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-	"time"
 )
 
 type PaymentRequest struct {
 	TransactionID string  `json:"transaction_id"`
 	Amount        float64 `json:"amount"`
 	UserID        string  `json:"user_id"`
-	ProductID     int     `json:"product_id"` // Added ProductID
+	ProductID     int     `json:"product_id"`
+	PaymentMethod string  `json:"payment_method"`
+	Email         string  `json:"email"`
+	Address       string  `json:"address"`
+	Phone         string  `json:"phone"`
+	PurchaseDate  string  `json:"purchase_date"`
 }
+
+
 
 type PaymentResponse struct {
 	TransactionID string `json:"transaction_id"`
@@ -38,19 +44,15 @@ func processPaymentHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Printf("Received payment request: %+v\n", paymentRequest) // Log the full request to debug
+	log.Printf("Received payment request: %+v\n", paymentRequest)
 
-	// Simulate payment processing
-	status := "Paid"
-	if time.Now().Second()%2 == 0 {
-		status = "Declined"
-	}
-
+	// Всегда возвращаем "Paid"
 	paymentResponse := PaymentResponse{
 		TransactionID: paymentRequest.TransactionID,
-		Status:        status,
+		Status:        "Paid",
 	}
+
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(paymentResponse)
-	log.Println("Processed payment for transaction:", paymentRequest.TransactionID, "Status:", status)
+	log.Println("Processed payment for transaction:", paymentRequest.TransactionID, "Status: Paid")
 }

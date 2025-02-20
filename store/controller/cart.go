@@ -74,7 +74,7 @@ func AddToCart(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Failed to add item to cart", http.StatusInternalServerError)
 		return
 	}
-
+	IncrementProductView(cartItem.ProductID)
 	log.Println("Item added to cart:", cartItem)
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(map[string]string{"message": "Item added to cart"})
@@ -121,4 +121,87 @@ func GetCartItems(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(cartItems)
+}
+
+func GetPurchaseHistory(w http.ResponseWriter, r *http.Request) {
+	log.Println("GetPurchaseHistory handler reached")
+
+	cookie, err := r.Cookie("Authorization")
+	if err != nil || cookie.Value == "" {
+		log.Println("Missing or invalid token:", err)
+		http.Error(w, "Unauthorized: Missing token", http.StatusUnauthorized)
+		return
+	}
+
+	token := strings.TrimPrefix(cookie.Value, "Bearer ")
+	claims, err := services.ParseJWT(token)
+	if err != nil {
+		log.Println("Token parsing failed:", err)
+		http.Error(w, "Invalid or expired token", http.StatusUnauthorized)
+		return
+	}
+
+	log.Println("User:", claims.Email)
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	// Фильтр по user_id
+	filter := bson.M{"user_id": claims.Email}
+	cursor, err := transactionCollection.Find(ctx, filter)
+	if err != nil {
+		log.Println("Failed to retrieve purchase history:", err)
+		http.Error(w, "Failed to retrieve purchase history", http.StatusInternalServerError)
+		return
+	}
+	defer cursor.Close(ctx)
+
+	// Используем кастомную структуру, чтобы включить purchase_date
+	type PurchaseHistoryItem struct {
+		UserID       string  `json:"user_id"`
+		ProductID    int     `json:"product_id"`
+		ProductName  string  `json:"product_name"`
+		Price        float64 `json:"price"`
+		PurchaseDate string  `json:"purchase_date"`
+	}
+
+	var purchaseHistory []PurchaseHistoryItem
+	for cursor.Next(ctx) {
+		var item PurchaseHistoryItem
+		if err := cursor.Decode(&item); err != nil {
+			log.Println("Failed to decode purchase history item:", err)
+			continue
+		}
+
+		// Проверяем, есть ли дата в документе
+		if item.PurchaseDate == "" {
+			item.PurchaseDate = time.Now().Format(time.RFC3339)
+		}
+
+		purchaseHistory = append(purchaseHistory, item)
+	}
+
+	if err := cursor.Err(); err != nil {
+		log.Println("Cursor error:", err)
+		http.Error(w, "Error retrieving purchase history", http.StatusInternalServerError)
+		return
+	}
+
+	log.Println("Purchase history retrieved:", purchaseHistory)
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(purchaseHistory)
+}
+func IncrementProductView(productID int) {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	_, err := productCollection.UpdateOne(
+		ctx,
+		bson.M{"id": productID},
+		bson.M{"$inc": bson.M{"views": 1}},
+	)
+	if err != nil {
+		log.Println("Failed to update product view count:", err)
+	}
 }

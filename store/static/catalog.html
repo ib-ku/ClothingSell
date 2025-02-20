@@ -69,77 +69,188 @@
         .product-card .product-name,
         .product-card .product-price {
             text-align: center;
+        } 
+        button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
+
+        button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+        .pagination {
+        text-align: center;
+        margin: 20px 0;
+    }
+    .pagination button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 5px;
+        transition: background-color 0.3s;
+    }
+    .pagination button:hover {
+        background-color: #0056b3;
+    }
+    .search-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .search-container input {
+        padding: 10px;
+        width: 300px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+    }
+    .search-container button {
+        padding: 10px 15px;
+        font-size: 16px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-left: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .search-container button:hover {
+        background-color: #218838;
+    }
     </style>
 </head>
 <body>
     <h1>Product Catalog</h1>
     
-    <!-- Navigation Buttons -->
     <div class="navigation">
         <a href="index.html">Home</a>
-        <a href="login.html">Log In</a>
-        <a href="registration.html">Sign Up</a>
+        <a href="cart.html">Cart</a>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search for products...">
+        <button onclick="searchProducts()">Search</button>
     </div>
 
     <div class="product-container" id="product-container"></div>
 
+    <div class="pagination">
+        <button id="prev-page">Previous</button>
+        <span id="current-page">Page 1</span>
+        <button id="next-page">Next</button>
+    </div>
     <script>
-        fetch('/allProducts')
-            .then(response => response.json())
-            .then(data => {
-                if (Array.isArray(data)) {
-                    const productContainer = document.getElementById('product-container');
-                    productContainer.innerHTML = '';
-                    data.forEach(product => {
-                        const productCard = document.createElement('div');
-                        productCard.classList.add('product-card');
-    
-                        const productImage = document.createElement('img');
-                        productImage.src = product.image || 'default-image.jpg';
-                        productCard.appendChild(productImage);
-    
-                        const productName = document.createElement('div');
-                        productName.classList.add('product-name');
-                        productName.textContent = product.name;
-                        productCard.appendChild(productName);
-    
-                        const productPrice = document.createElement('div');
-                        productPrice.classList.add('product-price');
-                        productPrice.textContent = `$${product.price}`;
-                        productCard.appendChild(productPrice);
-    
-                        const addToCartButton = document.createElement('button');
-                        addToCartButton.textContent = "Add to Cart";
-                        addToCartButton.style.marginTop = "10px";
-                        addToCartButton.addEventListener('click', async () => {
-                            const response = await fetch('/addToCart', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            credentials: 'include', // Ensure the cookie is sent
-                            body: JSON.stringify({ product_id: product.id })
-                        });
+    let currentPage = 1;
+    const limit = 25; // Количество товаров на странице
+    let products = []; // Глобальный массив для хранения всех товаров
 
-                            if (response.ok) {
-                                alert('Item added to cart');
-                            } else {
-                                alert('Failed to add item to cart');
-                            }
-                        });
-                        productCard.appendChild(addToCartButton);
-    
-                        productContainer.appendChild(productCard);
-                    });
-                } else {
-                    console.error('Expected an array of products.');
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching products:', error);
+    function fetchProducts(page = 1) {
+    fetch(`/allProducts?page=${page}`)
+        .then(response => response.json())
+        .then(data => {
+            if (Array.isArray(data)) {
+                products = data; // Сохраняем данные для поиска
+                displayProducts(products);
+                updatePaginationControls();
+            } else {
+                console.error('Expected an array of products.');
+            }
+        })
+        .catch(error => console.error('Error fetching products:', error));
+}
+
+function displayProducts(filteredProducts) {
+    const productContainer = document.getElementById('product-container');
+    productContainer.innerHTML = '';
+    filteredProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+
+        const productImage = document.createElement('img');
+        productImage.src = product.image || 'default-image.jpg';
+        productCard.appendChild(productImage);
+
+        const productName = document.createElement('div');
+        productName.classList.add('product-name');
+        productName.textContent = product.name;
+        productCard.appendChild(productName);
+
+        const productPrice = document.createElement('div');
+        productPrice.classList.add('product-price');
+        productPrice.textContent = `$${product.price}`;
+        productCard.appendChild(productPrice);
+
+        const addToCartButton = document.createElement('button');
+        addToCartButton.textContent = "Add to Cart";
+        addToCartButton.style.marginTop = "10px";
+        addToCartButton.addEventListener('click', async () => {
+            const response = await fetch('/addToCart', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({ product_id: product.id })
             });
-    </script>
+
+            if (response.ok) {
+                alert('Item added to cart');
+            } else {
+                alert('Failed to add item to cart');
+            }
+        });
+        productCard.appendChild(addToCartButton);
+
+        productContainer.appendChild(productCard);
+    });
+}
+
+    function updatePaginationControls() {
+        document.getElementById('current-page').textContent = `Page ${currentPage}`;
+    }
+
+    document.getElementById('prev-page').addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            fetchProducts(currentPage);
+        }
+    });
+
+    document.getElementById('next-page').addEventListener('click', () => {
+        currentPage++;
+        fetchProducts(currentPage);
+    });
+
+    // Загружаем первую страницу товаров
+    fetchProducts();
+
+
+
+    function searchProducts() {
+    const searchQuery = document.getElementById('search-input').value.toLowerCase();
+    const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchQuery));
+    displayProducts(filteredProducts);
+}
+
+</script>
+
     
 </body>
 </html>

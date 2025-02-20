@@ -2,8 +2,10 @@ package chat
 
 import (
 	"context"
+	"encoding/json"
 	"log"
 	"net/http"
+	"store/services"
 	"strings"
 	"time"
 
@@ -16,6 +18,7 @@ var chatCollection *mongo.Collection
 
 type ChatMessage struct {
 	ChatID    string    `json:"chatId" bson:"chatId"`
+	UserID    string    `json:"userId" bson:"userId"`
 	Sender    string    `json:"sender" bson:"sender"`
 	Message   string    `json:"message" bson:"message"`
 	Timestamp time.Time `json:"timestamp" bson:"timestamp"`
@@ -36,37 +39,55 @@ func InitializeChatCollection(client *mongo.Client) {
 }
 
 func HandleConnections(w http.ResponseWriter, r *http.Request) {
-	ws, err := upgrader.Upgrade(w, r, nil)
+	// Upgrade initial GET request to a WebSocket
+	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
-		log.Println("Failed to upgrade WebSocket:", err)
+		log.Println("WebSocket Upgrade Error:", err)
 		return
 	}
-	defer ws.Close()
+	defer conn.Close()
 
-	clients[ws] = ""
+	// Validate user token and get user information
+	cookie, err := r.Cookie("Authorization")
+	if err != nil || cookie.Value == "" {
+		return
+	}
 
+	// Remove "Bearer " prefix from the token if it exists
+	token := strings.TrimPrefix(cookie.Value, "Bearer ")
+
+	claims, err := services.ParseJWT(token)
+	if err != nil {
+		log.Println("Token parsing failed:", err)
+		return
+	}
+
+	// Listen for new chat messages
 	for {
 		var msg ChatMessage
-		err := ws.ReadJSON(&msg)
+		err := conn.ReadJSON(&msg)
 		if err != nil {
-			log.Printf("Error reading message: %v", err)
-			delete(clients, ws)
 			break
 		}
+
+		// Add user identification and timestamp to the message
+		msg.UserID = claims.Email
 		msg.Timestamp = time.Now()
 
-		log.Printf("Received message from %s: %s", msg.Sender, msg.Message)
-
+		// Insert message into MongoDB
 		_, err = chatCollection.InsertOne(context.TODO(), msg)
 		if err != nil {
 			log.Printf("Error inserting message into MongoDB: %v", err)
 		} else {
-			log.Println("Message inserted successfully")
+			log.Println("Message inserted successfully into MongoDB")
 		}
 
-		checkForAutoResponse(msg)
-
-		broadcast <- msg
+		// Broadcast the message to the WebSocket
+		msgBytes, _ := json.Marshal(msg)
+		if err = conn.WriteMessage(websocket.TextMessage, msgBytes); err != nil {
+			log.Printf("Error writing message to WebSocket: %v", err)
+			break
+		}
 	}
 }
 
@@ -117,9 +138,58 @@ func HandleMessages() {
 	}
 }
 
-func GetChatHistory(chatID string) ([]ChatMessage, error) {
+func GetChatHistory(w http.ResponseWriter, r *http.Request) {
+	userID := r.URL.Query().Get("userId")
+	if userID == "" {
+		http.Error(w, "UserID is required", http.StatusBadRequest)
+		return
+	}
+
 	var messages []ChatMessage
-	filter := bson.M{"chatId": chatID}
+	filter := bson.M{"userId": userID}
+
+	cursor, err := chatCollection.Find(context.TODO(), filter)
+	if err != nil {
+		log.Println("Failed to retrieve chat history:", err)
+		http.Error(w, "Failed to retrieve chat history", http.StatusInternalServerError)
+		return
+	}
+	defer cursor.Close(context.TODO())
+
+	for cursor.Next(context.TODO()) {
+		var msg ChatMessage
+		if err := cursor.Decode(&msg); err != nil {
+			log.Println("Failed to decode message:", err)
+			continue
+		}
+		messages = append(messages, msg)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(messages)
+}
+
+func GetUserChatHistory(w http.ResponseWriter, r *http.Request) {
+	userID := r.URL.Query().Get("userId")
+	if userID == "" {
+		http.Error(w, "UserID is required", http.StatusBadRequest)
+		return
+	}
+
+	messages, err := GetChatHistoryByUserID(userID)
+	if err != nil {
+		log.Println("Failed to retrieve chat history:", err)
+		http.Error(w, "Failed to retrieve chat history", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(messages)
+}
+
+func GetChatHistoryByUserID(userID string) ([]ChatMessage, error) {
+	var messages []ChatMessage
+	filter := bson.M{"userId": userID}
 
 	cur, err := chatCollection.Find(context.TODO(), filter)
 	if err != nil {
