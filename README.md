@@ -8,7 +8,7 @@ The ClothingSell is the project that aims to develop site using Golang and Mongo
 Main target: Anyone(Everyone) because the ClothingSell very simple to use, simple for understanding
 
 ### Teammmembers
-Orazbekov Ermek, Ibragim Kuandykov, Moldakhmet Abylay
+Orazbekov Ermek, Rassul Satpekov, Moldakhmet Abylay
 
 
 ## Installation
